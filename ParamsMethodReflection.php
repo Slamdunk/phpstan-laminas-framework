@@ -6,15 +6,21 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\Type\Type;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\Php\PhpMethodReflection;
+use Zend\Mvc\Controller\PluginManager;
 
 
 class ParamsMethodReflection implements MethodReflection
 {
     /** @var  PhpMethodReflection */
+    private $name;
     private $defaultMethodReflection;
 
-    public function __construct(PhpMethodReflection $defaultMethodReflection)
+    public function __construct(
+        $name,
+        PhpMethodReflection $defaultMethodReflection
+    )
     {
+        $this->name = $name;
         $this->defaultMethodReflection = $defaultMethodReflection;
     }
 
@@ -46,7 +52,7 @@ class ParamsMethodReflection implements MethodReflection
 
     public function getName(): string
     {
-        return 'params';  // lowercase because that's the way it's invoked?  ok to be hardcoded?
+        return $this->name;  // lowercase because that's the way it's invoked?  ok to be hardcoded?
     }
 
     /**
