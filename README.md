@@ -13,5 +13,7 @@ $this->params();
   plugins? (e.g. flashMessenger, redirect).
 - Should other Zend Framework methods that PHPStan can't figure out be piled
   into this extension or separate ones?  How to organise?
+- My names are likely atrocious - need feedback.
+- Is Application\PHPStan the best place for something like this?
 
 
