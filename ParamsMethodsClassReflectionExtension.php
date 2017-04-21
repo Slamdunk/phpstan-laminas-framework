@@ -55,7 +55,7 @@ class ParamsMethodsClassReflectionExtension implements
         if ($methodIsInvokable) {
             $methodReflection = $this->broker->getClass(get_class($plugin))->getMethod('__invoke');
             $returnType = $methodReflection->getReturnType();
-            return new ParamsMethodReflection(
+            return new InvokableMethodReflection(
                 $pluginName,
                 $returnType,
                 $methodReflection

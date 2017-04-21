@@ -7,7 +7,7 @@ use PHPStan\Type\Type;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\Php\PhpMethodReflection;
 
-class ParamsMethodReflection implements MethodReflection
+class InvokableMethodReflection implements MethodReflection
 {
     /** @var  PhpMethodReflection */
     private $name;
