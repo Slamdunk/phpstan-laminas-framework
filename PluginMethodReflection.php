@@ -33,6 +33,7 @@ class PluginMethodReflection implements MethodReflection
 
     public function getPrototype(): MethodReflection
     {
+        return $this;
     }
 
     public function isStatic(): bool

@@ -13,7 +13,7 @@ use PHPStan\Type\ObjectType;
 use Zend\Mvc\Controller\PluginManager;
 use Zend\ServiceManager\ServiceManager;
 
-class ParamsMethodsClassReflectionExtension implements
+class PluginClassReflectionExtension implements
     MethodsClassReflectionExtension,
     BrokerAwareClassReflectionExtension
 {
