@@ -20,5 +20,4 @@ class NullServiceManager implements ServiceLocatorInterface
     {
         return null;
     }
-
 }

@@ -8,12 +8,14 @@ use PHPStan\Reflection\BrokerAwareClassReflectionExtension;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
-use Zend\Mvc\Controller\Plugin\Params;
+
+use PHPStan\Type\ObjectType;
 use Zend\Mvc\Controller\PluginManager;
 use Zend\ServiceManager\ServiceManager;
 
 class ParamsMethodsClassReflectionExtension implements
-    MethodsClassReflectionExtension, BrokerAwareClassReflectionExtension
+    MethodsClassReflectionExtension,
+    BrokerAwareClassReflectionExtension
 {
 
     /* @var Broker */
@@ -31,23 +33,42 @@ class ParamsMethodsClassReflectionExtension implements
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {
         //return ($methodName === 'params');
-        $parentContainer = new NullServiceManager();
-        $pluginManager = new PluginManager($parentContainer, []);
-        echo $methodName . PHP_EOL;
-        return ($pluginManager->has($methodName) && is_callable($pluginManager->get($methodName)));
+        $pluginManager = new PluginManager(new ServiceManager());
+        echo $methodName;
+        $methodIsPlugin = $pluginManager->has($methodName);
+        if ($methodIsPlugin) {
+            echo " is a plugin";
+        }
+        echo PHP_EOL;
+        return ($methodIsPlugin);
     }
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
     {
-        $parentContainer = new NullServiceManager();
-        $pluginManager = new PluginManager($parentContainer, []);
+        $pluginManager = new PluginManager(new ServiceManager());
         $plugin = $pluginManager->get($methodName);
-        $pluginName = ucfirst($methodName);
-        $nativeReflection = $classReflection->getNativeReflection();
-        return new ParamsMethodReflection(
-            $pluginName,
-            $this->broker->getClass(get_class($plugin))->getMethod('__invoke')
-        );
-    }
 
+        $pluginName = $methodName;
+        $pluginClassName = get_class($plugin);
+
+        $methodIsInvokable = is_callable($pluginManager->get($methodName));
+        if ($methodIsInvokable) {
+            $methodReflection = $this->broker->getClass(get_class($plugin))->getMethod('__invoke');
+            $returnType = $methodReflection->getReturnType();
+            return new ParamsMethodReflection(
+                $pluginName,
+                $returnType,
+                $methodReflection
+            );
+        } else {
+            $returnType = new ObjectType($pluginClassName, true);
+            return new PluginMethodReflection(
+                $this->broker,
+                $pluginName,
+                $pluginClassName,
+                $returnType
+            );
+
+        }
+    }
 }
