@@ -47,7 +47,7 @@ class PluginMethodReflection implements MethodReflection
 
     public function getName(): string
     {
-        return $this->name;  // lowercase because that's the way it's invoked?  ok to be hardcoded?
+        return $this->name;
     }
 
     public function isPublic(): bool

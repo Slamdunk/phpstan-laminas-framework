@@ -32,15 +32,12 @@ class ParamsMethodsClassReflectionExtension implements
 
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {
-        //return ($methodName === 'params');
         $pluginManager = new PluginManager(new ServiceManager());
-        echo $methodName;
         $methodIsPlugin = $pluginManager->has($methodName);
-        if ($methodIsPlugin) {
-            echo " is a plugin";
-        }
+        echo $methodName;
+        echo $methodIsPlugin ? ' is a plugin' : '';
         echo PHP_EOL;
-        return ($methodIsPlugin);
+        return $methodIsPlugin;
     }
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
@@ -52,9 +49,11 @@ class ParamsMethodsClassReflectionExtension implements
         $pluginClassName = get_class($plugin);
 
         $methodIsInvokable = is_callable($pluginManager->get($methodName));
+
         if ($methodIsInvokable) {
             $methodReflection = $this->broker->getClass(get_class($plugin))->getMethod('__invoke');
             $returnType = $methodReflection->getReturnType();
+
             return new InvokableMethodReflection(
                 $pluginName,
                 $returnType,
@@ -62,6 +61,7 @@ class ParamsMethodsClassReflectionExtension implements
             );
         } else {
             $returnType = new ObjectType($pluginClassName, true);
+
             return new PluginMethodReflection(
                 $this->broker,
                 $pluginName,

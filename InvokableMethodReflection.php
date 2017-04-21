@@ -26,13 +26,11 @@ class InvokableMethodReflection implements MethodReflection
 
     public function getDeclaringClass(): ClassReflection
     {
-        $x = $this->defaultMethodReflection->getDeclaringClass();
         return $this->defaultMethodReflection->getDeclaringClass();
     }
 
     public function getPrototype(): MethodReflection
     {
-        $y = $this->defaultMethodReflection->getPrototype();
         return $this->defaultMethodReflection->getPrototype();
     }
 
@@ -48,7 +46,7 @@ class InvokableMethodReflection implements MethodReflection
 
     public function getName(): string
     {
-        return $this->name;  // lowercase because that's the way it's invoked?  ok to be hardcoded?
+        return $this->name;
     }
 
     public function isPublic(): bool
