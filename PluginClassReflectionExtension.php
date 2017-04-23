@@ -13,6 +13,11 @@ use PHPStan\Type\ObjectType;
 use Zend\Mvc\Controller\PluginManager;
 use Zend\ServiceManager\ServiceManager;
 
+use Zend\Mvc\Service;
+
+use Zend\Mvc\Application;
+use Zend\Stdlib\ArrayUtils;
+
 class PluginClassReflectionExtension implements
     MethodsClassReflectionExtension,
     BrokerAwareClassReflectionExtension
@@ -20,6 +25,11 @@ class PluginClassReflectionExtension implements
 
     /* @var Broker */
     private $broker;
+    private $pluginManager;
+
+    public function __construct() {
+        $this->initFramework();
+    }
 
     /**
      * @param Broker $broker Class reflection broker
@@ -30,10 +40,33 @@ class PluginClassReflectionExtension implements
         $this->broker = $broker;
     }
 
+    /**
+     *  Initialise the ZF3 framework so that controller plugins defined in modules
+     *  are found by the ControllerPluginManager.
+     */
+    public function initFramework()
+    {
+        // Cribbed right out of the Application class for ZF3
+        $appConfig = require __DIR__ . '/../../../../config/application.config.php';
+        if (file_exists(__DIR__ . '/../config/development.config.php')) {
+            $appConfig = ArrayUtils::merge($appConfig, require __DIR__ . '/../config/development.config.php');
+        }
+        $smConfig = isset($appConfig['service_manager']) ? $appConfig['service_manager'] : [];
+        $smConfig = new Service\ServiceManagerConfig($smConfig);
+
+        $serviceManager = new ServiceManager();
+        $smConfig->configureServiceManager($serviceManager);
+        $serviceManager->setService('ApplicationConfig', $appConfig);
+
+        $serviceManager->get('ModuleManager')->loadModules();
+
+        $this->pluginManager = $serviceManager->get('ControllerPluginManager');
+
+    }
+
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {
-        $pluginManager = new PluginManager(new ServiceManager());
-        $methodIsPlugin = $pluginManager->has($methodName);
+        $methodIsPlugin = $this->pluginManager->has($methodName);
         echo $methodName;
         echo $methodIsPlugin ? ' is a plugin' : '';
         echo PHP_EOL;
@@ -42,13 +75,12 @@ class PluginClassReflectionExtension implements
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
     {
-        $pluginManager = new PluginManager(new ServiceManager());
-        $plugin = $pluginManager->get($methodName);
+        $plugin = $this->pluginManager->get($methodName);
 
         $pluginName = $methodName;
         $pluginClassName = get_class($plugin);
 
-        $methodIsInvokable = is_callable($pluginManager->get($methodName));
+        $methodIsInvokable = is_callable($this->pluginManager->get($methodName));
 
         if ($methodIsInvokable) {
             $methodReflection = $this->broker->getClass(get_class($plugin))->getMethod('__invoke');
