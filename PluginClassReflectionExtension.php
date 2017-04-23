@@ -66,11 +66,7 @@ class PluginClassReflectionExtension implements
 
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {
-        $methodIsPlugin = $this->pluginManager->has($methodName);
-        echo $methodName;
-        echo $methodIsPlugin ? ' is a plugin' : '';
-        echo PHP_EOL;
-        return $methodIsPlugin;
+        return $this->pluginManager->has($methodName);
     }
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
