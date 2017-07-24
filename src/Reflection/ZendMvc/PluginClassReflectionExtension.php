@@ -1,7 +1,5 @@
 <?php
-
-
-namespace Application\PHPStan;
+namespace PHPStan\Reflection\ZendMvc;
 
 use PHPStan\Broker\Broker;
 use PHPStan\Reflection\BrokerAwareClassReflectionExtension;
