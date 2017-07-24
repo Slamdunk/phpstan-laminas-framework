@@ -45,9 +45,9 @@ class PluginClassReflectionExtension implements
     public function initFramework()
     {
         // Cribbed right out of the Application class for ZF3
-        $appConfig = require __DIR__ . '/../../../../config/application.config.php';
-        if (file_exists(__DIR__ . '/../config/development.config.php')) {
-            $appConfig = ArrayUtils::merge($appConfig, require __DIR__ . '/../config/development.config.php');
+        $appConfig = require __DIR__ . '/../../../../../../config/application.config.php';
+        if (file_exists(__DIR__ . '/../../../../../../config/development.config.php')) {
+            $appConfig = ArrayUtils::merge($appConfig, require __DIR__ . '/../../../../../../config/development.config.php');
         }
         $smConfig = isset($appConfig['service_manager']) ? $appConfig['service_manager'] : [];
         $smConfig = new Service\ServiceManagerConfig($smConfig);
