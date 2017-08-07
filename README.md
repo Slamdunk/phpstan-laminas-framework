@@ -1,6 +1,5 @@
 # An extension for PHPStan to inform it of zend-mvc plugins
-Tells PHPStan about the Params class, specifically it's use in a controller as
-$this->params();
+Allows PHPStan to understand Zend Framework plugins, e.g. the Params class when used like $this->params() in a controller.
 
 # Installation
 - Clone this repo and put it under your mdoule/Application/src/
