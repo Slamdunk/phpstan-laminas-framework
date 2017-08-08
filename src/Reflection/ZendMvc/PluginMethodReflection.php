@@ -1,47 +1,48 @@
 <?php
-
-namespace Application\PHPStan;
+namespace PHPStan\Reflection\ZendMvc;
 
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Type\Type;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\Php\PhpMethodReflection;
 
-class InvokableMethodReflection implements MethodReflection
+class PluginMethodReflection implements MethodReflection
 {
-    /** @var  PhpMethodReflection */
+    private $broker;
     private $name;
-    private $defaultMethodReflection;
+    private $className;
     private $returnType;
 
     public function __construct(
+        $broker,
         $name,
-        $returnType,
-        $defaultMethodReflection
+        $className,
+        $returnType
     ) {
+        $this->broker = $broker;
         $this->name = $name;
+        $this->className = $className;
         $this->returnType = $returnType;
-        $this->defaultMethodReflection = $defaultMethodReflection;
     }
 
     public function getDeclaringClass(): ClassReflection
     {
-        return $this->defaultMethodReflection->getDeclaringClass();
+        return $this->broker->getClass($this->className);
     }
 
     public function getPrototype(): MethodReflection
     {
-        return $this->defaultMethodReflection->getPrototype();
+        return $this;
     }
 
     public function isStatic(): bool
     {
-        return $this->defaultMethodReflection->isStatic();
+        return false;
     }
 
     public function isPrivate(): bool
     {
-        return $this->defaultMethodReflection->isPrivate();
+        return false;
     }
 
     public function getName(): string
@@ -51,7 +52,7 @@ class InvokableMethodReflection implements MethodReflection
 
     public function isPublic(): bool
     {
-        return $this->defaultMethodReflection->isPublic();
+        return true;
     }
 
     /**
@@ -59,12 +60,12 @@ class InvokableMethodReflection implements MethodReflection
      */
     public function getParameters(): array
     {
-        return $this->defaultMethodReflection->getParameters();
+        return [];
     }
 
     public function isVariadic(): bool
     {
-        return $this->defaultMethodReflection->isVariadic();
+        return false;
     }
 
     public function getReturnType(): Type

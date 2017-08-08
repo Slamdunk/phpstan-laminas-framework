@@ -1,20 +1,16 @@
-# An extension for PHPStan to inform it of zend-mvc plugins
-Allows PHPStan to understand Zend Framework plugins, e.g. the Params class when used like $this->params() in a controller.
+# PHPStan extension for Zend Framework MVC Controller Plugins
+Adds support to PHPStan to correctly handle controller plugins that are called
+using magic `__call()` in `\Zend\Mvc\Controller\AbstractController` and
+children.
 
-# Installation
-- Clone this repo and put it under your mdoule/Application/src/
-- Add the following to phpstan.neo in your top-level app directory
+## Installation
+- Add `michaelgooden/phpstan-zend-mvc` as a `require-dev` Composer dependency
+- Add the following to phpstan.neon in your top-level app directory
 ```
 services:
     -
-        class: Application\PHPStan\PluginClassReflectionExtension
+        class: PHPStan\Reflection\ZendMvc\PluginClassReflectionExtension
         tags:
             - phpstan.broker.methodsClassReflectionExtension
 ```
-
-# Open questions:
-
-- My names are likely atrocious - need feedback.
-- Is module\Application\PHPStan the best place for something like this?
-
-
+- Run PHPStan with the config file switch `phpstan -c phpstan.neon`
