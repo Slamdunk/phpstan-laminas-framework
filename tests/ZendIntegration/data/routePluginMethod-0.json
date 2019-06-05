@@ -1,0 +1,7 @@
+[
+    {
+        "message": "The service \"foobar\" was not configured in Zend\\Router\\RoutePluginManager.",
+        "line": 25,
+        "ignorable": true
+    }
+]

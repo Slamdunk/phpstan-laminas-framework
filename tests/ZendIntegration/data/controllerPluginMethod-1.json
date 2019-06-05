@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Call to an undefined method ZendPhpStan\\Tests\\ZendIntegration\\data\\controllerPluginMethod::foo().",
+        "line": 16,
+        "ignorable": true
+    }
+]

@@ -1,0 +1,11 @@
+includes:
+    - vendor/phpstan/phpstan/conf/config.levelmax.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+
+parameters:
+    paths:
+        - src/
+        - tests/
+    excludes_analyse:
+        - tests/ZendIntegration/data/
+        - tests/TestAsset/

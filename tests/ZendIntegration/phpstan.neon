@@ -1,0 +1,6 @@
+includes:
+	- ../../extension.neon
+
+parameters:
+	zendframework:
+		serviceManagerLoader: tests/ZendIntegration/servicemanagerloader.php

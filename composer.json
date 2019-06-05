@@ -1,12 +1,7 @@
 {
-    "name": "michaelgooden/phpstan-zend-mvc",
+    "name": "slam/phpstan-zend-framework",
+    "type": "phpstan-extension",
     "description": "Zend Framework 3 MVC controller plugin extension for PHPStan.",
-    "type": "library",
-    "require": {
-        "php": "^7.0",
-        "zendframework/zend-mvc": "^3.1",
-        "phpstan/phpstan": "~0.7"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -16,11 +11,50 @@
         {
             "name": "Michael Gooden",
             "email": "me@michaelgooden.net"
+        },
+        {
+            "name": "Filippo Tessarotto",
+            "email": "zoeslam@gmail.com"
         }
     ],
+    "require": {
+        "php": "^7.1",
+        "phpstan/phpstan": "^0.11.8",
+        "zendframework/zend-mvc": "^3.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan-phpunit": "^0.11",
+        "phpunit/phpunit": "^7.5",
+        "roave/security-advisories": "dev-master",
+        "slam/php-cs-fixer-extensions": "^1.17",
+        "slam/php-debug-r": "^1.4",
+        "zendframework/zend-cache": "^2.8",
+        "zendframework/zend-filter": "^2.9",
+        "zendframework/zend-form": "^2.14",
+        "zendframework/zend-hydrator": "^2.4 || ^3.0",
+        "zendframework/zend-i18n": "^2.9",
+        "zendframework/zend-inputfilter": "^2.10",
+        "zendframework/zend-log": "^2.10",
+        "zendframework/zend-mail": "^2.10",
+        "zendframework/zend-mvc": "^3.1",
+        "zendframework/zend-paginator": "^2.8",
+        "zendframework/zend-validator": "^2.12"
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
-            "PHPStan\\": "src/"
+            "ZendPhpStan\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
     }
 }

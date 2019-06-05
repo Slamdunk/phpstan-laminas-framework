@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Call to an undefined method ZendPhpStan\\TestAsset\\CssService::isCssWut().",
+        "line": 32,
+        "ignorable": true
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "message": "The service \"bar\" was not configured in Zend\\ServiceManager\\ServiceManager.",
+        "line": 26,
+        "ignorable": true
+    },
+    {
+        "message": "The service \"foobar\" was not configured in ViewHelperManager.",
+        "line": 34,
+        "ignorable": true
+    }
+]
