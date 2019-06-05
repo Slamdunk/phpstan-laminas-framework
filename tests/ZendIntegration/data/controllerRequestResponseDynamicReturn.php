@@ -7,6 +7,7 @@ namespace ZendPhpStan\Tests\ZendIntegration\data;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Mvc\MvcEvent;
 use Zend\View\View;
+use Zend\View\ViewEvent;
 
 final class controllerRequestResponseDynamicReturn extends AbstractActionController
 {
@@ -49,5 +50,18 @@ final class controllerRequestResponseDynamicReturn extends AbstractActionControl
         $view->getRequest()->isPost();
         $view->getResponse()->headersSent();
         $view->getResponse()->getStatusCode();
+    }
+
+    private function baz(ViewEvent $viewEvent)
+    {
+        $viewEvent->getRequest()->getBasePattt();
+        $viewEvent->getResponse()->headersSenttt();
+        $viewEvent->getRenderer()->getEngineee();
+
+        $viewEvent->getRequest()->getBasePath();
+        $viewEvent->getRequest()->isPost();
+        $viewEvent->getResponse()->headersSent();
+        $viewEvent->getResponse()->getStatusCode();
+        $viewEvent->getRenderer()->getEngine();
     }
 }

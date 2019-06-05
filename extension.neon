@@ -32,7 +32,15 @@ services:
        tags:
            - phpstan.broker.dynamicMethodReturnTypeExtension
     -
+       class: ZendPhpStan\Type\Zend\ViewEventDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
        class: ZendPhpStan\Type\Zend\ApplicationDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ViewHelperDynamicReturnTypeExtension
        tags:
            - phpstan.broker.dynamicMethodReturnTypeExtension
     -

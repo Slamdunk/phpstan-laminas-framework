@@ -11,6 +11,7 @@ use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\View\Renderer\RendererInterface;
 
 abstract class AbstractServiceDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
@@ -22,8 +23,9 @@ abstract class AbstractServiceDynamicReturnTypeExtension implements DynamicMetho
     /**
      * @var array
      */
-    private $methodToServiceMap = [
+    protected $methodToServiceMap = [
         'getApplication'    => 'Application',
+        'getRenderer'       => RendererInterface::class,
         'getRequest'        => 'Request',
         'getResponse'       => 'Response',
     ];
