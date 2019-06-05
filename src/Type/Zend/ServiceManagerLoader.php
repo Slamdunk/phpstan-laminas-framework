@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace ZendPhpStan\Type\Zend;
 
+use Interop\Container\ContainerInterface as InteropContainerInterface;
+use Psr\Container\ContainerInterface as PsrContainerInterface;
 use Zend\Log\FilterPluginManager as LogFilterPluginManager;
 use Zend\Log\FormatterPluginManager as LogFormatterPluginManager;
 use Zend\Log\ProcessorPluginManager as LogProcessorPluginManager;
@@ -43,8 +45,10 @@ final class ServiceManagerLoader
      * @var array
      */
     private $serviceManagerNames = [
-        ServiceManager::class           => true,
-        ServiceLocatorInterface::class  => true,
+        ServiceManager::class            => true,
+        ServiceLocatorInterface::class   => true,
+        InteropContainerInterface::class => true,
+        PsrContainerInterface::class     => true,
     ];
 
     /**
