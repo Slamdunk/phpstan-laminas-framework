@@ -5,23 +5,49 @@ declare(strict_types=1);
 namespace ZendPhpStan\Tests\ZendIntegration\data;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\MvcEvent;
+use Zend\View\View;
 
 final class controllerRequestResponseDynamicReturn extends AbstractActionController
 {
     public function actionIndex()
     {
-        // $this->request->getBasePattt();
         $this->getRequest()->getBasePattt();
-        // $this->response->headersSenttt();
         $this->getResponse()->headersSenttt();
 
-        // $this->request->getBasePath();
         $this->getRequest()->getBasePath();
-        // $this->request->isPost();
         $this->getRequest()->isPost();
-        // $this->response->headersSent();
         $this->getResponse()->headersSent();
-        // $this->response->getStatusCode();
         $this->getResponse()->getStatusCode();
+    }
+
+    private function foo(MvcEvent $event)
+    {
+        $event->getRequest()->getBasePattt();
+        $event->getResponse()->headersSenttt();
+
+        $event->getRequest()->getBasePath();
+        $event->getRequest()->isPost();
+        $event->getResponse()->headersSent();
+        $event->getResponse()->getStatusCode();
+
+        $event->getApplication()->getRequest()->getBasePattt();
+        $event->getApplication()->getResponse()->headersSenttt();
+
+        $event->getApplication()->getRequest()->getBasePath();
+        $event->getApplication()->getRequest()->isPost();
+        $event->getApplication()->getResponse()->headersSent();
+        $event->getApplication()->getResponse()->getStatusCode();
+    }
+
+    private function bar(View $view)
+    {
+        $view->getRequest()->getBasePattt();
+        $view->getResponse()->headersSenttt();
+
+        $view->getRequest()->getBasePath();
+        $view->getRequest()->isPost();
+        $view->getResponse()->headersSent();
+        $view->getResponse()->getStatusCode();
     }
 }

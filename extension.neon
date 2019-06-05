@@ -20,7 +20,19 @@ services:
        tags:
            - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-       class: ZendPhpStan\Type\Zend\ControllerRequestResponseDynamicReturnTypeExtension
+       class: ZendPhpStan\Type\Zend\ControllerDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\MvcEventDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ViewDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ApplicationDynamicReturnTypeExtension
        tags:
            - phpstan.broker.dynamicMethodReturnTypeExtension
     -

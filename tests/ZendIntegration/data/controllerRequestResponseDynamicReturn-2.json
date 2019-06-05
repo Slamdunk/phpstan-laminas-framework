@@ -1,12 +1,42 @@
 [
     {
         "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Request::getBasePattt().",
-        "line": 14,
+        "line": 15,
         "ignorable": true
     },
     {
         "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Response::headersSenttt().",
         "line": 16,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 26,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 27,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 34,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 35,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 45,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Zend\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 46,
         "ignorable": true
     }
 ]

@@ -10,37 +10,35 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
-use Zend\Mvc\Controller\AbstractController;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-final class ControllerRequestResponseDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
+abstract class AbstractServiceDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
     /**
      * @var ServiceManagerLoader
      */
     private $serviceManagerLoader;
 
+    /**
+     * @var array
+     */
     private $methodToServiceMap = [
-        'getRequest'    => 'Request',
-        'getResponse'   => 'Response',
+        'getApplication'    => 'Application',
+        'getRequest'        => 'Request',
+        'getResponse'       => 'Response',
     ];
 
-    public function __construct(ServiceManagerLoader $serviceManagerLoader)
+    final public function __construct(ServiceManagerLoader $serviceManagerLoader)
     {
         $this->serviceManagerLoader = $serviceManagerLoader;
     }
 
-    public function getClass(): string
-    {
-        return AbstractController::class;
-    }
-
-    public function isMethodSupported(MethodReflection $methodReflection): bool
+    final public function isMethodSupported(MethodReflection $methodReflection): bool
     {
         return isset($this->methodToServiceMap[$methodReflection->getName()]);
     }
 
-    public function getTypeFromMethodCall(
+    final public function getTypeFromMethodCall(
         MethodReflection $methodReflection,
         MethodCall $methodCall,
         Scope $scope
