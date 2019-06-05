@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace ZendPhpStan\Tests\ZendIntegration\data;
 
-use Zend\ServiceManager\ServiceManager;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 final class serviceManagerDynamicReturn
 {
     /**
-     * @var ServiceManager
+     * @var ServiceLocatorInterface
      */
     private $serviceManager;
 
-    public function __construct(ServiceManager $serviceManager)
+    public function __construct(ServiceLocatorInterface $serviceManager)
     {
         $this->serviceManager = $serviceManager;
     }

@@ -44,10 +44,9 @@ final class ControllerPluginClassReflectionExtension implements BrokerAwareExten
     {
         $plugin          = $this->getControllerPluginManager()->get($methodName);
         $pluginClassName = \get_class($plugin);
-        $classReflection = $this->broker->getClass($pluginClassName);
 
         if (\is_callable($plugin)) {
-            return $classReflection->getNativeMethod('__invoke');
+            return $this->broker->getClass($pluginClassName)->getNativeMethod('__invoke');
         }
 
         $returnType = new ObjectType($pluginClassName);

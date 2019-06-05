@@ -21,6 +21,20 @@ final class Foo
     public function foo()
     {
         $this->serviceManager->get('non_existent_service');
+
         $this->serviceManager->get('EventManager');
+        $this->serviceManager->get('foo', 'bar');
+        $this->serviceManager->get([]);
+
+        $getterName = 'get';
+        $this->serviceManager->{$getterName}('EventManager');
+        $this->serviceManager->has('EventManager');
+
+        $stdClass = new \stdClass();
+        $stdClass->get('non_existent_service');
+    }
+
+    public function get(string $foo)
+    {
     }
 }

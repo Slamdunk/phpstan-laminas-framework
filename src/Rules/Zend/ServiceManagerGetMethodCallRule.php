@@ -9,6 +9,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\ObjectType;
+use Zend\ServiceManager\ServiceLocatorInterface;
 use ZendPhpStan\Type\Zend\ObjectServiceManagerType;
 use ZendPhpStan\Type\Zend\ServiceManagerLoader;
 
@@ -37,7 +38,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
      */
     public function processNode(Node $node, Scope $scope): array
     {
-        if (! isset($node->args[0])) {
+        if (1 !== \count($node->args)) {
             return [];
         }
 
@@ -47,7 +48,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
         }
 
         $calledOnType = $scope->getType($node->var);
-        if (! $calledOnType instanceof ObjectType) {
+        if (! $calledOnType instanceof ObjectType || ! $calledOnType->isInstanceOf(ServiceLocatorInterface::class)->yes()) {
             return [];
         }
 
