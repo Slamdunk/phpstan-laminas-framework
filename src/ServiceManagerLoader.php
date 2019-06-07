@@ -10,7 +10,6 @@ use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\ServiceManager;
-use ZendPhpStan\UnmappedAliasServiceLocatorProxy;
 
 final class ServiceManagerLoader
 {

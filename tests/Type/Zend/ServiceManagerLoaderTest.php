@@ -31,9 +31,9 @@ use Zend\ServiceManager\ServiceManager;
 use Zend\Validator\ValidatorPluginManager;
 use Zend\View\Helper\Navigation\PluginManager as NavigationPluginManager;
 use Zend\View\HelperPluginManager;
+use ZendPhpStan\ServiceManagerLoader;
 use ZendPhpStan\TestAsset\BarService;
 use ZendPhpStan\TestAsset\FooService;
-use ZendPhpStan\ServiceManagerLoader;
 
 /**
  * @covers \ZendPhpStan\ServiceManagerLoader

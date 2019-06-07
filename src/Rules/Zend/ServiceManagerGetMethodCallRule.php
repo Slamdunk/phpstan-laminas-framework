@@ -12,8 +12,8 @@ use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\ObjectType;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use ZendPhpStan\Type\Zend\ObjectServiceManagerType;
 use ZendPhpStan\ServiceManagerLoader;
+use ZendPhpStan\Type\Zend\ObjectServiceManagerType;
 
 final class ServiceManagerGetMethodCallRule implements Rule
 {

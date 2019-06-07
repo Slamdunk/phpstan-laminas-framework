@@ -29,6 +29,11 @@ $serviceManager->setService('ApplicationConfig', [
                         'invokables' => [
                             'foo' => FooService::class,
                         ],
+                        'services' => [
+                            'my_config' => [
+                                'foo' => 'bar',
+                            ],
+                        ],
                     ],
                     'controllers' => [
                         'invokables' => [

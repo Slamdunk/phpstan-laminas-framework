@@ -33,4 +33,12 @@ final class serviceManagerDynamicReturn
 
         $viewHelperManager->get('foobar')->isCss();
     }
+
+    public function nonObjectServices(): void
+    {
+        $config = $this->serviceManager->get('my_config');
+        $var    = $config['foo'];
+        $var    = $config['xyz'];
+        $var    = $config->foo;
+    }
 }

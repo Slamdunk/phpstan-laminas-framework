@@ -7,8 +7,8 @@ namespace ZendPhpStan\Tests\Rules\Zend;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use ZendPhpStan\Rules\Zend\ServiceManagerGetMethodCallRule;
-use ZendPhpStan\Type\Zend\ServiceManagerGetDynamicReturnTypeExtension;
 use ZendPhpStan\ServiceManagerLoader;
+use ZendPhpStan\Type\Zend\ServiceManagerGetDynamicReturnTypeExtension;
 
 /**
  * @covers \ZendPhpStan\Rules\Zend\ServiceManagerGetMethodCallRule
