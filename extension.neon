@@ -49,3 +49,7 @@ services:
         class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ViewHelperGetterDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+        class: ZendPhpStan\Type\Zend\StdlibAbstractOptionsPropertiesClassReflectionExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension

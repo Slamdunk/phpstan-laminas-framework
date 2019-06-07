@@ -19,6 +19,7 @@ final class IntegrationTest extends LevelsTestCase
             ['routePluginMethod'],
             ['viewHelperPluginMethod'],
             ['stdlibArrayObjectCrate'],
+            ['stdlibAbstractOptionsProperties'],
         ];
     }
 

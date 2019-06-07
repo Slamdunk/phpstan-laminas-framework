@@ -13,11 +13,12 @@ This extension provides following features:
 1. Provide correct return for `\Zend\ServiceManager\ServiceLocatorInterface::get()`
 1. Handle controller plugins that are called using magic `__call()` in subclasses of
 `\Zend\Mvc\Controller\AbstractController`
-1. `getApplication()`, `getRequest()` and `getResponse()` methods on Controllers, MvcEvents, View, ViewEvent and Application
-returns the real instance instead of type-hinted interfaces
+1. `getApplication()`, `getRenderer()`, `getRequest()` and `getResponse()` methods on Controllers, MvcEvents, View,
+ViewEvent and Application returns the real instance instead of type-hinted interfaces
 1. `getView()` method on `\Zend\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
 interface
 1. `\Zend\Stdlib\ArrayObject` is configured as a [Universal object crate](https://github.com/phpstan/phpstan#universal-object-crates)
+1. Handle `\Zend\Stdlib\AbstractOptions` magic properties
 
 ## Installation
 
