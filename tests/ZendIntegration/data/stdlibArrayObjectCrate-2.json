@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Call to an undefined method Zend\\Stdlib\\ArrayObject::foo().",
+        "line": 17,
+        "ignorable": true
+    }
+]

@@ -7,7 +7,7 @@ use PHPStan\Testing\LevelsTestCase;
 /**
  * @coversNothing
  */
-final class ServiceManagerIntegrationTest extends LevelsTestCase
+final class IntegrationTest extends LevelsTestCase
 {
     public function dataTopics(): array
     {
@@ -18,6 +18,7 @@ final class ServiceManagerIntegrationTest extends LevelsTestCase
             ['controllerMethod'],
             ['routePluginMethod'],
             ['viewHelperPluginMethod'],
+            ['stdlibArrayObjectCrate'],
         ];
     }
 
