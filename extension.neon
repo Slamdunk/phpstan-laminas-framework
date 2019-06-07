@@ -20,30 +20,30 @@ services:
        tags:
            - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-       class: ZendPhpStan\Type\Zend\ControllerDynamicReturnTypeExtension
-       tags:
-           - phpstan.broker.dynamicMethodReturnTypeExtension
-    -
-       class: ZendPhpStan\Type\Zend\MvcEventDynamicReturnTypeExtension
-       tags:
-           - phpstan.broker.dynamicMethodReturnTypeExtension
-    -
-       class: ZendPhpStan\Type\Zend\ViewDynamicReturnTypeExtension
-       tags:
-           - phpstan.broker.dynamicMethodReturnTypeExtension
-    -
-       class: ZendPhpStan\Type\Zend\ViewEventDynamicReturnTypeExtension
-       tags:
-           - phpstan.broker.dynamicMethodReturnTypeExtension
-    -
-       class: ZendPhpStan\Type\Zend\ApplicationDynamicReturnTypeExtension
-       tags:
-           - phpstan.broker.dynamicMethodReturnTypeExtension
-    -
-       class: ZendPhpStan\Type\Zend\ViewHelperDynamicReturnTypeExtension
-       tags:
-           - phpstan.broker.dynamicMethodReturnTypeExtension
-    -
        class: ZendPhpStan\Type\Zend\ControllerPluginClassReflectionExtension
        tags:
            - phpstan.broker.methodsClassReflectionExtension
+    -
+       class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ControllerGetterDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\MvcEventGetterDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ViewGetterDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ViewEventGetterDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ApplicationGetterDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+       class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ViewHelperGetterDynamicReturnTypeExtension
+       tags:
+           - phpstan.broker.dynamicMethodReturnTypeExtension

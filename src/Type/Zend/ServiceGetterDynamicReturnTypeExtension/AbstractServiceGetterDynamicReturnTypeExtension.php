@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ZendPhpStan\Type\Zend;
+namespace ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension;
 
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
@@ -12,8 +12,9 @@ use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\View\Renderer\RendererInterface;
+use ZendPhpStan\Type\Zend\ServiceManagerLoader;
 
-abstract class AbstractServiceDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
+abstract class AbstractServiceGetterDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
     /**
      * @var ServiceManagerLoader
