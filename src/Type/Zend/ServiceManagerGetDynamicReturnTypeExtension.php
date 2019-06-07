@@ -64,7 +64,7 @@ final class ServiceManagerGetDynamicReturnTypeExtension implements BrokerAwareEx
             return new MixedType();
         }
 
-        $serviceManager = $this->serviceManagerLoader->getServiceManager($calledOnType->getClassName());
+        $serviceManager = $this->serviceManagerLoader->getServiceLocator($calledOnType->getClassName());
 
         $argType = $scope->getType($methodCall->args[0]->value);
         if (! $argType instanceof ConstantStringType) {

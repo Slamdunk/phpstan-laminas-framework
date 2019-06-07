@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace ZendPhpStan\Tests\Rules\Zend\ServiceManagerGetMethodCallRule;
 
+use Zend\Cache\PatternPluginManager\PatternPluginManagerV3Polyfill;
+use Zend\Form\FormElementManager\FormElementManagerV3Polyfill;
+use Zend\Mvc\Controller\ControllerManager;
 use Zend\ServiceManager\ServiceManager;
 
 final class Foo
@@ -32,6 +35,12 @@ final class Foo
 
         $stdClass = new \stdClass();
         $stdClass->get('non_existent_service');
+
+        $this->serviceManager->get(ControllerManager::class);
+        $this->serviceManager->get(FormElementManagerV3Polyfill::class);
+        $this->serviceManager->get('\Zend\Form\FormElementManager\FormElementManagerV2Polyfill');
+        $this->serviceManager->get(PatternPluginManagerV3Polyfill::class);
+        $this->serviceManager->get('\Zend\Cache\PatternPluginManager\PatternPluginManagerV2Polyfill');
     }
 
     public function get(string $foo)

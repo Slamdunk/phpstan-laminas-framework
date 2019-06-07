@@ -6,23 +6,18 @@ namespace ZendPhpStan\Type\Zend;
 
 use Interop\Container\ContainerInterface as InteropContainerInterface;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
-use Zend\Log\FilterPluginManager as LogFilterPluginManager;
-use Zend\Log\FormatterPluginManager as LogFormatterPluginManager;
-use Zend\Log\ProcessorPluginManager as LogProcessorPluginManager;
-use Zend\Log\WriterPluginManager as LogWriterPluginManager;
 use Zend\ModuleManager\ModuleManager;
-use Zend\Mvc\Controller\ControllerManager;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\ServiceManager;
-use Zend\View\HelperPluginManager;
+use ZendPhpStan\UnmappedAliasServiceLocatorProxy;
 
 final class ServiceManagerLoader
 {
     /**
-     * @var null|ServiceManager
+     * @var ServiceLocatorInterface
      */
-    private $serviceManager;
+    private $serviceLocator;
 
     /**
      * @var array
@@ -51,18 +46,6 @@ final class ServiceManagerLoader
         PsrContainerInterface::class     => true,
     ];
 
-    /**
-     * @var array
-     */
-    private $knownUnmappedAliasToClassServices = [
-        ControllerManager::class            => 'ControllerManager',
-        HelperPluginManager::class          => 'ViewHelperManager',
-        LogFilterPluginManager::class       => 'LogFilterManager',
-        LogFormatterPluginManager::class    => 'LogFormatterManager',
-        LogProcessorPluginManager::class    => 'LogProcessorManager',
-        LogWriterPluginManager::class       => 'LogWriterManager',
-    ];
-
     public function __construct(?string $serviceManagerLoader)
     {
         if (null === $serviceManagerLoader) {
@@ -78,12 +61,17 @@ final class ServiceManagerLoader
             throw new \PHPStan\ShouldNotHappenException(\sprintf('Loader "%s" doesn\'t return a ServiceManager instance', $serviceManagerLoader));
         }
 
-        $this->serviceManager = $serviceManager;
+        $this->setServiceLocator($serviceManager);
     }
 
-    public function getServiceManager(string $serviceManagerName): ServiceManager
+    private function setServiceLocator(ServiceLocatorInterface $serviceLocator): void
     {
-        if (null === $this->serviceManager) {
+        $this->serviceLocator = new UnmappedAliasServiceLocatorProxy($serviceLocator);
+    }
+
+    public function getServiceLocator(string $serviceManagerName): ServiceLocatorInterface
+    {
+        if (null === $this->serviceLocator) {
             $serviceManagerConfig = new ServiceManagerConfig();
             $serviceManager       = new ServiceManager();
             $serviceManagerConfig->configureServiceManager($serviceManager);
@@ -99,14 +87,14 @@ final class ServiceManagerLoader
             $serviceManager->setService('ApplicationConfig', $config);
             $serviceManager->get(ModuleManager::class)->loadModules();
 
-            $this->serviceManager = $serviceManager;
+            $this->setServiceLocator($serviceManager);
         }
 
-        $serviceManager = $this->serviceManager;
+        $serviceLocator = $this->serviceLocator;
         if (! isset($this->serviceManagerNames[$serviceManagerName])) {
-            $serviceManager = $serviceManager->get($this->knownUnmappedAliasToClassServices[$serviceManagerName] ?? $serviceManagerName);
+            $serviceLocator = $serviceLocator->get($serviceManagerName);
         }
 
-        return $serviceManager;
+        return $serviceLocator;
     }
 }

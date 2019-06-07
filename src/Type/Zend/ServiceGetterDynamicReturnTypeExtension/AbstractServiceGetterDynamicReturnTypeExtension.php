@@ -46,7 +46,7 @@ abstract class AbstractServiceGetterDynamicReturnTypeExtension implements Dynami
         MethodCall $methodCall,
         Scope $scope
     ): Type {
-        $serviceManager = $this->serviceManagerLoader->getServiceManager(ServiceLocatorInterface::class);
+        $serviceManager = $this->serviceManagerLoader->getServiceLocator(ServiceLocatorInterface::class);
         $serviceName    = $this->methodToServiceMap[$methodReflection->getName()];
         $serviceClass   = \get_class($serviceManager->get($serviceName));
 

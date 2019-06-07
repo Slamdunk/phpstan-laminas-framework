@@ -71,7 +71,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
         }
 
         $serviceName    = $argType->getValue();
-        $serviceManager = $this->serviceManagerLoader->getServiceManager($calledOnType->getClassName());
+        $serviceManager = $this->serviceManagerLoader->getServiceLocator($calledOnType->getClassName());
 
         if ($serviceManager->has($serviceName)) {
             return [];

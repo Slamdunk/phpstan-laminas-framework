@@ -11,6 +11,7 @@ use ZendPhpStan\Type\Zend\ServiceManagerLoader;
 
 /**
  * @covers \ZendPhpStan\Rules\Zend\ServiceManagerGetMethodCallRule
+ * @covers \ZendPhpStan\UnmappedAliasServiceLocatorProxy
  */
 final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
 {
@@ -34,7 +35,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         $this->analyse([__DIR__ . '/ServiceManagerGetMethodCallRule/Foo.php'], [
             [
                 'The service "non_existent_service" was not configured in Zend\ServiceManager\ServiceManager.',
-                23,
+                26,
             ],
         ]);
     }

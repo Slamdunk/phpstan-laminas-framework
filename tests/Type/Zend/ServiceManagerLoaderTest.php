@@ -44,7 +44,7 @@ final class ServiceManagerLoaderTest extends TestCase
     {
         $serviceManagerLoader = new ServiceManagerLoader(null);
 
-        $serviceManager = $serviceManagerLoader->getServiceManager(ServiceManager::class);
+        $serviceManager = $serviceManagerLoader->getServiceLocator(ServiceManager::class);
 
         // @see \Zend\Mvc\Service\ServiceManagerConfig
         static::assertTrue($serviceManager->has(EventManagerInterface::class));
@@ -86,7 +86,7 @@ final class ServiceManagerLoaderTest extends TestCase
         ];
 
         foreach ($knownPluginManagers as $pluginManagerClassName) {
-            static::assertInstanceOf($pluginManagerClassName, $serviceManagerLoader->getServiceManager($pluginManagerClassName));
+            static::assertInstanceOf($pluginManagerClassName, $serviceManagerLoader->getServiceLocator($pluginManagerClassName));
         }
     }
 
@@ -110,7 +110,7 @@ final class ServiceManagerLoaderTest extends TestCase
         $serviceManagerFromFile = require $file;
         $serviceManagerLoader   = new ServiceManagerLoader($file);
 
-        $serviceManager = $serviceManagerLoader->getServiceManager(ServiceManager::class);
+        $serviceManager = $serviceManagerLoader->getServiceLocator(ServiceManager::class);
 
         static::assertTrue($serviceManager->has('foo'));
         static::assertFalse($serviceManager->has('bar'));

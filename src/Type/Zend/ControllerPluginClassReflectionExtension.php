@@ -11,7 +11,7 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
 use PHPStan\Type\ObjectType;
 use Zend\Mvc\Controller\AbstractController;
-use Zend\ServiceManager\ServiceManager;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 final class ControllerPluginClassReflectionExtension implements BrokerAwareExtension, MethodsClassReflectionExtension
 {
@@ -58,8 +58,8 @@ final class ControllerPluginClassReflectionExtension implements BrokerAwareExten
         );
     }
 
-    private function getControllerPluginManager(): ServiceManager
+    private function getControllerPluginManager(): ServiceLocatorInterface
     {
-        return $this->serviceManagerLoader->getServiceManager('ControllerPluginManager');
+        return $this->serviceManagerLoader->getServiceLocator('ControllerPluginManager');
     }
 }
