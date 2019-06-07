@@ -6,9 +6,11 @@ namespace ZendPhpStan\Rules\Zend;
 
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
+use PHPStan\Broker\Broker;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\ObjectType;
+use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use ZendPhpStan\Type\Zend\ObjectServiceManagerType;
 use ZendPhpStan\Type\Zend\ServiceManagerLoader;
@@ -16,12 +18,18 @@ use ZendPhpStan\Type\Zend\ServiceManagerLoader;
 final class ServiceManagerGetMethodCallRule implements Rule
 {
     /**
+     * @var Broker
+     */
+    private $broker;
+
+    /**
      * @var ServiceManagerLoader
      */
     private $serviceManagerLoader;
 
-    public function __construct(ServiceManagerLoader $serviceManagerLoader)
+    public function __construct(Broker $broker, ServiceManagerLoader $serviceManagerLoader)
     {
+        $this->broker               = $broker;
         $this->serviceManagerLoader = $serviceManagerLoader;
     }
 
@@ -69,12 +77,27 @@ final class ServiceManagerGetMethodCallRule implements Rule
             return [];
         }
 
+        $classDoesNotExistNote = '';
+        if ($serviceManager instanceof AbstractPluginManager) {
+            $refClass    = new \ReflectionClass($serviceManager);
+            $refProperty = $refClass->getProperty('autoAddInvokableClass');
+            $refProperty->setAccessible(true);
+            $autoAddInvokableClass = $refProperty->getValue($serviceManager);
+            if ($autoAddInvokableClass) {
+                if ($this->broker->hasClass($serviceName)) {
+                    return [];
+                }
+                $classDoesNotExistNote = \sprintf(' nor the class "%s" exists', $serviceName);
+            }
+        }
+
         return [\sprintf(
-            'The service "%s" was not configured in %s.',
+            'The service "%s" was not configured in %s%s.',
             $serviceName,
             $calledOnType instanceof ObjectServiceManagerType
                 ? $calledOnType->getServiceName()
-                : $calledOnType->getClassName()
+                : $calledOnType->getClassName(),
+            $classDoesNotExistNote
         )];
     }
 }

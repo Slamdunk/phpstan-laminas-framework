@@ -26,7 +26,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
 
     protected function getRule(): Rule
     {
-        return new ServiceManagerGetMethodCallRule($this->serviceManagerLoader);
+        return new ServiceManagerGetMethodCallRule($this->createBroker(), $this->serviceManagerLoader);
     }
 
     public function testRule(): void

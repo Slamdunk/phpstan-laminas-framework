@@ -27,14 +27,14 @@ final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
 
     protected function getRule(): Rule
     {
-        return new ServiceManagerGetMethodCallRule($this->serviceManagerLoader);
+        return new ServiceManagerGetMethodCallRule($this->createBroker(), $this->serviceManagerLoader);
     }
 
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/PluginManagerGetMethodCallRule/Foo.php'], [
             [
-                'The service "non_existent_service" was not configured in ControllerPluginManager.',
+                'The service "non_existent_service" was not configured in ControllerPluginManager nor the class "non_existent_service" exists.',
                 25,
             ],
         ]);

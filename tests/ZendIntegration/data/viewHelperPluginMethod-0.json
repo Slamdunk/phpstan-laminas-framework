@@ -1,6 +1,6 @@
 [
     {
-        "message": "The service \"foobar\" was not configured in Zend\\View\\HelperPluginManager.",
+        "message": "The service \"foobar\" was not configured in Zend\\View\\HelperPluginManager nor the class \"foobar\" exists.",
         "line": 25,
         "ignorable": true
     }

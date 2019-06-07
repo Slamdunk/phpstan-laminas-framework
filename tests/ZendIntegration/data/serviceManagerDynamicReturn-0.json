@@ -5,7 +5,7 @@
         "ignorable": true
     },
     {
-        "message": "The service \"foobar\" was not configured in ViewHelperManager.",
+        "message": "The service \"foobar\" was not configured in ViewHelperManager nor the class \"foobar\" exists.",
         "line": 34,
         "ignorable": true
     }

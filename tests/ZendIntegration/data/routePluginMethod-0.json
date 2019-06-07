@@ -1,6 +1,6 @@
 [
     {
-        "message": "The service \"foobar123\" was not configured in Zend\\Router\\RoutePluginManager.",
+        "message": "The service \"foobar123\" was not configured in Zend\\Router\\RoutePluginManager nor the class \"foobar123\" exists.",
         "line": 26,
         "ignorable": true
     }

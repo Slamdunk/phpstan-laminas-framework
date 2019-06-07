@@ -6,6 +6,7 @@ namespace ZendPhpStan\Tests\ZendIntegration\data;
 
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\HelperPluginManager;
+use ZendPhpStan\TestAsset\CustomViewHelperPlugin;
 
 final class viewHelperPluginMethod
 {
@@ -21,7 +22,8 @@ final class viewHelperPluginMethod
 
     public function getDynamicType(): void
     {
-        $this->viewHelperManager->get('css');
         $this->viewHelperManager->get('foobar');
+        $this->viewHelperManager->get('css');
+        $this->viewHelperManager->get(CustomViewHelperPlugin::class);
     }
 }
