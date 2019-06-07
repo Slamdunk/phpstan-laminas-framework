@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ZendPhpStan\Type\Zend;
+namespace ZendPhpStan;
 
 use Interop\Container\ContainerInterface as InteropContainerInterface;
 use Psr\Container\ContainerInterface as PsrContainerInterface;

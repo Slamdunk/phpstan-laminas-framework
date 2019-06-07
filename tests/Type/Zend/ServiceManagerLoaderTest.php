@@ -33,10 +33,10 @@ use Zend\View\Helper\Navigation\PluginManager as NavigationPluginManager;
 use Zend\View\HelperPluginManager;
 use ZendPhpStan\TestAsset\BarService;
 use ZendPhpStan\TestAsset\FooService;
-use ZendPhpStan\Type\Zend\ServiceManagerLoader;
+use ZendPhpStan\ServiceManagerLoader;
 
 /**
- * @covers \ZendPhpStan\Type\Zend\ServiceManagerLoader
+ * @covers \ZendPhpStan\ServiceManagerLoader
  */
 final class ServiceManagerLoaderTest extends TestCase
 {

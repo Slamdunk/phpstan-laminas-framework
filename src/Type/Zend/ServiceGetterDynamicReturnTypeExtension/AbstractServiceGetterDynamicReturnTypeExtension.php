@@ -12,7 +12,7 @@ use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\View\Renderer\RendererInterface;
-use ZendPhpStan\Type\Zend\ServiceManagerLoader;
+use ZendPhpStan\ServiceManagerLoader;
 
 abstract class AbstractServiceGetterDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {

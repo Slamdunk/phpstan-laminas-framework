@@ -12,6 +12,7 @@ use PHPStan\Reflection\MethodsClassReflectionExtension;
 use PHPStan\Type\ObjectType;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use ZendPhpStan\ServiceManagerLoader;
 
 final class ControllerPluginClassReflectionExtension implements BrokerAwareExtension, MethodsClassReflectionExtension
 {

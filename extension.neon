@@ -14,7 +14,7 @@ rules:
 
 services:
     -
-        class: ZendPhpStan\Type\Zend\ServiceManagerLoader
+        class: ZendPhpStan\ServiceManagerLoader
         arguments:
             serviceManagerLoader: %zendframework.serviceManagerLoader%
     -

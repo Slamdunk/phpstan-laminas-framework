@@ -13,7 +13,7 @@ use PHPStan\Type\ObjectType;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use ZendPhpStan\Type\Zend\ObjectServiceManagerType;
-use ZendPhpStan\Type\Zend\ServiceManagerLoader;
+use ZendPhpStan\ServiceManagerLoader;
 
 final class ServiceManagerGetMethodCallRule implements Rule
 {
