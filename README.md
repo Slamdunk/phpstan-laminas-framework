@@ -17,6 +17,7 @@ This extension provides following features:
 returns the real instance instead of type-hinted interfaces
 1. `getView()` method on `\Zend\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
 interface
+1. `\Zend\Stdlib\ArrayObject` is configured as a [Universal object crate](https://github.com/phpstan/phpstan#universal-object-crates)
 
 ## Installation
 
