@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace ZendPhpStan;
+namespace LaminasPhpStan;
 
+use Laminas\Cache\PatternPluginManager;
+use Laminas\Cache\PatternPluginManager\PatternPluginManagerV3Polyfill;
+use Laminas\Form\FormElementManager\FormElementManagerV3Polyfill;
+use Laminas\Log\FilterPluginManager as LogFilterPluginManager;
+use Laminas\Log\FormatterPluginManager as LogFormatterPluginManager;
+use Laminas\Log\ProcessorPluginManager as LogProcessorPluginManager;
+use Laminas\Log\WriterPluginManager as LogWriterPluginManager;
+use Laminas\Mvc\Controller\ControllerManager;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\View\HelperPluginManager;
 use PHPStan\ShouldNotHappenException;
-use Zend\Cache\PatternPluginManager;
-use Zend\Cache\PatternPluginManager\PatternPluginManagerV3Polyfill;
-use Zend\Form\FormElementManager\FormElementManagerV3Polyfill;
-use Zend\Log\FilterPluginManager as LogFilterPluginManager;
-use Zend\Log\FormatterPluginManager as LogFormatterPluginManager;
-use Zend\Log\ProcessorPluginManager as LogProcessorPluginManager;
-use Zend\Log\WriterPluginManager as LogWriterPluginManager;
-use Zend\Mvc\Controller\ControllerManager;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\View\HelperPluginManager;
 
 final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
 {
@@ -24,7 +24,7 @@ final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
     private $serviceLocator;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $knownUnmappedAliasToClassServices = [
         ControllerManager::class                => 'ControllerManager',
@@ -38,8 +38,8 @@ final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
 
         // As string to not autoload them in static analysis, otherwise we would get
         // a PHP Warning:  Declaration of [...] should be compatible with [...] error
-        '\Zend\Form\FormElementManager\FormElementManager' . 'V2Polyfill'       => 'FormElementManager',
-        '\Zend\Cache\PatternPluginManager\PatternPluginManager' . 'V2Polyfill'  => PatternPluginManager::class,
+        '\Laminas\Form\FormElementManager\FormElementManager' . 'V2Polyfill'       => 'FormElementManager',
+        '\Laminas\Cache\PatternPluginManager\PatternPluginManager' . 'V2Polyfill'  => PatternPluginManager::class,
     ];
 
     public function __construct(ServiceLocatorInterface $serviceLocator)
@@ -57,7 +57,15 @@ final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
         return $this->serviceLocator->has($this->knownUnmappedAliasToClassServices[$id] ?? $id);
     }
 
-    public function build($name, array $options = null)
+    /**
+     * @param string            $name
+     * @param null|array<mixed> $options
+     *
+     * @throws ShouldNotHappenException
+     *
+     * @return mixed|void
+     */
+    public function build($name, ?array $options = null)
     {
         throw new ShouldNotHappenException(\sprintf('Why did you call %s?', __METHOD__));
     }

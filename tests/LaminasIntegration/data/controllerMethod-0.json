@@ -1,0 +1,7 @@
+[
+    {
+        "message": "The service \"foobar\" was not configured in Laminas\\Mvc\\Controller\\ControllerManager.",
+        "line": 25,
+        "ignorable": true
+    }
+]

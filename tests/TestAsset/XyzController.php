@@ -1,11 +1,11 @@
 <?php
 
-namespace ZendPhpStan\TestAsset;
+namespace LaminasPhpStan\TestAsset;
 
-use Zend\Stdlib\DispatchableInterface;
-use Zend\Stdlib\RequestInterface;
-use Zend\Stdlib\Response;
-use Zend\Stdlib\ResponseInterface;
+use Laminas\Stdlib\DispatchableInterface;
+use Laminas\Stdlib\RequestInterface;
+use Laminas\Stdlib\Response;
+use Laminas\Stdlib\ResponseInterface;
 
 final class XyzController implements DispatchableInterface
 {

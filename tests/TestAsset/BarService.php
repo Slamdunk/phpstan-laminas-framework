@@ -1,9 +1,9 @@
 <?php
 
-namespace ZendPhpStan\TestAsset;
+namespace LaminasPhpStan\TestAsset;
 
-use Zend\Mvc\Controller\Plugin\PluginInterface;
-use Zend\Stdlib\DispatchableInterface as Dispatchable;
+use Laminas\Mvc\Controller\Plugin\PluginInterface;
+use Laminas\Stdlib\DispatchableInterface as Dispatchable;
 
 final class BarService implements PluginInterface
 {
@@ -18,7 +18,7 @@ final class BarService implements PluginInterface
      * @param Dispatchable $controller
      * @return void
      */
-    public function setController(Dispatchable $controller)
+    public function setController(Dispatchable $controller): void
     {
         // TODO: Implement setController() method.
     }

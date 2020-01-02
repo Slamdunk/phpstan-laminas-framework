@@ -1,0 +1,57 @@
+[
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 16,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 17,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 27,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 28,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 35,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 36,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 46,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 47,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Request::getBasePattt().",
+        "line": 57,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Response::headersSenttt().",
+        "line": 58,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\View\\Renderer\\PhpRenderer::getEngineee().",
+        "line": 59,
+        "ignorable": true
+    }
+]

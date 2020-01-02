@@ -1,5 +1,5 @@
 includes:
-    - vendor/phpstan/phpstan/conf/config.levelmax.neon
+    - phar://phpstan.phar/conf/config.levelmax.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
 
 parameters:
@@ -7,7 +7,7 @@ parameters:
         - src/
         - tests/
     excludes_analyse:
-        - tests/Rules/Zend/ServiceManagerGetMethodCallRule/
-        - tests/Rules/Zend/PluginManagerGetMethodCallRule/
+        - tests/Rules/Laminas/ServiceManagerGetMethodCallRule/
+        - tests/Rules/Laminas/PluginManagerGetMethodCallRule/
         - tests/TestAsset/
-        - tests/ZendIntegration/data/
+        - tests/LaminasIntegration/data/

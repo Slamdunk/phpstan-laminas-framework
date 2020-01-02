@@ -1,7 +1,0 @@
-[
-    {
-        "message": "The service \"foobar\" was not configured in Zend\\Mvc\\Controller\\ControllerManager.",
-        "line": 25,
-        "ignorable": true
-    }
-]

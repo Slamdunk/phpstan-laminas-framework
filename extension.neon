@@ -1,55 +1,55 @@
 parameters:
-    zendframework:
+    laminasframework:
         serviceManagerLoader: null
     universalObjectCratesClasses:
-        - Zend\Stdlib\ArrayObject
+        - Laminas\Stdlib\ArrayObject
 
 parametersSchema:
-    zendframework: structure([
+    laminasframework: structure([
         serviceManagerLoader: schema(string(), nullable())
     ])
 
 rules:
-    - ZendPhpStan\Rules\Zend\ServiceManagerGetMethodCallRule
+    - LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule
 
 services:
     -
-        class: ZendPhpStan\ServiceManagerLoader
+        class: LaminasPhpStan\ServiceManagerLoader
         arguments:
-            serviceManagerLoader: %zendframework.serviceManagerLoader%
+            serviceManagerLoader: %laminasframework.serviceManagerLoader%
     -
-        class: ZendPhpStan\Type\Zend\ServiceManagerGetDynamicReturnTypeExtension
+        class: LaminasPhpStan\Type\Laminas\ServiceManagerGetDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-        class: ZendPhpStan\Type\Zend\ControllerPluginClassReflectionExtension
+        class: LaminasPhpStan\Type\Laminas\ControllerPluginClassReflectionExtension
         tags:
             - phpstan.broker.methodsClassReflectionExtension
     -
-        class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ControllerGetterDynamicReturnTypeExtension
+        class: LaminasPhpStan\Type\Laminas\ServiceGetterDynamicReturnTypeExtension\ControllerGetterDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-        class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\MvcEventGetterDynamicReturnTypeExtension
+        class: LaminasPhpStan\Type\Laminas\ServiceGetterDynamicReturnTypeExtension\MvcEventGetterDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-        class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ViewGetterDynamicReturnTypeExtension
+        class: LaminasPhpStan\Type\Laminas\ServiceGetterDynamicReturnTypeExtension\ViewGetterDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-        class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ViewEventGetterDynamicReturnTypeExtension
+        class: LaminasPhpStan\Type\Laminas\ServiceGetterDynamicReturnTypeExtension\ViewEventGetterDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-        class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ApplicationGetterDynamicReturnTypeExtension
+        class: LaminasPhpStan\Type\Laminas\ServiceGetterDynamicReturnTypeExtension\ApplicationGetterDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-        class: ZendPhpStan\Type\Zend\ServiceGetterDynamicReturnTypeExtension\ViewHelperGetterDynamicReturnTypeExtension
+        class: LaminasPhpStan\Type\Laminas\ServiceGetterDynamicReturnTypeExtension\ViewHelperGetterDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
-        class: ZendPhpStan\Type\Zend\StdlibAbstractOptionsPropertiesClassReflectionExtension
+        class: LaminasPhpStan\Type\Laminas\StdlibAbstractOptionsPropertiesClassReflectionExtension
         tags:
             - phpstan.broker.propertiesClassReflectionExtension
