@@ -1,7 +1,0 @@
-[
-    {
-        "message": "Property $myxyz was not found in reflection of class AnonymousClass69d417e1ef9ff10a7b36f3eb3b08d4a8 - probably the wrong version of class is autoloaded. The currently loaded version is at: /mnt/data/repos/phpstan-laminas-framework/tests/LaminasIntegration/data/stdlibAbstractOptionsProperties.php",
-        "line": null,
-        "ignorable": false
-    }
-]

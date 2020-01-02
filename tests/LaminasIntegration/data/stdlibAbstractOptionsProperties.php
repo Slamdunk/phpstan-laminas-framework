@@ -25,8 +25,14 @@ final class stdlibAbstractOptionsProperties
     public function custom(): void
     {
         $class = new class() extends AbstractOptions {
-            public function getMyxyz($var): string
+            /**
+             * @var string
+             */
+            private $myxyz = 'foo';
+
+            public function getMyxyz(string $var): string
             {
+                return $var;
             }
         };
 
@@ -40,8 +46,9 @@ final class stdlibAbstractOptionsProperties
     public function notAbstractOptionsImplementation(): void
     {
         $class = new class() {
-            public function getMyxyz($var): string
+            public function getMyxyz(string $var): string
             {
+                return $var;
             }
         };
 
