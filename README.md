@@ -1,31 +1,31 @@
-# PHPStan extension for Zend Framework
+# PHPStan extension for Laminas Framework
 
-[![Build Status](https://travis-ci.org/Slamdunk/phpstan-zend-framework.svg?branch=master)](https://travis-ci.org/Slamdunk/phpstan-zend-framework)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Slamdunk/phpstan-zend-framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Slamdunk/phpstan-zend-framework/?branch=master)
-[![Packagist](https://img.shields.io/packagist/v/slam/phpstan-zend-framework.svg)](https://packagist.org/packages/slam/phpstan-zend-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/slam/phpstan-zend-framework.svg)](https://packagist.org/packages/Slamdunk/phpstan-zend-framework)
+[![Build Status](https://travis-ci.org/Slamdunk/phpstan-laminas-framework.svg?branch=master)](https://travis-ci.org/Slamdunk/phpstan-laminas-framework)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Slamdunk/phpstan-laminas-framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Slamdunk/phpstan-laminas-framework/?branch=master)
+[![Packagist](https://img.shields.io/packagist/v/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/slam/phpstan-laminas-framework)
+[![Total Downloads](https://img.shields.io/packagist/dt/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/Slamdunk/phpstan-laminas-framework)
 
 * [PHPStan](https://github.com/phpstan/phpstan)
-* [Zend Framework](https://framework.zend.com/)
+* [Laminas Framework](https://framework.zend.com/)
 
 This extension provides following features:
 
-1. Provide correct return for `\Zend\ServiceManager\ServiceLocatorInterface::get()`
+1. Provide correct return for `\Laminas\ServiceManager\ServiceLocatorInterface::get()`
 1. Handle controller plugins that are called using magic `__call()` in subclasses of
-`\Zend\Mvc\Controller\AbstractController`
+`\Laminas\Mvc\Controller\AbstractController`
 1. `getApplication()`, `getRenderer()`, `getRequest()` and `getResponse()` methods on Controllers, MvcEvents, View,
 ViewEvent and Application returns the real instance instead of type-hinted interfaces
-1. `getView()` method on `\Zend\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
+1. `getView()` method on `\Laminas\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
 interface
-1. `\Zend\Stdlib\ArrayObject` is configured as a [Universal object crate](https://github.com/phpstan/phpstan#universal-object-crates)
-1. Handle `\Zend\Stdlib\AbstractOptions` magic properties
+1. `\Laminas\Stdlib\ArrayObject` is configured as a [Universal object crate](https://github.com/phpstan/phpstan#universal-object-crates)
+1. Handle `\Laminas\Stdlib\AbstractOptions` magic properties
 
 ## Installation
 
 To use this extension, require it in [Composer](https://getcomposer.org/):
 
 ```
-composer require --dev slam/phpstan-zend-framework
+composer require --dev slam/phpstan-laminas-framework
 ```
 
 If you also install [phpstan/extension-installer](https://github.com/phpstan/extension-installer) then you're all set!
@@ -37,7 +37,7 @@ If you don't want to use `phpstan/extension-installer`, include extension.neon i
 
 ```
 includes:
-    - vendor/slam/phpstan-zend-framework/extension.neon
+    - vendor/slam/phpstan-laminas-framework/extension.neon
 ```
 
 </details>
@@ -50,13 +50,13 @@ You can opt in for more advanced analysis by providing the service manager from 
 
 ```neon
 parameters:
-    zendframework:
+    laminasframework:
        serviceManagerLoader: tests/service-manager.php
 ```
 
 For example, `tests/service-manager.php` would look something like this:
 
 ```php
-$app = \Zend\Mvc\Application::init($config);
+$app = \Laminas\Mvc\Application::init($config);
 return $app->getServiceManager();
 ```

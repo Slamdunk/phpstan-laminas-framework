@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Call to an undefined method LaminasPhpStan\\TestAsset\\BarService::isFoo().",
+        "line": 15,
+        "ignorable": true
+    }
+]

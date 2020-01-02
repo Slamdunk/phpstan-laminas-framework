@@ -1,0 +1,17 @@
+[
+    {
+        "message": "Access to an undefined property Laminas\\Mail\\Transport\\Envelope::$foobar.",
+        "line": 18,
+        "ignorable": true
+    },
+    {
+        "message": "Property class@anonymous/tests/LaminasIntegration/data/stdlibAbstractOptionsProperties.php:27::$myxyz is not writable.",
+        "line": 40,
+        "ignorable": true
+    },
+    {
+        "message": "Access to an undefined property class@anonymous/tests/LaminasIntegration/data/stdlibAbstractOptionsProperties.php:48::$myxyz.",
+        "line": 56,
+        "ignorable": true
+    }
+]

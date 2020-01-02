@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Call to an undefined method LaminasPhpStan\\Tests\\LaminasIntegration\\data\\controllerPluginMethod::foo().",
+        "line": 16,
+        "ignorable": true
+    }
+]

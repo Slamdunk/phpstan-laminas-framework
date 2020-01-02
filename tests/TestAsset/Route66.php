@@ -1,13 +1,13 @@
 <?php
 
-namespace ZendPhpStan\TestAsset;
+namespace LaminasPhpStan\TestAsset;
 
-use Zend\Router\RouteInterface;
-use Zend\Router\RouteMatch;
-use Zend\Stdlib\DispatchableInterface;
-use Zend\Stdlib\RequestInterface;
-use Zend\Stdlib\Response;
-use Zend\Stdlib\ResponseInterface;
+use Laminas\Router\RouteInterface;
+use Laminas\Router\RouteMatch;
+use Laminas\Stdlib\DispatchableInterface;
+use Laminas\Stdlib\RequestInterface;
+use Laminas\Stdlib\Response;
+use Laminas\Stdlib\ResponseInterface;
 
 final class Route66 implements RouteInterface
 {

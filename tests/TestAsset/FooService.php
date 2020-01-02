@@ -1,6 +1,6 @@
 <?php
 
-namespace ZendPhpStan\TestAsset;
+namespace LaminasPhpStan\TestAsset;
 
 final class FooService
 {

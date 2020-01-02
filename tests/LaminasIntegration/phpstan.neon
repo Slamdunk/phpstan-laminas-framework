@@ -1,0 +1,6 @@
+includes:
+	- ../../extension.neon
+
+parameters:
+	laminasframework:
+		serviceManagerLoader: tests/LaminasIntegration/servicemanagerloader.php

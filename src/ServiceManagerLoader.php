@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace ZendPhpStan;
+namespace LaminasPhpStan;
 
 use Interop\Container\ContainerInterface as InteropContainerInterface;
+use Laminas\ModuleManager\ModuleManager;
+use Laminas\Mvc\Service\ServiceManagerConfig;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\ServiceManager;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
-use Zend\ModuleManager\ModuleManager;
-use Zend\Mvc\Service\ServiceManagerConfig;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\ServiceManager;
 
 final class ServiceManagerLoader
 {
@@ -19,24 +19,24 @@ final class ServiceManagerLoader
     private $serviceLocator;
 
     /**
-     * @var array
+     * @var string[]
      */
     private $knownModules = [
-        \Zend\Cache\Module::class,
-        \Zend\Filter\Module::class,
-        \Zend\Form\Module::class,
-        \Zend\Hydrator\Module::class,
-        \Zend\I18n\Module::class,
-        \Zend\InputFilter\Module::class,
-        \Zend\Log\Module::class,
-        \Zend\Mail\Module::class,
-        \Zend\Paginator\Module::class,
-        \Zend\Router\Module::class,
-        \Zend\Validator\Module::class,
+        \Laminas\Cache\Module::class,
+        \Laminas\Filter\Module::class,
+        \Laminas\Form\Module::class,
+        \Laminas\Hydrator\Module::class,
+        \Laminas\I18n\Module::class,
+        \Laminas\InputFilter\Module::class,
+        \Laminas\Log\Module::class,
+        \Laminas\Mail\Module::class,
+        \Laminas\Paginator\Module::class,
+        \Laminas\Router\Module::class,
+        \Laminas\Validator\Module::class,
     ];
 
     /**
-     * @var array
+     * @var array<string, true>
      */
     private $serviceManagerNames = [
         ServiceManager::class            => true,

@@ -4,7 +4,7 @@
         colors="true"
         verbose="true">
 
-    <testsuite name="ZendPhpStan">
+    <testsuite name="LaminasPhpStan">
         <directory>./tests</directory>
     </testsuite>
 

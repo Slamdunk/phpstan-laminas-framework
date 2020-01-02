@@ -1,7 +1,7 @@
 {
-    "name": "slam/phpstan-zend-framework",
+    "name": "slam/phpstan-laminas-framework",
     "type": "phpstan-extension",
-    "description": "Zend Framework 3 MVC controller plugin extension for PHPStan.",
+    "description": "Laminas Framework 3 MVC controller plugin extension for PHPStan.",
     "license": "MIT",
     "authors": [
         {
@@ -18,27 +18,27 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "phpstan/phpstan": "^0.11.8",
-        "zendframework/zend-mvc": "^3.1"
+        "php": "^7.3",
+        "phpstan/phpstan": "^0.12",
+        "laminas/laminas-mvc": "^3.1"
     },
     "require-dev": {
-        "phpstan/phpstan-phpunit": "^0.11",
-        "phpunit/phpunit": "^7.5",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpunit/phpunit": "^8.5",
         "roave/security-advisories": "dev-master",
-        "slam/php-cs-fixer-extensions": "^1.17",
-        "slam/php-debug-r": "^1.4",
-        "zendframework/zend-cache": "^2.8",
-        "zendframework/zend-filter": "^2.9",
-        "zendframework/zend-form": "^2.14",
-        "zendframework/zend-hydrator": "^2.4 || ^3.0",
-        "zendframework/zend-i18n": "^2.9",
-        "zendframework/zend-inputfilter": "^2.10",
-        "zendframework/zend-log": "^2.10",
-        "zendframework/zend-mail": "^2.10",
-        "zendframework/zend-mvc": "^3.1",
-        "zendframework/zend-paginator": "^2.8",
-        "zendframework/zend-validator": "^2.12"
+        "slam/php-cs-fixer-extensions": "^1.19",
+        "slam/php-debug-r": "^1.6",
+        "laminas/laminas-cache": "^2.8",
+        "laminas/laminas-filter": "^2.9",
+        "laminas/laminas-form": "^2.14",
+        "laminas/laminas-hydrator": "^2.4 || ^3.0",
+        "laminas/laminas-i18n": "^2.9",
+        "laminas/laminas-inputfilter": "^2.10",
+        "laminas/laminas-log": "^2.10",
+        "laminas/laminas-mail": "^2.10",
+        "laminas/laminas-mvc": "^3.1",
+        "laminas/laminas-paginator": "^2.8",
+        "laminas/laminas-validator": "^2.12"
     },
     "extra": {
         "phpstan": {
@@ -49,7 +49,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ZendPhpStan\\": "src/"
+            "LaminasPhpStan\\": "src/"
         }
     },
     "autoload-dev": {
