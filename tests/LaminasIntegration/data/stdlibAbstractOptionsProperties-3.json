@@ -5,7 +5,7 @@
         "ignorable": true
     },
     {
-        "message": "Property class@anonymous/tests/LaminasIntegration/data/stdlibAbstractOptionsProperties.php:27::$myxyz (string) does not accept int.",
+        "message": "Property class@anonymous/stdlibAbstractOptionsProperties.php:27::$myxyz (string) does not accept int.",
         "line": 40,
         "ignorable": true
     }

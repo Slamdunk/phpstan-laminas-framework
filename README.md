@@ -13,6 +13,7 @@ This extension provides following features:
 1. Provide correct return for `\Laminas\ServiceManager\ServiceLocatorInterface::get()`
 1. Handle controller plugins that are called using magic `__call()` in subclasses of
 `\Laminas\Mvc\Controller\AbstractController`
+1. Provide correct return type for `plugin` method of `AbstractController`, `FilterChain`, `PhpRenderer` and `ValidatorChain`
 1. `getApplication()`, `getRenderer()`, `getRequest()` and `getResponse()` methods on Controllers, MvcEvents, View,
 ViewEvent and Application returns the real instance instead of type-hinted interfaces
 1. `getView()` method on `\Laminas\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
