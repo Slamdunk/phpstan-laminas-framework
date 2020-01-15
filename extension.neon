@@ -50,6 +50,22 @@ services:
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
     -
+        class: LaminasPhpStan\Type\Laminas\PluginMethodDynamicReturnTypeExtension\AbstractControllerPluginMethodDynamicReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+        class: LaminasPhpStan\Type\Laminas\PluginMethodDynamicReturnTypeExtension\PhpRendererPluginMethodDynamicReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+        class: LaminasPhpStan\Type\Laminas\PluginMethodDynamicReturnTypeExtension\FilterChainPluginMethodDynamicReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+        class: LaminasPhpStan\Type\Laminas\PluginMethodDynamicReturnTypeExtension\ValidatorChainPluginMethodDynamicReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
         class: LaminasPhpStan\Type\Laminas\StdlibAbstractOptionsPropertiesClassReflectionExtension
         tags:
             - phpstan.broker.propertiesClassReflectionExtension

@@ -3,19 +3,13 @@
 declare(strict_types=1);
 
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
-use Laminas\ModuleManager\ModuleManager;
-use Laminas\Mvc\Service\ServiceManagerConfig;
-use Laminas\ServiceManager\ServiceManager;
 use LaminasPhpStan\TestAsset\BarService;
 use LaminasPhpStan\TestAsset\CssService;
 use LaminasPhpStan\TestAsset\FooService;
 use LaminasPhpStan\TestAsset\Route66;
 use LaminasPhpStan\TestAsset\XyzController;
 
-$serviceManagerConfig = new ServiceManagerConfig();
-$serviceManager       = new ServiceManager();
-$serviceManagerConfig->configureServiceManager($serviceManager);
-$serviceManager->setService('ApplicationConfig', [
+$app = \Laminas\Mvc\Application::init([
     'modules' => [
         'Laminas\Router',
         'LaminasPhpStan' => new class() implements ConfigProviderInterface {
@@ -61,6 +55,5 @@ $serviceManager->setService('ApplicationConfig', [
     ],
     'module_listener_options' => [],
 ]);
-$serviceManager->get(ModuleManager::class)->loadModules();
 
-return $serviceManager;
+return $app->getServiceManager();

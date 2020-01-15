@@ -20,6 +20,7 @@ final class IntegrationTest extends LevelsTestCase
             ['viewHelperPluginMethod'],
             ['stdlibArrayObjectCrate'],
             ['stdlibAbstractOptionsProperties'],
+            ['pluginMethodDynamicReturn'],
         ];
     }
 
