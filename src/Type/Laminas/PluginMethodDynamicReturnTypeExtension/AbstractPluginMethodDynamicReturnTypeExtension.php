@@ -42,7 +42,7 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
             throw new \PHPStan\ShouldNotHappenException(\sprintf('Argument passed to %s::%s should be a string, %s given',
                 $methodReflection->getDeclaringClass()->getName(),
                 $methodReflection->getName(),
-                $argType->describe(VerbosityLevel::value())
+                $argType->describe(VerbosityLevel::typeOnly())
             ));
         }
         $pluginClass   = \get_class($pluginManager->get($argType->getValue()));
