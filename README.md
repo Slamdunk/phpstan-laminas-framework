@@ -6,7 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/Slamdunk/phpstan-laminas-framework)
 
 * [PHPStan](https://github.com/phpstan/phpstan)
-* [Laminas Framework](https://framework.zend.com/)
+* [Laminas Framework](https://getlaminas.org/)
 
 This extension provides following features:
 
