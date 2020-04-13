@@ -8,10 +8,13 @@ use LaminasPhpStan\ServiceManagerLoader;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\StringType;
 use PHPStan\Type\Type;
+use PHPStan\Type\TypeUtils;
 use PHPStan\Type\VerbosityLevel;
 
 abstract class AbstractPluginMethodDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
@@ -36,18 +39,25 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
         MethodCall $methodCall,
         Scope $scope
     ): Type {
-        $pluginManager = $this->serviceManagerLoader->getServiceLocator($this->getPluginManagerName());
-        $argType       = $scope->getType($methodCall->args[0]->value);
-        if (! $argType instanceof ConstantStringType) {
-            throw new \PHPStan\ShouldNotHappenException(\sprintf('Argument passed to %s::%s should be a string, %s given',
-                $methodReflection->getDeclaringClass()->getName(),
-                $methodReflection->getName(),
-                $argType->describe(VerbosityLevel::typeOnly())
-            ));
+        $argType = $scope->getType($methodCall->args[0]->value);
+        $strings = TypeUtils::getConstantStrings($argType);
+        $plugin = count($strings) === 1 ? $strings[0]->getValue() : null;
+        
+        if ($plugin) {
+            $pluginManager = $this->serviceManagerLoader->getServiceLocator($this->getPluginManagerName());
+            return new ObjectType(\get_class($pluginManager->get($plugin)));
         }
-        $pluginClass   = \get_class($pluginManager->get($argType->getValue()));
 
-        return new ObjectType($pluginClass);
+        if ($argType instanceof StringType) {            
+            $defaultReturnType = ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->args, $methodReflection->getVariants())->getReturnType();
+            return $defaultReturnType;
+        }
+
+        throw new \PHPStan\ShouldNotHappenException(\sprintf('Argument passed to %s::%s should be a string, %s given',
+            $methodReflection->getDeclaringClass()->getName(),
+            $methodReflection->getName(),
+            $argType->describe(VerbosityLevel::value())
+        ));
     }
 
     abstract protected function getPluginManagerName(): string;
