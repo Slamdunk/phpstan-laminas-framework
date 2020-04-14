@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Tests\LaminasIntegration\data;
 
 use Laminas\Router\SimpleRouteStack;
-use Laminas\View\Renderer\PhpRenderer;
 use Laminas\View\Helper\AbstractHelper;
+use Laminas\View\Renderer\PhpRenderer;
 
 final class pluginMethodDynamicReturn
 {
@@ -32,5 +32,4 @@ final class pluginMethodDynamicReturn
     {
         return $this->phpRenderer->plugin($name);
     }
-
 }

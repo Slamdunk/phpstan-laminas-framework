@@ -9,7 +9,6 @@ use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParametersAcceptorSelector;
-use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\StringType;
@@ -41,16 +40,16 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
     ): Type {
         $argType = $scope->getType($methodCall->args[0]->value);
         $strings = TypeUtils::getConstantStrings($argType);
-        $plugin = count($strings) === 1 ? $strings[0]->getValue() : null;
-        
-        if ($plugin) {
+        $plugin  = 1 === \count($strings) ? $strings[0]->getValue() : null;
+
+        if (null !== $plugin) {
             $pluginManager = $this->serviceManagerLoader->getServiceLocator($this->getPluginManagerName());
+
             return new ObjectType(\get_class($pluginManager->get($plugin)));
         }
 
-        if ($argType instanceof StringType) {            
-            $defaultReturnType = ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->args, $methodReflection->getVariants())->getReturnType();
-            return $defaultReturnType;
+        if ($argType instanceof StringType) {
+            return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->args, $methodReflection->getVariants())->getReturnType();
         }
 
         throw new \PHPStan\ShouldNotHappenException(\sprintf('Argument passed to %s::%s should be a string, %s given',
