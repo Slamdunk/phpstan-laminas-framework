@@ -5,7 +5,7 @@
 [![Packagist](https://img.shields.io/packagist/v/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/slam/phpstan-laminas-framework)
 [![Total Downloads](https://img.shields.io/packagist/dt/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/Slamdunk/phpstan-laminas-framework)
 
-* [PHPStan](https://github.com/phpstan/phpstan)
+* [PHPStan](https://phpstan.org/)
 * [Laminas Framework](https://getlaminas.org/)
 
 This extension provides following features:
@@ -18,7 +18,7 @@ This extension provides following features:
 ViewEvent and Application returns the real instance instead of type-hinted interfaces
 1. `getView()` method on `\Laminas\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
 interface
-1. `\Laminas\Stdlib\ArrayObject` is configured as a [Universal object crate](https://github.com/phpstan/phpstan#universal-object-crates)
+1. `\Laminas\Stdlib\ArrayObject` is configured as a [Universal object crate](https://phpstan.org/config-reference#universal-object-crates)
 1. Handle `\Laminas\Stdlib\AbstractOptions` magic properties
 
 ## Installation
