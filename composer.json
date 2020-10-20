@@ -18,27 +18,26 @@
         }
     ],
     "require": {
-        "php": "^7.3",
-        "phpstan/phpstan": "^0.12",
-        "laminas/laminas-mvc": "^3.1"
+        "php": "^7.4 || ^8.0",
+        "laminas/laminas-mvc": "^3.1",
+        "phpstan/phpstan": "^0.12"
     },
     "require-dev": {
-        "phpstan/phpstan-phpunit": "^0.12",
-        "phpunit/phpunit": "^9.1",
-        "roave/security-advisories": "dev-master",
-        "slam/php-cs-fixer-extensions": "^2.0",
-        "slam/php-debug-r": "^1.6",
-        "laminas/laminas-cache": "^2.8",
+        "laminas/laminas-cache": "^2.9",
         "laminas/laminas-filter": "^2.9",
-        "laminas/laminas-form": "^2.14",
-        "laminas/laminas-hydrator": "^2.4 || ^3.0",
-        "laminas/laminas-i18n": "^2.9",
+        "laminas/laminas-form": "^2.15",
+        "laminas/laminas-hydrator": "^3.2 || ^4.0",
+        "laminas/laminas-i18n": "^2.10",
         "laminas/laminas-inputfilter": "^2.10",
         "laminas/laminas-log": "^2.10",
         "laminas/laminas-mail": "^2.10",
         "laminas/laminas-mvc": "^3.1",
-        "laminas/laminas-paginator": "^2.8",
-        "laminas/laminas-validator": "^2.12"
+        "laminas/laminas-paginator": "^2.9",
+        "laminas/laminas-validator": "^2.13",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpunit/phpunit": "^9.4",
+        "slam/php-cs-fixer-extensions": "^2.0",
+        "slam/php-debug-r": "^1.6"
     },
     "extra": {
         "phpstan": {

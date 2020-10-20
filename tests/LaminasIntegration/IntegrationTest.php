@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace LaminasPhpStan\Tests\LaminasIntegration;
+
 use PHPStan\Testing\LevelsTestCase;
 
 /**
