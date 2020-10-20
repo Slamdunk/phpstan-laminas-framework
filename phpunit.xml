@@ -1,16 +1,20 @@
+<?xml version="1.0"?>
 <phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         bootstrap="./vendor/autoload.php"
-        backupGlobals="false"
         colors="true"
-        verbose="true">
-
-    <testsuite name="LaminasPhpStan">
-        <directory>./tests</directory>
-    </testsuite>
-
-    <filter>
-        <whitelist>
-            <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
+        verbose="true"
+        xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+>
+  <coverage>
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+    <report>
+      <text outputFile="php://stdout" showOnlySummary="true"/>
+    </report>
+  </coverage>
+  <testsuite name="LaminasPhpStan">
+    <directory>./tests</directory>
+  </testsuite>
 </phpunit>

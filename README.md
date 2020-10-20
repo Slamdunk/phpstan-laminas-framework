@@ -1,9 +1,9 @@
 # PHPStan extension for Laminas Framework
 
-[![Build Status](https://travis-ci.org/Slamdunk/phpstan-laminas-framework.svg?branch=master)](https://travis-ci.org/Slamdunk/phpstan-laminas-framework)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Slamdunk/phpstan-laminas-framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Slamdunk/phpstan-laminas-framework/?branch=master)
-[![Packagist](https://img.shields.io/packagist/v/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/slam/phpstan-laminas-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/Slamdunk/phpstan-laminas-framework)
+[![Latest Stable Version](https://img.shields.io/packagist/v/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/slam/phpstan-laminas-framework)
+[![Downloads](https://img.shields.io/packagist/dt/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/slam/phpstan-laminas-framework)
+[![Integrate](https://github.com/Slamdunk/phpstan-laminas-framework/workflows/Integrate/badge.svg?branch=master)](https://github.com/Slamdunk/phpstan-laminas-framework/actions)
+[![Code Coverage](https://codecov.io/gh/Slamdunk/phpstan-laminas-framework/coverage.svg?branch=master)](https://codecov.io/gh/Slamdunk/phpstan-laminas-framework?branch=master)
 
 * [PHPStan](https://phpstan.org/)
 * [Laminas Framework](https://getlaminas.org/)
