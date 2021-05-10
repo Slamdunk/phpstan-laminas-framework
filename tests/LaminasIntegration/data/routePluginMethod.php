@@ -10,10 +10,7 @@ use Laminas\ServiceManager\ServiceManager;
 
 final class routePluginMethod
 {
-    /**
-     * @var RoutePluginManager
-     */
-    private $routePluginManager;
+    private RoutePluginManager $routePluginManager;
 
     public function __construct(ServiceManager $serviceManager)
     {

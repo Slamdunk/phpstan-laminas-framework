@@ -16,15 +16,9 @@ use PHPStan\Type\ObjectType;
 
 final class ControllerPluginClassReflectionExtension implements BrokerAwareExtension, MethodsClassReflectionExtension
 {
-    /**
-     * @var ServiceManagerLoader
-     */
-    private $serviceManagerLoader;
+    private ServiceManagerLoader $serviceManagerLoader;
 
-    /**
-     * @var Broker
-     */
-    private $broker;
+    private Broker $broker;
 
     public function __construct(ServiceManagerLoader $serviceManagerLoader)
     {

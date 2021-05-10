@@ -12,7 +12,7 @@ final class ViewHelperGetterDynamicReturnTypeExtension extends AbstractServiceGe
     /**
      * @var array<string, string>
      */
-    protected $methodToServiceMap = [
+    protected array $methodToServiceMap = [
         'getView' => RendererInterface::class,
     ];
 

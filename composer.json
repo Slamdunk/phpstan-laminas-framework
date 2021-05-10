@@ -19,24 +19,37 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "laminas/laminas-mvc": "^3.1.1",
-        "phpstan/phpstan": "^0.12.50"
+        "laminas/laminas-mvc": "^3.2.0",
+        "phpstan/phpstan": "^0.12.86"
+    },
+    "conflict": {
+        "laminas/laminas-cache": "<2.11",
+        "laminas/laminas-filter": "<2.11",
+        "laminas/laminas-form": "<2.16",
+        "laminas/laminas-hydrator": "<4.0",
+        "laminas/laminas-i18n": "<2.11",
+        "laminas/laminas-inputfilter": "<2.12",
+        "laminas/laminas-log": "<2.13",
+        "laminas/laminas-mail": "<2.14",
+        "laminas/laminas-paginator": "<2.10",
+        "laminas/laminas-validator": "<2.14"
     },
     "require-dev": {
-        "laminas/laminas-cache": "^2.9.0",
-        "laminas/laminas-filter": "^2.9.4",
-        "laminas/laminas-form": "^2.15.0",
-        "laminas/laminas-hydrator": "^3.2 || ^4.0",
-        "laminas/laminas-i18n": "^2.10.3",
-        "laminas/laminas-inputfilter": "^2.10.1",
-        "laminas/laminas-log": "^2.12.0",
-        "laminas/laminas-mail": "^2.12.3",
-        "laminas/laminas-paginator": "^2.9.0",
-        "laminas/laminas-validator": "^2.13.4",
-        "phpstan/phpstan-phpunit": "^0.12.16",
-        "phpunit/phpunit": "^9.4.2",
-        "slam/php-cs-fixer-extensions": "^2.0.0",
-        "slam/php-debug-r": "^1.6.1"
+        "laminas/laminas-cache": "^2.11.1",
+        "laminas/laminas-filter": "^2.11.0",
+        "laminas/laminas-form": "^2.16.3",
+        "laminas/laminas-hydrator": "^4.1.0",
+        "laminas/laminas-i18n": "^2.11.1",
+        "laminas/laminas-inputfilter": "^2.12.0",
+        "laminas/laminas-log": "^2.13.1",
+        "laminas/laminas-mail": "^2.14.0",
+        "laminas/laminas-paginator": "^2.10.0",
+        "laminas/laminas-validator": "^2.14.4",
+        "malukenho/mcbumpface": "^1.1.5",
+        "phpstan/phpstan-phpunit": "^0.12.18",
+        "phpunit/phpunit": "^9.5.4",
+        "slam/php-cs-fixer-extensions": "^v3.0.1",
+        "slam/php-debug-r": "^v1.7.0"
     },
     "extra": {
         "phpstan": {

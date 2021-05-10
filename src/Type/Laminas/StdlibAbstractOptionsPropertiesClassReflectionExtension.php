@@ -20,22 +20,13 @@ final class StdlibAbstractOptionsPropertiesClassReflectionExtension implements P
     public function getProperty(ClassReflection $classReflection, string $propertyName): PropertyReflection
     {
         return new class($classReflection, $propertyName, $this->getGetterName($propertyName), $this->getSetterName($propertyName)) implements PropertyReflection {
-            /**
-             * @var ClassReflection
-             */
-            private $classReflection;
-            /**
-             * @var string
-             */
-            private $propertyName;
-            /**
-             * @var string
-             */
-            private $getterName;
-            /**
-             * @var string
-             */
-            private $setterName;
+            private ClassReflection $classReflection;
+
+            private string $propertyName;
+
+            private string $getterName;
+
+            private string $setterName;
 
             public function __construct(ClassReflection $classReflection, string $propertyName, string $getterName, string $setterName)
             {

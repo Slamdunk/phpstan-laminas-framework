@@ -22,15 +22,9 @@ use ReflectionClass;
 
 final class ServiceManagerGetDynamicReturnTypeExtension implements BrokerAwareExtension, DynamicMethodReturnTypeExtension
 {
-    /**
-     * @var ServiceManagerLoader
-     */
-    private $serviceManagerLoader;
+    private ServiceManagerLoader $serviceManagerLoader;
 
-    /**
-     * @var Broker
-     */
-    private $broker;
+    private Broker $broker;
 
     public function __construct(ServiceManagerLoader $serviceManagerLoader)
     {

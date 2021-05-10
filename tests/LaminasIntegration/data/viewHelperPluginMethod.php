@@ -10,10 +10,7 @@ use LaminasPhpStan\TestAsset\CustomViewHelperPlugin;
 
 final class viewHelperPluginMethod
 {
-    /**
-     * @var HelperPluginManager
-     */
-    private $viewHelperManager;
+    private HelperPluginManager $viewHelperManager;
 
     public function __construct(ServiceManager $serviceManager)
     {

@@ -9,10 +9,7 @@ use Laminas\ServiceManager\ServiceManager;
 
 final class controllerMethod
 {
-    /**
-     * @var ControllerManager
-     */
-    private $controllerManager;
+    private ControllerManager $controllerManager;
 
     public function __construct(ServiceManager $serviceManager)
     {

@@ -6,12 +6,12 @@
     },
     {
         "message": "Property class@anonymous/stdlibAbstractOptionsProperties.php:27::$myxyz is not writable.",
-        "line": 40,
+        "line": 37,
         "ignorable": true
     },
     {
-        "message": "Access to an undefined property class@anonymous/stdlibAbstractOptionsProperties.php:48::$myxyz.",
-        "line": 56,
+        "message": "Access to an undefined property class@anonymous/stdlibAbstractOptionsProperties.php:45::$myxyz.",
+        "line": 53,
         "ignorable": true
     }
 ]

@@ -8,10 +8,7 @@ use Laminas\ServiceManager\ServiceManager;
 
 final class Foo
 {
-    /**
-     * @var ServiceManager
-     */
-    private $serviceManager;
+    private ServiceManager $serviceManager;
 
     public function __construct(ServiceManager $serviceManager)
     {

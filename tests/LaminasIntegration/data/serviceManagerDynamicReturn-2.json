@@ -1,12 +1,12 @@
 [
     {
         "message": "Call to an undefined method LaminasPhpStan\\TestAsset\\CssService::isCssWut().",
-        "line": 32,
+        "line": 29,
         "ignorable": true
     },
     {
         "message": "Cannot access property $foo on array<string, string>.",
-        "line": 42,
+        "line": 39,
         "ignorable": true
     }
 ]
