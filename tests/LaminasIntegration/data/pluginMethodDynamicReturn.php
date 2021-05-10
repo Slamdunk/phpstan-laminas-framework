@@ -10,10 +10,7 @@ use Laminas\View\Renderer\PhpRenderer;
 
 final class pluginMethodDynamicReturn
 {
-    /**
-     * @var PhpRenderer
-     */
-    private $phpRenderer;
+    private PhpRenderer $phpRenderer;
 
     public function getDynamicTypeFromStaticString(): void
     {

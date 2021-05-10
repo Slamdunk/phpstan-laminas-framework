@@ -21,15 +21,9 @@ use ReflectionClass;
  */
 final class ServiceManagerGetMethodCallRule implements Rule
 {
-    /**
-     * @var Broker
-     */
-    private $broker;
+    private Broker $broker;
 
-    /**
-     * @var ServiceManagerLoader
-     */
-    private $serviceManagerLoader;
+    private ServiceManagerLoader $serviceManagerLoader;
 
     public function __construct(Broker $broker, ServiceManagerLoader $serviceManagerLoader)
     {

@@ -14,20 +14,11 @@ use PHPStan\Type\ObjectType;
 
 final class PluginMethodReflection implements MethodReflection
 {
-    /**
-     * @var ClassReflection
-     */
-    private $declaringClass;
+    private ClassReflection $declaringClass;
 
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var ObjectType
-     */
-    private $returnType;
+    private ObjectType $returnType;
 
     public function __construct(
         ClassReflection $declaringClass,

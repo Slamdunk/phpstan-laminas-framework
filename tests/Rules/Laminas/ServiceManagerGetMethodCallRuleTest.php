@@ -15,10 +15,7 @@ use PHPStan\Testing\RuleTestCase;
  */
 final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
 {
-    /**
-     * @var ServiceManagerLoader
-     */
-    private $serviceManagerLoader;
+    private ServiceManagerLoader $serviceManagerLoader;
 
     protected function setUp(): void
     {
@@ -35,7 +32,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         $this->analyse([__DIR__ . '/ServiceManagerGetMethodCallRule/Foo.php'], [
             [
                 'The service "non_existent_service" was not configured in Laminas\ServiceManager\ServiceManager.',
-                27,
+                23,
             ],
         ]);
     }

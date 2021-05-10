@@ -8,10 +8,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 
 final class serviceManagerDynamicReturn
 {
-    /**
-     * @var ServiceLocatorInterface
-     */
-    private $serviceManager;
+    private ServiceLocatorInterface $serviceManager;
 
     public function __construct(ServiceLocatorInterface $serviceManager)
     {

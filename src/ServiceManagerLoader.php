@@ -13,15 +13,12 @@ use Psr\Container\ContainerInterface as PsrContainerInterface;
 
 final class ServiceManagerLoader
 {
-    /**
-     * @var ServiceLocatorInterface
-     */
-    private $serviceLocator;
+    private ?UnmappedAliasServiceLocatorProxy $serviceLocator = null;
 
     /**
      * @var string[]
      */
-    private $knownModules = [
+    private array $knownModules = [
         \Laminas\Cache\Module::class,
         \Laminas\Filter\Module::class,
         \Laminas\Form\Module::class,
@@ -38,7 +35,7 @@ final class ServiceManagerLoader
     /**
      * @var array<string, true>
      */
-    private $serviceManagerNames = [
+    private array $serviceManagerNames = [
         ServiceManager::class            => true,
         ServiceLocatorInterface::class   => true,
         InteropContainerInterface::class => true,
@@ -60,12 +57,7 @@ final class ServiceManagerLoader
             throw new \PHPStan\ShouldNotHappenException(\sprintf('Loader "%s" doesn\'t return a ServiceManager instance', $serviceManagerLoader));
         }
 
-        $this->setServiceLocator($serviceManager);
-    }
-
-    private function setServiceLocator(ServiceLocatorInterface $serviceLocator): void
-    {
-        $this->serviceLocator = new UnmappedAliasServiceLocatorProxy($serviceLocator);
+        $this->serviceLocator = new UnmappedAliasServiceLocatorProxy($serviceManager);
     }
 
     public function getServiceLocator(string $serviceManagerName): ServiceLocatorInterface
@@ -86,7 +78,7 @@ final class ServiceManagerLoader
             $serviceManager->setService('ApplicationConfig', $config);
             $serviceManager->get(ModuleManager::class)->loadModules();
 
-            $this->setServiceLocator($serviceManager);
+            $this->serviceLocator = new UnmappedAliasServiceLocatorProxy($serviceManager);
         }
 
         $serviceLocator = $this->serviceLocator;

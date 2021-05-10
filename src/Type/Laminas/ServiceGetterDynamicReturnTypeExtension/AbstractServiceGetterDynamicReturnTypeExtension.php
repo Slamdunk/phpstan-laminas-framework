@@ -16,15 +16,12 @@ use PHPStan\Type\Type;
 
 abstract class AbstractServiceGetterDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
-    /**
-     * @var ServiceManagerLoader
-     */
-    private $serviceManagerLoader;
+    private ServiceManagerLoader $serviceManagerLoader;
 
     /**
      * @var array<string, string>
      */
-    protected $methodToServiceMap = [
+    protected array $methodToServiceMap = [
         'getApplication'    => 'Application',
         'getRenderer'       => RendererInterface::class,
         'getRequest'        => 'Request',

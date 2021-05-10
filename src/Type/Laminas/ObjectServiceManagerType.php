@@ -8,10 +8,7 @@ use PHPStan\Type\ObjectType;
 
 final class ObjectServiceManagerType extends ObjectType
 {
-    /**
-     * @var string
-     */
-    private $serviceName;
+    private string $serviceName;
 
     public function __construct(string $className, string $serviceName)
     {

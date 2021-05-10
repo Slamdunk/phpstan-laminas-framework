@@ -18,10 +18,7 @@ use PHPStan\Type\VerbosityLevel;
 
 abstract class AbstractPluginMethodDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
-    /**
-     * @var ServiceManagerLoader
-     */
-    private $serviceManagerLoader;
+    private ServiceManagerLoader $serviceManagerLoader;
 
     final public function __construct(ServiceManagerLoader $serviceManagerLoader)
     {
@@ -52,7 +49,8 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
             return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->args, $methodReflection->getVariants())->getReturnType();
         }
 
-        throw new \PHPStan\ShouldNotHappenException(\sprintf('Argument passed to %s::%s should be a string, %s given',
+        throw new \PHPStan\ShouldNotHappenException(\sprintf(
+            'Argument passed to %s::%s should be a string, %s given',
             $methodReflection->getDeclaringClass()->getName(),
             $methodReflection->getName(),
             $argType->describe(VerbosityLevel::value())

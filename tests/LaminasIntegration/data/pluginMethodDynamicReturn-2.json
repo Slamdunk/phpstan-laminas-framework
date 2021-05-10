@@ -1,12 +1,12 @@
 [
     {
         "message": "Call to an undefined method Laminas\\View\\Helper\\Url::foobar().",
-        "line": 22,
+        "line": 19,
         "ignorable": true
     },
     {
         "message": "Call to an undefined method Laminas\\View\\Helper\\AbstractHelper::foobar().",
-        "line": 28,
+        "line": 25,
         "ignorable": true
     }
 ]

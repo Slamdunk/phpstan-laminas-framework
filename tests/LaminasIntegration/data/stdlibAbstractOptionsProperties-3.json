@@ -6,7 +6,7 @@
     },
     {
         "message": "Property class@anonymous/stdlibAbstractOptionsProperties.php:27::$myxyz (string) does not accept int.",
-        "line": 40,
+        "line": 37,
         "ignorable": true
     }
 ]

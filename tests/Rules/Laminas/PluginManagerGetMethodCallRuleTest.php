@@ -15,10 +15,7 @@ use PHPStan\Testing\RuleTestCase;
  */
 final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
 {
-    /**
-     * @var ServiceManagerLoader
-     */
-    private $serviceManagerLoader;
+    private ServiceManagerLoader $serviceManagerLoader;
 
     protected function setUp(): void
     {
@@ -35,7 +32,7 @@ final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
         $this->analyse([__DIR__ . '/PluginManagerGetMethodCallRule/Foo.php'], [
             [
                 'The service "non_existent_service" was not configured in ControllerPluginManager nor the class "non_existent_service" exists.',
-                25,
+                22,
             ],
         ]);
     }

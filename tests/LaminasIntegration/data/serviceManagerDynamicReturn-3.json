@@ -1,7 +1,7 @@
 [
     {
         "message": "Offset 'xyz' does not exist on array('foo' => 'bar').",
-        "line": 41,
+        "line": 38,
         "ignorable": true
     }
 ]
