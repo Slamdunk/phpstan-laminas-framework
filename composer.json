@@ -35,7 +35,7 @@
         "laminas/laminas-validator": "^2.13.4",
         "phpstan/phpstan-phpunit": "^0.12.16",
         "phpunit/phpunit": "^9.4.2",
-        "slam/php-cs-fixer-extensions": "^2.0.0",
+        "slam/php-cs-fixer-extensions": "^2.0.0 || ^3.0.0",
         "slam/php-debug-r": "^1.6.1"
     },
     "extra": {
