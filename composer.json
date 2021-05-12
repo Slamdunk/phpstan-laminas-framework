@@ -19,7 +19,6 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "laminas/laminas-mvc": "^3.2.0",
         "phpstan/phpstan": "^0.12.86"
     },
     "conflict": {
@@ -31,6 +30,7 @@
         "laminas/laminas-inputfilter": "<2.12",
         "laminas/laminas-log": "<2.13",
         "laminas/laminas-mail": "<2.14",
+        "laminas/laminas-mvc": "<3.2",
         "laminas/laminas-paginator": "<2.10",
         "laminas/laminas-validator": "<2.14"
     },
@@ -43,10 +43,11 @@
         "laminas/laminas-inputfilter": "^2.12.0",
         "laminas/laminas-log": "^2.13.1",
         "laminas/laminas-mail": "^2.14.0",
+        "laminas/laminas-mvc": "^3.2.0",
         "laminas/laminas-paginator": "^2.10.0",
         "laminas/laminas-validator": "^2.14.4",
         "malukenho/mcbumpface": "^1.1.5",
-        "phpstan/phpstan-phpunit": "^0.12.18",
+        "phpstan/phpstan-phpunit": "^0.12.19",
         "phpunit/phpunit": "^9.5.4",
         "slam/php-cs-fixer-extensions": "^v3.0.1",
         "slam/php-debug-r": "^v1.7.0"

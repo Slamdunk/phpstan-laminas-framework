@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace LaminasPhpStan;
 
 use Interop\Container\ContainerInterface as InteropContainerInterface;
-use Laminas\ModuleManager\ModuleManager;
+use Laminas\Mvc\Service\ServiceListenerFactory;
 use Laminas\Mvc\Service\ServiceManagerConfig;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\ServiceManager\ServiceManager;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
+use ReflectionProperty;
 
 final class ServiceManagerLoader
 {
@@ -19,17 +20,17 @@ final class ServiceManagerLoader
      * @var string[]
      */
     private array $knownModules = [
-        \Laminas\Cache\Module::class,
-        \Laminas\Filter\Module::class,
-        \Laminas\Form\Module::class,
-        \Laminas\Hydrator\Module::class,
-        \Laminas\I18n\Module::class,
-        \Laminas\InputFilter\Module::class,
-        \Laminas\Log\Module::class,
-        \Laminas\Mail\Module::class,
-        \Laminas\Paginator\Module::class,
-        \Laminas\Router\Module::class,
-        \Laminas\Validator\Module::class,
+        \Laminas\Cache\ConfigProvider::class,
+        \Laminas\Filter\ConfigProvider::class,
+        \Laminas\Form\ConfigProvider::class,
+        \Laminas\Hydrator\ConfigProvider::class,
+        \Laminas\I18n\ConfigProvider::class,
+        \Laminas\InputFilter\ConfigProvider::class,
+        \Laminas\Log\ConfigProvider::class,
+        \Laminas\Mail\ConfigProvider::class,
+        \Laminas\Paginator\ConfigProvider::class,
+        \Laminas\Router\ConfigProvider::class,
+        \Laminas\Validator\ConfigProvider::class,
     ];
 
     /**
@@ -63,20 +64,23 @@ final class ServiceManagerLoader
     public function getServiceLocator(string $serviceManagerName): ServiceLocatorInterface
     {
         if (null === $this->serviceLocator) {
-            $serviceManagerConfig = new ServiceManagerConfig();
-            $serviceManager       = new ServiceManager();
-            $serviceManagerConfig->configureServiceManager($serviceManager);
-            $config = [
-                'modules'                 => [],
-                'module_listener_options' => [],
-            ];
+            $serviceManager = new ServiceManager(['services' => ['config' => []]]);
+            if (\class_exists(ServiceManagerConfig::class)) {
+                (new ServiceManagerConfig())->configureServiceManager($serviceManager);
+            }
+            if (\class_exists(ServiceListenerFactory::class)) {
+                $refProp = new ReflectionProperty(ServiceListenerFactory::class, 'defaultServiceConfig');
+                $refProp->setAccessible(true);
+                $config = $refProp->getValue(new ServiceListenerFactory());
+                unset($config['factories']['config']);
+                $refProp->setAccessible(false);
+                $serviceManager->configure($config);
+            }
             foreach ($this->knownModules as $module) {
                 if (\class_exists($module)) {
-                    $config['modules'][$module] = new $module();
+                    $serviceManager->configure((new $module())->getDependencyConfig());
                 }
             }
-            $serviceManager->setService('ApplicationConfig', $config);
-            $serviceManager->get(ModuleManager::class)->loadModules();
 
             $this->serviceLocator = new UnmappedAliasServiceLocatorProxy($serviceManager);
         }
