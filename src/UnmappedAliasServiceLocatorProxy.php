@@ -36,12 +36,17 @@ final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
 
     public function get($id)
     {
+        if ($this->serviceLocator->has($id)) {
+            return $this->serviceLocator->get($id);
+        }
+
         return $this->serviceLocator->get($this->knownUnmappedAliasToClassServices[$id] ?? $id);
     }
 
     public function has($id)
     {
-        return $this->serviceLocator->has($this->knownUnmappedAliasToClassServices[$id] ?? $id);
+        return $this->serviceLocator->has($id)
+            || $this->serviceLocator->has($this->knownUnmappedAliasToClassServices[$id] ?? $id);
     }
 
     /**
