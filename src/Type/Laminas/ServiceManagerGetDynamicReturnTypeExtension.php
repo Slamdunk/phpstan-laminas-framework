@@ -82,6 +82,10 @@ final class ServiceManagerGetDynamicReturnTypeExtension implements BrokerAwareEx
             return new NeverType();
         }
 
+        if (\class_exists($serviceName) || \interface_exists($serviceName)) {
+            return new ObjectServiceManagerType($serviceName, $serviceName);
+        }
+
         $service = $serviceManager->get($serviceName);
         if (\is_object($service)) {
             return new ObjectServiceManagerType(\get_class($service), $serviceName);

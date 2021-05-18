@@ -3,9 +3,11 @@
 declare(strict_types=1);
 
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 use LaminasPhpStan\TestAsset\BarService;
 use LaminasPhpStan\TestAsset\CssService;
 use LaminasPhpStan\TestAsset\FooService;
+use LaminasPhpStan\TestAsset\HeavyService;
 use LaminasPhpStan\TestAsset\Route66;
 use LaminasPhpStan\TestAsset\XyzController;
 
@@ -27,6 +29,9 @@ $app = \Laminas\Mvc\Application::init([
                             'my_config' => [
                                 'foo' => 'bar',
                             ],
+                        ],
+                        'factories' => [
+                            HeavyService::class => InvokableFactory::class,
                         ],
                     ],
                     'controllers' => [

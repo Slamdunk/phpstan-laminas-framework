@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Tests\LaminasIntegration\data;
 
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use LaminasPhpStan\TestAsset\HeavyService;
 
 final class serviceManagerDynamicReturn
 {
@@ -29,6 +30,10 @@ final class serviceManagerDynamicReturn
         $viewHelperManager->get('css')->isCssWut();
 
         $viewHelperManager->get('foobar')->isCss();
+
+        $heavyService = $this->serviceManager->get(HeavyService::class);
+        $heavyService->foo();
+        $heavyService->bar();
     }
 
     public function nonObjectServices(): void

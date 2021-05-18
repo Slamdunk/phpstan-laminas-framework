@@ -1,12 +1,12 @@
 [
     {
         "message": "The service \"bar\" was not configured in Laminas\\ServiceManager\\ServiceLocatorInterface.",
-        "line": 23,
+        "line": 24,
         "ignorable": true
     },
     {
         "message": "The service \"foobar\" was not configured in ViewHelperManager nor the class \"foobar\" exists.",
-        "line": 31,
+        "line": 32,
         "ignorable": true
     }
 ]
