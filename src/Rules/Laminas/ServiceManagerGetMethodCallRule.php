@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaminasPhpStan\Rules\Laminas;
 
+use Interop\Container\ContainerInterface as InteropContainerInterface;
 use Laminas\ServiceManager\AbstractPluginManager;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use LaminasPhpStan\ServiceManagerLoader;
@@ -14,6 +15,7 @@ use PHPStan\Broker\Broker;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\ObjectType;
+use Psr\Container\ContainerInterface as PsrContainerInterface;
 use ReflectionClass;
 
 /**
@@ -53,7 +55,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
         }
 
         $calledOnType = $scope->getType($node->var);
-        if (! $calledOnType instanceof ObjectType || ! $calledOnType->isInstanceOf(ServiceLocatorInterface::class)->yes()) {
+        if (! $calledOnType instanceof ObjectType || ! $this->isTypeInstanceOfContainer($calledOnType)) {
             return [];
         }
 
@@ -96,5 +98,12 @@ final class ServiceManagerGetMethodCallRule implements Rule
                 : $calledOnType->getClassName(),
             $classDoesNotExistNote
         )];
+    }
+
+    protected function isTypeInstanceOfContainer(ObjectType $type): bool
+    {
+        return $type->isInstanceOf(ServiceLocatorInterface::class)->yes()
+            || $type->isInstanceOf(InteropContainerInterface::class)->yes()
+            || $type->isInstanceOf(PsrContainerInterface::class)->yes();
     }
 }
