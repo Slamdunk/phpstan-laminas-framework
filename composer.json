@@ -22,17 +22,17 @@
         "phpstan/phpstan": "^0.12.99"
     },
     "conflict": {
-        "laminas/laminas-cache": "<2.11",
+        "laminas/laminas-cache": "<2.13",
         "laminas/laminas-filter": "<2.11",
-        "laminas/laminas-form": "<2.16",
-        "laminas/laminas-hydrator": "<4.0",
+        "laminas/laminas-form": "<2.17",
+        "laminas/laminas-hydrator": "<4.3",
         "laminas/laminas-i18n": "<2.11",
         "laminas/laminas-inputfilter": "<2.12",
         "laminas/laminas-log": "<2.13",
-        "laminas/laminas-mail": "<2.14",
+        "laminas/laminas-mail": "<2.15",
         "laminas/laminas-mvc": "<3.2",
         "laminas/laminas-paginator": "<2.10",
-        "laminas/laminas-validator": "<2.14"
+        "laminas/laminas-validator": "<2.15"
     },
     "require-dev": {
         "laminas/laminas-cache": "^2.13.0",
