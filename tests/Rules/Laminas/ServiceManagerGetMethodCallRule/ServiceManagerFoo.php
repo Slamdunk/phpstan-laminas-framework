@@ -9,7 +9,7 @@ use Laminas\Mvc\Controller\ControllerManager;
 use Laminas\ServiceManager\ServiceManager;
 use stdClass;
 
-final class Foo
+final class ServiceManagerFoo
 {
     private ServiceManager $serviceManager;
 

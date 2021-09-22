@@ -12,6 +12,7 @@ use PHPStan\Testing\RuleTestCase;
 
 /**
  * @covers \LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule
+ * @extends RuleTestCase<ServiceManagerGetMethodCallRule>
  */
 final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
 {
@@ -22,6 +23,9 @@ final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
         $this->serviceManagerLoader = new ServiceManagerLoader(null);
     }
 
+    /**
+     * @return Rule<\PhpParser\Node\Expr\MethodCall>
+     */
     protected function getRule(): Rule
     {
         return new ServiceManagerGetMethodCallRule($this->createBroker(), $this->serviceManagerLoader);

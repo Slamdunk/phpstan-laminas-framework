@@ -10,16 +10,17 @@
 
 This extension provides following features:
 
-1. Provide correct return for `\Laminas\ServiceManager\ServiceLocatorInterface::get()`
-1. Handle controller plugins that are called using magic `__call()` in subclasses of
+1. Provide correct return type for `$container->get()` calls on containers of type
+`\Laminas\ServiceManager\ServiceLocatorInterface`, `\Interop\Container\ContainerInterface` or `\Psr\Container\ContainerInterface`
+2. Handle controller plugins that are called using magic `__call()` in subclasses of
 `\Laminas\Mvc\Controller\AbstractController`
-1. Provide correct return type for `plugin` method of `AbstractController`, `FilterChain`, `PhpRenderer` and `ValidatorChain`
-1. `getApplication()`, `getRenderer()`, `getRequest()` and `getResponse()` methods on Controllers, MvcEvents, View,
+3. Provide correct return type for `plugin` method of `AbstractController`, `FilterChain`, `PhpRenderer` and `ValidatorChain`
+4. `getApplication()`, `getRenderer()`, `getRequest()` and `getResponse()` methods on Controllers, MvcEvents, View,
 ViewEvent and Application returns the real instance instead of type-hinted interfaces
-1. `getView()` method on `\Laminas\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
+5. `getView()` method on `\Laminas\View\Helper\AbstractHelper` returns the real Renderer instance instead of type-hinted
 interface
-1. `\Laminas\Stdlib\ArrayObject` is configured as a [Universal object crate](https://phpstan.org/config-reference#universal-object-crates)
-1. Handle `\Laminas\Stdlib\AbstractOptions` magic properties
+6. `\Laminas\Stdlib\ArrayObject` is configured as a [Universal object crate](https://phpstan.org/config-reference#universal-object-crates)
+7. Handle `\Laminas\Stdlib\AbstractOptions` magic properties
 
 ## Installation
 
