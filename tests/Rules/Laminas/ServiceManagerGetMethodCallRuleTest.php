@@ -21,6 +21,11 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
 {
     private ServiceManagerLoader $serviceManagerLoader;
 
+    protected function setUp(): void
+    {
+        $this->serviceManagerLoader = new ServiceManagerLoader(null);
+    }
+
     /**
      * @return string[][]
      */
@@ -31,11 +36,6 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
             'Interop container' => ['InteropContainerFoo.php', InteropContainerInterface::class],
             'PSR container'     => ['PsrContainerFoo.php', PsrContainerInterface::class],
         ];
-    }
-
-    protected function setUp(): void
-    {
-        $this->serviceManagerLoader = new ServiceManagerLoader(null);
     }
 
     /**

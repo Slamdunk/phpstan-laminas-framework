@@ -10,6 +10,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use LaminasPhpStan\ServiceManagerLoader;
 use LaminasPhpStan\Type\Laminas\ObjectServiceManagerType;
 use PhpParser\Node;
+use PhpParser\Node\Arg;
 use PHPStan\Analyser\Scope;
 use PHPStan\Broker\Broker;
 use PHPStan\Rules\Rule;
@@ -49,7 +50,11 @@ final class ServiceManagerGetMethodCallRule implements Rule
             return [];
         }
 
-        $argType = $scope->getType($node->args[0]->value);
+        $firstArg = $node->args[0];
+        if (! $firstArg instanceof Arg) {
+            return [];
+        }
+        $argType = $scope->getType($firstArg->value);
         if (! $argType instanceof ConstantStringType) {
             return [];
         }
@@ -100,7 +105,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
         )];
     }
 
-    protected function isTypeInstanceOfContainer(ObjectType $type): bool
+    private function isTypeInstanceOfContainer(ObjectType $type): bool
     {
         return $type->isInstanceOf(ServiceLocatorInterface::class)->yes()
             || $type->isInstanceOf(InteropContainerInterface::class)->yes()

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Type\Laminas\PluginMethodDynamicReturnTypeExtension;
 
 use LaminasPhpStan\ServiceManagerLoader;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
@@ -35,7 +36,16 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
         MethodCall $methodCall,
         Scope $scope
     ): Type {
-        $argType = $scope->getType($methodCall->args[0]->value);
+        $firstArg = $methodCall->args[0];
+        if (! $firstArg instanceof Arg) {
+            throw new \PHPStan\ShouldNotHappenException(\sprintf(
+                'Argument passed to %s::%s should be a string, %s given',
+                $methodReflection->getDeclaringClass()->getName(),
+                $methodReflection->getName(),
+                $firstArg->getType()
+            ));
+        }
+        $argType = $scope->getType($firstArg->value);
         $strings = TypeUtils::getConstantStrings($argType);
         $plugin  = 1 === \count($strings) ? $strings[0]->getValue() : null;
 

@@ -42,14 +42,14 @@
         "laminas/laminas-i18n": "^2.11.2",
         "laminas/laminas-inputfilter": "^2.12.0",
         "laminas/laminas-log": "^2.13.1",
-        "laminas/laminas-mail": "^2.14.1",
+        "laminas/laminas-mail": "^2.15.0",
         "laminas/laminas-mvc": "^3.2.0",
         "laminas/laminas-paginator": "^2.10.0",
         "laminas/laminas-validator": "^2.15.0",
         "malukenho/mcbumpface": "^1.1.5",
         "phpstan/phpstan-phpunit": "^0.12.22",
         "phpunit/phpunit": "^9.5.9",
-        "slam/php-cs-fixer-extensions": "^v3.0.1",
+        "slam/php-cs-fixer-extensions": "^v3.1.0",
         "slam/php-debug-r": "^v1.7.0"
     },
     "extra": {

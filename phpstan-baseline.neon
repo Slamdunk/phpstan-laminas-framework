@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#2 \\$args of static method PHPStan\\\\Reflection\\\\ParametersAcceptorSelector\\:\\:selectFromArgs\\(\\) expects array\\<PhpParser\\\\Node\\\\Arg\\>, array\\<PhpParser\\\\Node\\\\Arg\\|PhpParser\\\\Node\\\\VariadicPlaceholder\\> given\\.$#"
+			count: 1
+			path: src/Type/Laminas/PluginMethodDynamicReturnTypeExtension/AbstractPluginMethodDynamicReturnTypeExtension.php
+
