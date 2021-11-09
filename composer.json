@@ -47,8 +47,8 @@
         "laminas/laminas-paginator": "^2.11.0",
         "laminas/laminas-validator": "^2.15.0",
         "malukenho/mcbumpface": "^1.1.5",
-        "phpstan/phpstan-phpunit": "^1.0.0",
         "phpstan/phpstan-deprecation-rules": "^1.0.0",
+        "phpstan/phpstan-phpunit": "^1.0.0",
         "phpunit/phpunit": "^9.5.10",
         "slam/php-cs-fixer-extensions": "^v3.1.0",
         "slam/php-debug-r": "^v1.7.0"
