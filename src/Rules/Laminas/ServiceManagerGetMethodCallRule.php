@@ -12,7 +12,7 @@ use LaminasPhpStan\Type\Laminas\ObjectServiceManagerType;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PHPStan\Analyser\Scope;
-use PHPStan\Broker\Broker;
+use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\ObjectType;
@@ -24,14 +24,10 @@ use ReflectionClass;
  */
 final class ServiceManagerGetMethodCallRule implements Rule
 {
-    private Broker $broker;
-
-    private ServiceManagerLoader $serviceManagerLoader;
-
-    public function __construct(Broker $broker, ServiceManagerLoader $serviceManagerLoader)
-    {
-        $this->broker               = $broker;
-        $this->serviceManagerLoader = $serviceManagerLoader;
+    public function __construct(
+        private ReflectionProvider $reflectionProvider,
+        private ServiceManagerLoader $serviceManagerLoader
+    ) {
     }
 
     public function getNodeType(): string
@@ -46,11 +42,12 @@ final class ServiceManagerGetMethodCallRule implements Rule
      */
     public function processNode(Node $node, Scope $scope): array
     {
-        if (1 !== \count($node->args)) {
+        $args = $node->getArgs();
+        if (1 !== \count($args)) {
             return [];
         }
 
-        $firstArg = $node->args[0];
+        $firstArg = $args[0];
         if (! $firstArg instanceof Arg) {
             return [];
         }
@@ -88,7 +85,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
             $refProperty->setAccessible(true);
             $autoAddInvokableClass = $refProperty->getValue($serviceManager);
             if ($autoAddInvokableClass) {
-                if ($this->broker->hasClass($serviceName)) {
+                if ($this->reflectionProvider->hasClass($serviceName)) {
                     return [];
                 }
                 $classDoesNotExistNote = \sprintf(' nor the class "%s" exists', $serviceName);

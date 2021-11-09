@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#2 \\$args of static method PHPStan\\\\Reflection\\\\ParametersAcceptorSelector\\:\\:selectFromArgs\\(\\) expects array\\<PhpParser\\\\Node\\\\Arg\\>, array\\<PhpParser\\\\Node\\\\Arg\\|PhpParser\\\\Node\\\\VariadicPlaceholder\\> given\\.$#"
-			count: 1
-			path: src/Type/Laminas/PluginMethodDynamicReturnTypeExtension/AbstractPluginMethodDynamicReturnTypeExtension.php
-
-		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'LaminasPhpStan\\\\\\\\TestAsset\\\\\\\\BarService' and Laminas\\\\Stdlib\\\\DispatchableInterface will always evaluate to false\\.$#"
 			count: 1
 			path: tests/Type/Laminas/ServiceManagerLoaderTest.php
