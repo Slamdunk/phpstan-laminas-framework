@@ -52,7 +52,10 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
         if (null !== $plugin) {
             $pluginManager = $this->serviceManagerLoader->getServiceLocator($this->getPluginManagerName());
 
-            return new ObjectType(\get_class($pluginManager->get($plugin)));
+            $pluginInstance = $pluginManager->get($plugin);
+            \assert(\is_object($pluginInstance));
+
+            return new ObjectType(\get_class($pluginInstance));
         }
 
         if ($argType instanceof StringType) {

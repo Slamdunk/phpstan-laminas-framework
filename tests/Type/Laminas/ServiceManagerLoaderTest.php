@@ -119,6 +119,7 @@ final class ServiceManagerLoaderTest extends TestCase
 
         $controllerPluginManager = $serviceManager->get('ControllerPluginManager');
 
+        self::assertInstanceOf(ControllerPluginManager::class, $controllerPluginManager);
         self::assertFalse($controllerPluginManager->has('foo'));
         self::assertTrue($controllerPluginManager->has('bar'));
 

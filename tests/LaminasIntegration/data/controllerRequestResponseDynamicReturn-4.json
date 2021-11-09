@@ -1,0 +1,17 @@
+[
+    {
+        "message": "Method LaminasPhpStan\\Tests\\LaminasIntegration\\data\\controllerRequestResponseDynamicReturn::foo() is unused.",
+        "line": 25,
+        "ignorable": true
+    },
+    {
+        "message": "Method LaminasPhpStan\\Tests\\LaminasIntegration\\data\\controllerRequestResponseDynamicReturn::bar() is unused.",
+        "line": 44,
+        "ignorable": true
+    },
+    {
+        "message": "Method LaminasPhpStan\\Tests\\LaminasIntegration\\data\\controllerRequestResponseDynamicReturn::baz() is unused.",
+        "line": 55,
+        "ignorable": true
+    }
+]

@@ -5,3 +5,8 @@ parameters:
 			count: 1
 			path: src/Type/Laminas/PluginMethodDynamicReturnTypeExtension/AbstractPluginMethodDynamicReturnTypeExtension.php
 
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'LaminasPhpStan\\\\\\\\TestAsset\\\\\\\\BarService' and Laminas\\\\Stdlib\\\\DispatchableInterface will always evaluate to false\\.$#"
+			count: 1
+			path: tests/Type/Laminas/ServiceManagerLoaderTest.php
+

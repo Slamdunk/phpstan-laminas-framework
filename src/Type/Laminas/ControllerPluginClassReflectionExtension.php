@@ -37,7 +37,9 @@ final class ControllerPluginClassReflectionExtension implements BrokerAwareExten
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
     {
-        $plugin          = $this->getControllerPluginManager()->get($methodName);
+        $plugin = $this->getControllerPluginManager()->get($methodName);
+        \assert(\is_object($plugin));
+
         $pluginClassName = \get_class($plugin);
 
         if (\is_callable($plugin)) {

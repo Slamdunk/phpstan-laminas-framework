@@ -72,13 +72,17 @@ final class ServiceManagerLoader
                 $refProp = new ReflectionProperty(ServiceListenerFactory::class, 'defaultServiceConfig');
                 $refProp->setAccessible(true);
                 $config = $refProp->getValue(new ServiceListenerFactory());
+                \assert(\is_array($config));
+                \assert(\is_array($config['factories']));
                 unset($config['factories']['config']);
                 $refProp->setAccessible(false);
                 $serviceManager->configure($config);
             }
             foreach ($this->knownModules as $module) {
                 if (\class_exists($module)) {
-                    $serviceManager->configure((new $module())->getDependencyConfig());
+                    $module = new $module();
+                    \assert(\method_exists($module, 'getDependencyConfig'));
+                    $serviceManager->configure($module->getDependencyConfig());
                 }
             }
 
@@ -88,6 +92,7 @@ final class ServiceManagerLoader
         $serviceLocator = $this->serviceLocator;
         if (! isset($this->serviceManagerNames[$serviceManagerName])) {
             $serviceLocator = $serviceLocator->get($serviceManagerName);
+            \assert($serviceLocator instanceof ServiceLocatorInterface);
         }
 
         return $serviceLocator;

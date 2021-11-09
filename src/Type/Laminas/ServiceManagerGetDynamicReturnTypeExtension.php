@@ -79,6 +79,7 @@ final class ServiceManagerGetDynamicReturnTypeExtension implements BrokerAwareEx
                 $refProperty = $refClass->getProperty('instanceOf');
                 $refProperty->setAccessible(true);
                 $returnedInstance = $refProperty->getValue($serviceManager);
+                \assert(\is_string($returnedInstance));
                 if (null !== $returnedInstance && $this->broker->hasClass($returnedInstance)) {
                     return new ObjectType($returnedInstance);
                 }
