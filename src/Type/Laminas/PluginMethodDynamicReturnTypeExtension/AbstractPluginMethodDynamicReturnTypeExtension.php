@@ -36,7 +36,7 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
         MethodCall $methodCall,
         Scope $scope
     ): Type {
-        $firstArg = $methodCall->args[0];
+        $firstArg = $methodCall->getArgs()[0];
         if (! $firstArg instanceof Arg) {
             throw new \PHPStan\ShouldNotHappenException(\sprintf(
                 'Argument passed to %s::%s should be a string, %s given',
@@ -52,11 +52,14 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
         if (null !== $plugin) {
             $pluginManager = $this->serviceManagerLoader->getServiceLocator($this->getPluginManagerName());
 
-            return new ObjectType(\get_class($pluginManager->get($plugin)));
+            $pluginInstance = $pluginManager->get($plugin);
+            \assert(\is_object($pluginInstance));
+
+            return new ObjectType(\get_class($pluginInstance));
         }
 
         if ($argType instanceof StringType) {
-            return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->args, $methodReflection->getVariants())->getReturnType();
+            return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->getArgs(), $methodReflection->getVariants())->getReturnType();
         }
 
         throw new \PHPStan\ShouldNotHappenException(\sprintf(

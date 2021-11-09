@@ -1,7 +1,17 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#2 \\$args of static method PHPStan\\\\Reflection\\\\ParametersAcceptorSelector\\:\\:selectFromArgs\\(\\) expects array\\<PhpParser\\\\Node\\\\Arg\\>, array\\<PhpParser\\\\Node\\\\Arg\\|PhpParser\\\\Node\\\\VariadicPlaceholder\\> given\\.$#"
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'LaminasPhpStan\\\\\\\\TestAsset\\\\\\\\BarService' and Laminas\\\\Stdlib\\\\DispatchableInterface will always evaluate to false\\.$#"
 			count: 1
-			path: src/Type/Laminas/PluginMethodDynamicReturnTypeExtension/AbstractPluginMethodDynamicReturnTypeExtension.php
+			path: tests/Type/Laminas/ServiceManagerLoaderTest.php
+
+		-
+			message:
+				"""
+					#^Fetching class constant class of deprecated class Laminas\\\\Cache\\\\PatternPluginManager\\:
+					This will be removed in v3\\.0\\.0\\. Cache pattern will require dependency injection and thus, a generic
+					            plugin manager makes no sense anymore\\.$#
+				"""
+			count: 1
+			path: tests/Type/Laminas/ServiceManagerLoaderTest.php
 

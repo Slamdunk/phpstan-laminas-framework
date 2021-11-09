@@ -6,7 +6,6 @@ namespace LaminasPhpStan\Tests\Rules\Laminas;
 
 use LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule;
 use LaminasPhpStan\ServiceManagerLoader;
-use LaminasPhpStan\Type\Laminas\ServiceManagerGetDynamicReturnTypeExtension;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 
@@ -28,7 +27,7 @@ final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
      */
     protected function getRule(): Rule
     {
-        return new ServiceManagerGetMethodCallRule($this->createBroker(), $this->serviceManagerLoader);
+        return new ServiceManagerGetMethodCallRule($this->createReflectionProvider(), $this->serviceManagerLoader);
     }
 
     public function testRule(): void
@@ -42,12 +41,12 @@ final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
     }
 
     /**
-     * @return \PHPStan\Type\DynamicMethodReturnTypeExtension[]
+     * @return string[]
      */
-    public function getDynamicMethodReturnTypeExtensions(): array
+    public static function getAdditionalConfigFiles(): array
     {
         return [
-            new ServiceManagerGetDynamicReturnTypeExtension($this->serviceManagerLoader),
+            __DIR__ . '/../../../extension.neon',
         ];
     }
 }

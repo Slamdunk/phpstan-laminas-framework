@@ -1,5 +1,6 @@
 includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
     - phpstan-baseline.neon
 
 parameters:
@@ -7,8 +8,9 @@ parameters:
     paths:
         - src/
         - tests/
-    excludes_analyse:
-        - tests/Rules/Laminas/ServiceManagerGetMethodCallRule/
-        - tests/Rules/Laminas/PluginManagerGetMethodCallRule/
-        - tests/TestAsset/
-        - tests/LaminasIntegration/data/
+    excludePaths:
+        analyseAndScan:
+            - tests/Rules/Laminas/ServiceManagerGetMethodCallRule/
+            - tests/Rules/Laminas/PluginManagerGetMethodCallRule/
+            - tests/TestAsset/
+            - tests/LaminasIntegration/data/

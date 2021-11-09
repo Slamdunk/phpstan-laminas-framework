@@ -10,9 +10,8 @@ use LaminasPhpStan\ServiceManagerLoader;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
-use PHPStan\Broker\Broker;
-use PHPStan\Reflection\BrokerAwareExtension;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\MixedType;
@@ -21,20 +20,12 @@ use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use ReflectionClass;
 
-final class ServiceManagerGetDynamicReturnTypeExtension implements BrokerAwareExtension, DynamicMethodReturnTypeExtension
+final class ServiceManagerGetDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
-    private ServiceManagerLoader $serviceManagerLoader;
-
-    private Broker $broker;
-
-    public function __construct(ServiceManagerLoader $serviceManagerLoader)
-    {
-        $this->serviceManagerLoader = $serviceManagerLoader;
-    }
-
-    public function setBroker(Broker $broker): void
-    {
-        $this->broker = $broker;
+    public function __construct(
+        private ReflectionProvider $reflectionProvider,
+        private ServiceManagerLoader $serviceManagerLoader
+    ) {
     }
 
     public function getClass(): string
@@ -57,13 +48,14 @@ final class ServiceManagerGetDynamicReturnTypeExtension implements BrokerAwareEx
             return new MixedType();
         }
 
-        if (1 !== \count($methodCall->args)) {
+        $args = $methodCall->getArgs();
+        if (1 !== \count($args)) {
             return new MixedType();
         }
 
         $serviceManager = $this->serviceManagerLoader->getServiceLocator($calledOnType->getClassName());
 
-        $firstArg = $methodCall->args[0];
+        $firstArg = $args[0];
         if (! $firstArg instanceof Arg) {
             throw new \PHPStan\ShouldNotHappenException(\sprintf(
                 'Argument passed to %s::%s should be a string, %s given',
@@ -79,7 +71,8 @@ final class ServiceManagerGetDynamicReturnTypeExtension implements BrokerAwareEx
                 $refProperty = $refClass->getProperty('instanceOf');
                 $refProperty->setAccessible(true);
                 $returnedInstance = $refProperty->getValue($serviceManager);
-                if (null !== $returnedInstance && $this->broker->hasClass($returnedInstance)) {
+                \assert(null === $returnedInstance || \is_string($returnedInstance));
+                if (null !== $returnedInstance && $this->reflectionProvider->hasClass($returnedInstance)) {
                     return new ObjectType($returnedInstance);
                 }
             }

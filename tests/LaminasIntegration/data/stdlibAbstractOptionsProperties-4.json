@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Property class@anonymous/stdlibAbstractOptionsProperties.php:27::$myxyz is never read, only written.",
+        "line": 28,
+        "ignorable": true
+    }
+]

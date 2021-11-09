@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Property LaminasPhpStan\\Tests\\LaminasIntegration\\data\\pluginMethodDynamicReturn::$phpRenderer is never written, only read.",
+        "line": 13,
+        "ignorable": true
+    }
+]

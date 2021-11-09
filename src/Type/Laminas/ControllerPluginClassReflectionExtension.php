@@ -7,27 +7,18 @@ namespace LaminasPhpStan\Type\Laminas;
 use Laminas\Mvc\Controller\AbstractController;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use LaminasPhpStan\ServiceManagerLoader;
-use PHPStan\Broker\Broker;
-use PHPStan\Reflection\BrokerAwareExtension;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
+use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Type\ObjectType;
 
-final class ControllerPluginClassReflectionExtension implements BrokerAwareExtension, MethodsClassReflectionExtension
+final class ControllerPluginClassReflectionExtension implements MethodsClassReflectionExtension
 {
-    private ServiceManagerLoader $serviceManagerLoader;
-
-    private Broker $broker;
-
-    public function __construct(ServiceManagerLoader $serviceManagerLoader)
-    {
-        $this->serviceManagerLoader = $serviceManagerLoader;
-    }
-
-    public function setBroker(Broker $broker): void
-    {
-        $this->broker = $broker;
+    public function __construct(
+        private ReflectionProvider $reflectionProvider,
+        private ServiceManagerLoader $serviceManagerLoader
+    ) {
     }
 
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
@@ -37,11 +28,13 @@ final class ControllerPluginClassReflectionExtension implements BrokerAwareExten
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection
     {
-        $plugin          = $this->getControllerPluginManager()->get($methodName);
+        $plugin = $this->getControllerPluginManager()->get($methodName);
+        \assert(\is_object($plugin));
+
         $pluginClassName = \get_class($plugin);
 
         if (\is_callable($plugin)) {
-            return $this->broker->getClass($pluginClassName)->getNativeMethod('__invoke');
+            return $this->reflectionProvider->getClass($pluginClassName)->getNativeMethod('__invoke');
         }
 
         $returnType = new ObjectType($pluginClassName);
