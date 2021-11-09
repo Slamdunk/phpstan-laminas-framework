@@ -71,10 +71,10 @@ jobs:
           restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
 
       - name: "Install lowest dependencies"
-        run: "composer update --no-interaction --no-progress --prefer-lowest"
+        run: "composer update --no-interaction --no-progress --ignore-platform-reqs --prefer-lowest"
 
       - name: "Install highest dependencies"
-        run: "composer update --no-interaction --no-progress"
+        run: "composer update --no-interaction --no-progress --ignore-platform-reqs"
 
       - name: "Run tests"
         timeout-minutes: 5
@@ -113,7 +113,7 @@ jobs:
           restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
 
       - name: "Install dependencies"
-        run: "composer update --no-interaction --no-progress"
+        run: "composer update --no-interaction --no-progress --ignore-platform-reqs"
 
       - name: "Run tests"
         timeout-minutes: 3
@@ -158,7 +158,7 @@ jobs:
           restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
 
       - name: "Install dependencies"
-        run: "composer update --no-interaction --no-progress"
+        run: "composer update --no-interaction --no-progress --ignore-platform-reqs"
 
       - name: "Check coding standards"
         run: "vendor/bin/php-cs-fixer fix --verbose --dry-run --diff"
@@ -196,7 +196,7 @@ jobs:
           restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
 
       - name: "Install dependencies"
-        run: "composer update --no-interaction --no-progress"
+        run: "composer update --no-interaction --no-progress --ignore-platform-reqs"
 
       - name: "Run static analysis"
         run: "vendor/bin/phpstan analyse --no-progress --error-format=checkstyle | cs2pr"
