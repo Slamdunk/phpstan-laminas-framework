@@ -2,7 +2,7 @@
 
 namespace LaminasPhpStan\TestAsset;
 
-final class FooService
+class FooService
 {
     public function isFoo(): bool
     {

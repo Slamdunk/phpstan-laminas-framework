@@ -47,7 +47,7 @@ abstract class AbstractServiceGetterDynamicReturnTypeExtension implements Dynami
         $serviceName     = $this->methodToServiceMap[$methodReflection->getName()];
         $serviceInstance = $serviceManager->get($serviceName);
         \assert(\is_object($serviceInstance));
-        $serviceClass   = \get_class($serviceInstance);
+        $serviceClass   = $serviceInstance::class;
 
         return new ObjectType($serviceClass);
     }

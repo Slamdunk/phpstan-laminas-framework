@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Tests\LaminasIntegration\data;
 
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use LaminasPhpStan\TestAsset\FooInterface;
+use LaminasPhpStan\TestAsset\FooService;
 use LaminasPhpStan\TestAsset\HeavyService;
 
 final class serviceManagerDynamicReturn
@@ -42,5 +44,16 @@ final class serviceManagerDynamicReturn
         $var    = $config['foo'];
         $var    = $config['xyz'];
         $var    = $config->foo;
+    }
+
+    public function testAnonymousClassWithParent(): void
+    {
+        $fooProxy = $this->serviceManager->get('foo_proxy');
+        (static function (FooService $fooService): void {
+        })($fooProxy);
+
+        $fooImpl = $this->serviceManager->get('foo_impl');
+        (static function (FooInterface $fooService): void {
+        })($fooImpl);
     }
 }
