@@ -31,7 +31,7 @@ final class ControllerPluginClassReflectionExtension implements MethodsClassRefl
         $plugin = $this->getControllerPluginManager()->get($methodName);
         \assert(\is_object($plugin));
 
-        $pluginClassName = \get_class($plugin);
+        $pluginClassName = $plugin::class;
 
         if (\is_callable($plugin)) {
             return $this->reflectionProvider->getClass($pluginClassName)->getNativeMethod('__invoke');

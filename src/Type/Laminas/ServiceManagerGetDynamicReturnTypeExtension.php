@@ -91,7 +91,17 @@ final class ServiceManagerGetDynamicReturnTypeExtension implements DynamicMethod
 
         $service = $serviceManager->get($serviceName);
         if (\is_object($service)) {
-            return new ObjectServiceManagerType(\get_class($service), $serviceName);
+            $className = $service::class;
+            $refClass  = new ReflectionClass($service);
+            if ($refClass->isAnonymous()) {
+                if (false !== ($parentClass = $refClass->getParentClass())) {
+                    $className = $parentClass->getName();
+                } elseif ([] !== ($interfaces = $refClass->getInterfaces())) {
+                    $className = \current($interfaces)->getName();
+                }
+            }
+
+            return new ObjectServiceManagerType($className, $serviceName);
         }
 
         return $scope->getTypeFromValue($service);

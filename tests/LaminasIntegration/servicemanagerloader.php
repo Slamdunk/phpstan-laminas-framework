@@ -6,6 +6,7 @@ use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use LaminasPhpStan\TestAsset\BarService;
 use LaminasPhpStan\TestAsset\CssService;
+use LaminasPhpStan\TestAsset\FooInterface;
 use LaminasPhpStan\TestAsset\FooService;
 use LaminasPhpStan\TestAsset\HeavyService;
 use LaminasPhpStan\TestAsset\Route66;
@@ -16,9 +17,9 @@ $app = \Laminas\Mvc\Application::init([
         'Laminas\Router',
         'LaminasPhpStan' => new class() implements ConfigProviderInterface {
             /**
-             * @return array<string, array<string, array<string, array<string, string>|string>>>
+             * @return array<string, array<string, array<string, array<string, string>|Closure|string>>>
              */
-            public function getConfig()
+            public function getConfig(): array
             {
                 return [
                     'service_manager' => [
@@ -32,6 +33,18 @@ $app = \Laminas\Mvc\Application::init([
                         ],
                         'factories' => [
                             HeavyService::class => InvokableFactory::class,
+                            'foo_proxy'         => static function (): FooService {
+                                return new class() extends FooService {
+                                };
+                            },
+                            'foo_impl'         => static function (): FooInterface {
+                                return new class() implements FooInterface {
+                                    public function isFoo(): bool
+                                    {
+                                        return true;
+                                    }
+                                };
+                            },
                         ],
                     ],
                     'controllers' => [

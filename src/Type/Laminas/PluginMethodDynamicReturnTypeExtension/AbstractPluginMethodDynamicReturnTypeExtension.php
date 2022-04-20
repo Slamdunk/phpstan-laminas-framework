@@ -55,7 +55,7 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
             $pluginInstance = $pluginManager->get($plugin);
             \assert(\is_object($pluginInstance));
 
-            return new ObjectType(\get_class($pluginInstance));
+            return new ObjectType($pluginInstance::class);
         }
 
         if ($argType instanceof StringType) {
