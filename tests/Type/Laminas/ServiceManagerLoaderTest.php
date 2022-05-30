@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasPhpStan\Tests\Type\Laminas;
 
-use Laminas\Cache\PatternPluginManager as CachePatternPluginManager;
 use Laminas\Cache\Storage\AdapterPluginManager as CacheStorageAdapterPluginManager;
 use Laminas\Cache\Storage\PluginManager as CacheStoragePluginManager;
 use Laminas\Config\ReaderPluginManager as ConfigReaderPluginManager;
@@ -60,7 +59,6 @@ final class ServiceManagerLoaderTest extends TestCase
     {
         $serviceManagerLoader = new ServiceManagerLoader(null);
         $knownPluginManagers  = [
-            CachePatternPluginManager::class,
             CacheStorageAdapterPluginManager::class,
             CacheStoragePluginManager::class,
             // ConfigReaderPluginManager::class,

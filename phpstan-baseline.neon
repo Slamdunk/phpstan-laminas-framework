@@ -4,14 +4,3 @@ parameters:
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'LaminasPhpStan\\\\\\\\TestAsset\\\\\\\\BarService' and Laminas\\\\Stdlib\\\\DispatchableInterface will always evaluate to false\\.$#"
 			count: 1
 			path: tests/Type/Laminas/ServiceManagerLoaderTest.php
-
-		-
-			message:
-				"""
-					#^Fetching class constant class of deprecated class Laminas\\\\Cache\\\\PatternPluginManager\\:
-					This will be removed in v3\\.0\\.0\\. Cache pattern will require dependency injection and thus, a generic
-					            plugin manager makes no sense anymore\\.$#
-				"""
-			count: 1
-			path: tests/Type/Laminas/ServiceManagerLoaderTest.php
-
