@@ -18,6 +18,14 @@ services:
         arguments:
             serviceManagerLoader: %laminasframework.serviceManagerLoader%
     -
+        class: LaminasPhpStan\Type\Laminas\InteropContainerGetDynamicReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
+        class: LaminasPhpStan\Type\Laminas\PsrContainerGetDynamicReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicMethodReturnTypeExtension
+    -
         class: LaminasPhpStan\Type\Laminas\ServiceManagerGetDynamicReturnTypeExtension
         tags:
             - phpstan.broker.dynamicMethodReturnTypeExtension
