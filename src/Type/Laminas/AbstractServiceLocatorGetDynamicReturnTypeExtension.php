@@ -27,12 +27,12 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
     ) {
     }
 
-    public function isMethodSupported(MethodReflection $methodReflection): bool
+    final public function isMethodSupported(MethodReflection $methodReflection): bool
     {
         return 'get' === $methodReflection->getName();
     }
 
-    public function getTypeFromMethodCall(
+    final public function getTypeFromMethodCall(
         MethodReflection $methodReflection,
         MethodCall $methodCall,
         Scope $scope
