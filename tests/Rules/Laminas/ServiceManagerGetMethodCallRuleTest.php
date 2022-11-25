@@ -15,6 +15,7 @@ use Psr\Container\ContainerInterface as PsrContainerInterface;
 /**
  * @covers \LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule
  * @covers \LaminasPhpStan\UnmappedAliasServiceLocatorProxy
+ *
  * @extends RuleTestCase<ServiceManagerGetMethodCallRule>
  */
 final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase

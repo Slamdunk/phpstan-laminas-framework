@@ -1,7 +1,7 @@
 [
     {
         "message": "Call to an undefined method Laminas\\Router\\RouteInterface::foobar456().",
-        "line": 26,
+        "line": 30,
         "ignorable": true
     }
 ]

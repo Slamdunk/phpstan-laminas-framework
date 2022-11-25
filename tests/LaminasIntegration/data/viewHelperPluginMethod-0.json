@@ -1,7 +1,7 @@
 [
     {
         "message": "The service \"foobar\" was not configured in Laminas\\View\\HelperPluginManager nor the class \"foobar\" exists.",
-        "line": 22,
+        "line": 26,
         "ignorable": true
     }
 ]

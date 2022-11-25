@@ -1,7 +1,7 @@
 [
     {
         "message": "The service \"foobar123\" was not configured in Laminas\\Router\\RoutePluginManager nor the class \"foobar123\" exists.",
-        "line": 23,
+        "line": 27,
         "ignorable": true
     }
 ]
