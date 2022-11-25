@@ -11,6 +11,7 @@ use PHPStan\Testing\RuleTestCase;
 
 /**
  * @covers \LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule
+ *
  * @extends RuleTestCase<ServiceManagerGetMethodCallRule>
  */
 final class PluginManagerGetMethodCallRuleTest extends RuleTestCase

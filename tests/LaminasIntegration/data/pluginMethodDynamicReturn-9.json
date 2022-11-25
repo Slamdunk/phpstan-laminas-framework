@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Method LaminasPhpStan\\Tests\\LaminasIntegration\\data\\pluginMethodDynamicReturn::getDynamicTypeFromStringVariable() should return Laminas\\View\\Helper\\AbstractHelper but returns mixed.",
+        "line": 30,
+        "ignorable": true
+    }
+]

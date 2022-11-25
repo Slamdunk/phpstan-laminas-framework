@@ -53,9 +53,9 @@ final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
      * @param string            $name
      * @param null|array<mixed> $options
      *
-     * @throws ShouldNotHappenException
-     *
      * @return mixed|void
+     *
+     * @throws ShouldNotHappenException
      */
     public function build($name, ?array $options = null)
     {
