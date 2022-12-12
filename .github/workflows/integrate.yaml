@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "8.1"
 
     steps:
       - name: "Checkout"
@@ -42,8 +42,8 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
           - "8.1"
+          - "8.2"
         dependencies:
           - "highest"
 
@@ -69,6 +69,9 @@ jobs:
           key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
 
+      - name: "Remove PHP-CS-Fixer not ready for PHP 8.2 yet"
+        run: "composer remove --dev --no-update slam/php-cs-fixer-extensions"
+
       - name: "Install lowest dependencies"
         if: ${{ matrix.dependencies == 'lowest' }}
         run: "composer update --no-interaction --no-progress --prefer-lowest"
@@ -89,7 +92,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "8.1"
 
     steps:
       - name: "Checkout"
@@ -117,7 +120,7 @@ jobs:
         run: "composer update --no-interaction --no-progress"
 
       - name: "Run tests"
-        timeout-minutes: 3
+        timeout-minutes: 10
         run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
 
       - name: "Send code coverage report to Codecov.io"
@@ -135,7 +138,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "8.1"
 
     steps:
       - name: "Checkout"
@@ -172,7 +175,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.0"
+          - "8.1"
 
     steps:
       - name: "Checkout"

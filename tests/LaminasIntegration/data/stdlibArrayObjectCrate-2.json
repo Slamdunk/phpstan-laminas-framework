@@ -1,6 +1,6 @@
 [
     {
-        "message": "Call to an undefined method Laminas\\Stdlib\\ArrayObject::foo().",
+        "message": "Call to an undefined method Laminas\\Stdlib\\ArrayObject<*NEVER*, *NEVER*>::foo().",
         "line": 15,
         "ignorable": true
     }
