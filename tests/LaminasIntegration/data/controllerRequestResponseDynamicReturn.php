@@ -52,6 +52,7 @@ final class controllerRequestResponseDynamicReturn extends AbstractActionControl
         $view->getResponse()->getStatusCode();
     }
 
+    /** @param ViewEvent<string> $viewEvent */
     private function baz(ViewEvent $viewEvent): void
     {
         $viewEvent->getRequest()->getBasePattt();

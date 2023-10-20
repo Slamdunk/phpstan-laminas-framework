@@ -95,9 +95,7 @@ final class PluginMethodReflection implements MethodReflection
         return TrinaryLogic::createNo();
     }
 
-    /**
-     * @return \PHPStan\Reflection\ParametersAcceptor[]
-     */
+    /** @return \PHPStan\Reflection\ParametersAcceptor[] */
     public function getVariants(): array
     {
         return [

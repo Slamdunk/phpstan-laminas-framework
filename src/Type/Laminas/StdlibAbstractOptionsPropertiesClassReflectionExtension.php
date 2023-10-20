@@ -24,8 +24,7 @@ final class StdlibAbstractOptionsPropertiesClassReflectionExtension implements P
                 private ClassReflection $classReflection,
                 private string $propertyName,
                 private string $setterName
-            ) {
-            }
+            ) {}
 
             public function getDeclaringClass(): ClassReflection
             {

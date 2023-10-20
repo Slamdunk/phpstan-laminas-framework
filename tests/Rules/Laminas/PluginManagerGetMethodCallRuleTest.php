@@ -23,9 +23,7 @@ final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
         $this->serviceManagerLoader = new ServiceManagerLoader(null);
     }
 
-    /**
-     * @return Rule<\PhpParser\Node\Expr\MethodCall>
-     */
+    /** @return Rule<\PhpParser\Node\Expr\MethodCall> */
     protected function getRule(): Rule
     {
         return new ServiceManagerGetMethodCallRule($this->createReflectionProvider(), $this->serviceManagerLoader);
@@ -41,9 +39,7 @@ final class PluginManagerGetMethodCallRuleTest extends RuleTestCase
         ]);
     }
 
-    /**
-     * @return string[]
-     */
+    /** @return string[] */
     public static function getAdditionalConfigFiles(): array
     {
         return [

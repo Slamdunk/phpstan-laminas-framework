@@ -49,11 +49,9 @@ final class serviceManagerDynamicReturn
     public function testAnonymousClassWithParent(): void
     {
         $fooProxy = $this->serviceManager->get('foo_proxy');
-        (static function (FooService $fooService): void {
-        })($fooProxy);
+        (static function (FooService $fooService): void {})($fooProxy);
 
         $fooImpl = $this->serviceManager->get('foo_impl');
-        (static function (FooInterface $fooService): void {
-        })($fooImpl);
+        (static function (FooInterface $fooService): void {})($fooImpl);
     }
 }

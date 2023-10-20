@@ -11,9 +11,7 @@ use LaminasPhpStan\TestAsset\CustomViewHelperPlugin;
 
 final class viewHelperPluginMethod
 {
-    /**
-     * @var HelperPluginManager<HelperInterface>
-     */
+    /** @var HelperPluginManager<HelperInterface> */
     private HelperPluginManager $viewHelperManager;
 
     public function __construct(ServiceManager $serviceManager)

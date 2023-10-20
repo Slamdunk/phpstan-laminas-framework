@@ -18,9 +18,7 @@ abstract class AbstractServiceGetterDynamicReturnTypeExtension implements Dynami
 {
     private ServiceManagerLoader $serviceManagerLoader;
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected array $methodToServiceMap = [
         'getApplication'    => 'Application',
         'getRenderer'       => RendererInterface::class,

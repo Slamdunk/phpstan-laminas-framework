@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - "master"
+      - "renovate/*"
 
 jobs:
   composer-json-lint:

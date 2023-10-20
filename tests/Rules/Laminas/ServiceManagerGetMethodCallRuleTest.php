@@ -27,10 +27,8 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         $this->serviceManagerLoader = new ServiceManagerLoader(null);
     }
 
-    /**
-     * @return string[][]
-     */
-    public function provideContainerTypes(): array
+    /** @return string[][] */
+    public static function provideRuleCases(): iterable
     {
         return [
             'ServiceManager'    => ['ServiceManagerFoo.php', ServiceManager::class],
@@ -39,17 +37,13 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return Rule<\PhpParser\Node\Expr\MethodCall>
-     */
+    /** @return Rule<\PhpParser\Node\Expr\MethodCall> */
     protected function getRule(): Rule
     {
         return new ServiceManagerGetMethodCallRule($this->createReflectionProvider(), $this->serviceManagerLoader);
     }
 
-    /**
-     * @dataProvider provideContainerTypes
-     */
+    /** @dataProvider provideRuleCases */
     public function testRule(string $filename, string $containerClassname): void
     {
         $this->analyse([__DIR__ . '/ServiceManagerGetMethodCallRule/' . $filename], [

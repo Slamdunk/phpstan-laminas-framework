@@ -9,9 +9,7 @@ use Laminas\View\Renderer\RendererInterface;
 
 final class ViewHelperGetterDynamicReturnTypeExtension extends AbstractServiceGetterDynamicReturnTypeExtension
 {
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     protected array $methodToServiceMap = [
         'getView' => RendererInterface::class,
     ];
