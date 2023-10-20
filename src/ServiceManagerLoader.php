@@ -16,9 +16,7 @@ final class ServiceManagerLoader
 {
     private ?UnmappedAliasServiceLocatorProxy $serviceLocator = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private array $knownModules = [
         \Laminas\Cache\ConfigProvider::class,
         \Laminas\Filter\ConfigProvider::class,
@@ -33,9 +31,7 @@ final class ServiceManagerLoader
         \Laminas\Validator\ConfigProvider::class,
     ];
 
-    /**
-     * @var array<string, true>
-     */
+    /** @var array<string, true> */
     private array $serviceManagerNames = [
         ServiceManager::class            => true,
         ServiceLocatorInterface::class   => true,

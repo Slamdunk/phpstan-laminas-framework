@@ -12,9 +12,7 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
-use PHPStan\Type\StringType;
 use PHPStan\Type\Type;
-use PHPStan\Type\TypeUtils;
 use PHPStan\Type\VerbosityLevel;
 
 abstract class AbstractPluginMethodDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
@@ -46,7 +44,7 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
             ));
         }
         $argType = $scope->getType($firstArg->value);
-        $strings = TypeUtils::getConstantStrings($argType);
+        $strings = $argType->getConstantStrings();
         $plugin  = 1 === \count($strings) ? $strings[0]->getValue() : null;
 
         if (null !== $plugin) {
@@ -58,7 +56,7 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
             return new ObjectType($pluginInstance::class);
         }
 
-        if ($argType instanceof StringType) {
+        if ($argType->isString()->yes()) {
             return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->getArgs(), $methodReflection->getVariants())->getReturnType();
         }
 

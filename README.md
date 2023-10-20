@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/slam/phpstan-laminas-framework)
 [![Downloads](https://img.shields.io/packagist/dt/slam/phpstan-laminas-framework.svg)](https://packagist.org/packages/slam/phpstan-laminas-framework)
-[![Integrate](https://github.com/Slamdunk/phpstan-laminas-framework/workflows/Integrate/badge.svg?branch=master)](https://github.com/Slamdunk/phpstan-laminas-framework/actions)
+[![Integrate](https://github.com/Slamdunk/phpstan-laminas-framework/workflows/ci/badge.svg?branch=master)](https://github.com/Slamdunk/phpstan-laminas-framework/actions)
 [![Code Coverage](https://codecov.io/gh/Slamdunk/phpstan-laminas-framework/coverage.svg?branch=master)](https://codecov.io/gh/Slamdunk/phpstan-laminas-framework?branch=master)
 
 * [PHPStan](https://phpstan.org/)

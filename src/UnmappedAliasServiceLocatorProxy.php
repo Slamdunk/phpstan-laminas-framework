@@ -17,9 +17,7 @@ final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
 {
     private ServiceLocatorInterface $serviceLocator;
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> */
     private array $knownUnmappedAliasToClassServices = [
         ControllerManager::class                => 'ControllerManager',
         HelperPluginManager::class              => 'ViewHelperManager',

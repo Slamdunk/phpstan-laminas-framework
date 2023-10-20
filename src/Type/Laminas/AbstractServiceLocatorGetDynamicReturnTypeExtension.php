@@ -11,7 +11,6 @@ use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ReflectionProvider;
-use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\NeverType;
@@ -24,8 +23,7 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
     public function __construct(
         private ReflectionProvider $reflectionProvider,
         private ServiceManagerLoader $serviceManagerLoader
-    ) {
-    }
+    ) {}
 
     final public function isMethodSupported(MethodReflection $methodReflection): bool
     {
@@ -38,7 +36,7 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
         Scope $scope
     ): Type {
         $calledOnType = $scope->getType($methodCall->var);
-        if (! $calledOnType instanceof ObjectType) {
+        if (! $calledOnType->isObject()->yes()) {
             return new MixedType();
         }
 
@@ -47,7 +45,7 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
             return new MixedType();
         }
 
-        $serviceManager = $this->serviceManagerLoader->getServiceLocator($calledOnType->getClassName());
+        $serviceManager = $this->serviceManagerLoader->getServiceLocator($calledOnType->getObjectClassNames()[0]);
 
         $firstArg = $args[0];
         if (! $firstArg instanceof Arg) {
@@ -58,12 +56,12 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
                 $firstArg->getType()
             ));
         }
-        $argType = $scope->getType($firstArg->value);
-        if (! $argType instanceof ConstantStringType) {
+        $argType             = $scope->getType($firstArg->value);
+        $constantStringTypes = $argType->getConstantStrings();
+        if (1 !== \count($constantStringTypes)) {
             if ($serviceManager instanceof AbstractPluginManager) {
-                $refClass    = new ReflectionClass($serviceManager);
-                $refProperty = $refClass->getProperty('instanceOf');
-                $refProperty->setAccessible(true);
+                $refClass         = new ReflectionClass($serviceManager);
+                $refProperty      = $refClass->getProperty('instanceOf');
                 $returnedInstance = $refProperty->getValue($serviceManager);
                 \assert(null === $returnedInstance || \is_string($returnedInstance));
                 if (null !== $returnedInstance && $this->reflectionProvider->hasClass($returnedInstance)) {
@@ -74,7 +72,7 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
             return new MixedType();
         }
 
-        $serviceName = $argType->getValue();
+        $serviceName = $constantStringTypes[0]->getValue();
         if (! $serviceManager->has($serviceName)) {
             return new NeverType();
         }

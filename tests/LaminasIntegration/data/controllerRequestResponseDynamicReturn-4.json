@@ -11,7 +11,7 @@
     },
     {
         "message": "Method LaminasPhpStan\\Tests\\LaminasIntegration\\data\\controllerRequestResponseDynamicReturn::baz() is unused.",
-        "line": 55,
+        "line": 56,
         "ignorable": true
     }
 ]

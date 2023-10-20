@@ -3,10 +3,5 @@
         "message": "Property Laminas\\Mail\\Transport\\Envelope::$from (string|null) does not accept stdClass.",
         "line": 19,
         "ignorable": true
-    },
-    {
-        "message": "Property class@anonymous/stdlibAbstractOptionsProperties.php:27::$myxyz (string) does not accept int.",
-        "line": 37,
-        "ignorable": true
     }
 ]

@@ -18,8 +18,7 @@ final class ControllerPluginClassReflectionExtension implements MethodsClassRefl
     public function __construct(
         private ReflectionProvider $reflectionProvider,
         private ServiceManagerLoader $serviceManagerLoader
-    ) {
-    }
+    ) {}
 
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {

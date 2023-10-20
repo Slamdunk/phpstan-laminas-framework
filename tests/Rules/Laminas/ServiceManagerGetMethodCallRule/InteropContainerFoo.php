@@ -37,7 +37,5 @@ final class InteropContainerFoo
         $this->container->get(FormElementManager::class);
     }
 
-    public function get(string $foo): void
-    {
-    }
+    public function get(string $foo): void {}
 }

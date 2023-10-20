@@ -14,8 +14,8 @@ use PhpParser\Node\Arg;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
-use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\Type;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
 use ReflectionClass;
 
@@ -27,8 +27,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
     public function __construct(
         private ReflectionProvider $reflectionProvider,
         private ServiceManagerLoader $serviceManagerLoader
-    ) {
-    }
+    ) {}
 
     public function getNodeType(): string
     {
@@ -51,13 +50,14 @@ final class ServiceManagerGetMethodCallRule implements Rule
         if (! $firstArg instanceof Arg) {
             return [];
         }
-        $argType = $scope->getType($firstArg->value);
-        if (! $argType instanceof ConstantStringType) {
+        $argType         = $scope->getType($firstArg->value);
+        $constantStrings = $argType->getConstantStrings();
+        if (1 !== \count($constantStrings)) {
             return [];
         }
 
         $calledOnType = $scope->getType($node->var);
-        if (! $calledOnType instanceof ObjectType || ! $this->isTypeInstanceOfContainer($calledOnType)) {
+        if (! $calledOnType->isObject()->yes() || ! $this->isTypeInstanceOfContainer($calledOnType)) {
             return [];
         }
 
@@ -71,7 +71,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
             return [];
         }
 
-        $serviceName    = $argType->getValue();
+        $serviceName    = $constantStrings[0]->getValue();
         $serviceManager = $this->serviceManagerLoader->getServiceLocator($calledOnType->getClassName());
 
         if ($serviceManager->has($serviceName)) {
@@ -80,9 +80,8 @@ final class ServiceManagerGetMethodCallRule implements Rule
 
         $classDoesNotExistNote = '';
         if ($serviceManager instanceof AbstractPluginManager) {
-            $refClass    = new ReflectionClass($serviceManager);
-            $refProperty = $refClass->getProperty('autoAddInvokableClass');
-            $refProperty->setAccessible(true);
+            $refClass              = new ReflectionClass($serviceManager);
+            $refProperty           = $refClass->getProperty('autoAddInvokableClass');
             $autoAddInvokableClass = $refProperty->getValue($serviceManager);
             if ($autoAddInvokableClass) {
                 if ($this->reflectionProvider->hasClass($serviceName)) {
@@ -102,10 +101,11 @@ final class ServiceManagerGetMethodCallRule implements Rule
         )];
     }
 
-    private function isTypeInstanceOfContainer(ObjectType $type): bool
+    /** @phpstan-assert-if-true ObjectType $type */
+    private function isTypeInstanceOfContainer(Type $type): bool
     {
-        return $type->isInstanceOf(ServiceLocatorInterface::class)->yes()
-            || $type->isInstanceOf(InteropContainerInterface::class)->yes()
-            || $type->isInstanceOf(PsrContainerInterface::class)->yes();
+        return (new ObjectType(ServiceLocatorInterface::class))->isSuperTypeOf($type)->yes()
+            || (new ObjectType(InteropContainerInterface::class))->isSuperTypeOf($type)->yes()
+            || (new ObjectType(PsrContainerInterface::class))->isSuperTypeOf($type)->yes();
     }
 }

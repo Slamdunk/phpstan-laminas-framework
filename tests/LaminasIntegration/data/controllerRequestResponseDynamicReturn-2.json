@@ -41,17 +41,17 @@
     },
     {
         "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Request::getBasePattt().",
-        "line": 57,
-        "ignorable": true
-    },
-    {
-        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Response::headersSenttt().",
         "line": 58,
         "ignorable": true
     },
     {
-        "message": "Call to an undefined method Laminas\\View\\Renderer\\PhpRenderer::getEngineee().",
+        "message": "Call to an undefined method Laminas\\Http\\PhpEnvironment\\Response::headersSenttt().",
         "line": 59,
+        "ignorable": true
+    },
+    {
+        "message": "Call to an undefined method Laminas\\View\\Renderer\\PhpRenderer::getEngineee().",
+        "line": 60,
         "ignorable": true
     }
 ]
