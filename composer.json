@@ -24,7 +24,7 @@
     "require-dev": {
         "laminas/laminas-cache": "^3.11.0",
         "laminas/laminas-cache-storage-adapter-memory": "^2.3.0",
-        "laminas/laminas-filter": "^2.32.0",
+        "laminas/laminas-filter": "^2.33.0",
         "laminas/laminas-form": "^3.13.1",
         "laminas/laminas-hydrator": "^4.14.0",
         "laminas/laminas-i18n": "^2.23.1",
