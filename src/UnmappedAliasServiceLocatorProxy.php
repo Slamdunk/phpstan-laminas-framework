@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasPhpStan;
 
-use Laminas\Log\FilterPluginManager as LogFilterPluginManager;
-use Laminas\Log\FormatterPluginManager as LogFormatterPluginManager;
-use Laminas\Log\ProcessorPluginManager as LogProcessorPluginManager;
-use Laminas\Log\WriterPluginManager as LogWriterPluginManager;
 use Laminas\Mvc\Controller\ControllerManager;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\HelperPluginManager;
@@ -21,10 +17,6 @@ final class UnmappedAliasServiceLocatorProxy implements ServiceLocatorInterface
     private array $knownUnmappedAliasToClassServices = [
         ControllerManager::class                => 'ControllerManager',
         HelperPluginManager::class              => 'ViewHelperManager',
-        LogFilterPluginManager::class           => 'LogFilterManager',
-        LogFormatterPluginManager::class        => 'LogFormatterManager',
-        LogProcessorPluginManager::class        => 'LogProcessorManager',
-        LogWriterPluginManager::class           => 'LogWriterManager',
     ];
 
     public function __construct(ServiceLocatorInterface $serviceLocator)

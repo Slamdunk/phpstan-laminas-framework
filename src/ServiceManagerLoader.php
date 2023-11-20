@@ -24,7 +24,6 @@ final class ServiceManagerLoader
         \Laminas\Hydrator\ConfigProvider::class,
         \Laminas\I18n\ConfigProvider::class,
         \Laminas\InputFilter\ConfigProvider::class,
-        \Laminas\Log\ConfigProvider::class,
         \Laminas\Mail\ConfigProvider::class,
         \Laminas\Paginator\ConfigProvider::class,
         \Laminas\Router\ConfigProvider::class,
