@@ -14,10 +14,6 @@ use Laminas\Form\FormElementManager;
 use Laminas\Hydrator\HydratorPluginManager;
 use Laminas\I18n\Translator\LoaderPluginManager as I18nLoaderPluginManager;
 use Laminas\InputFilter\InputFilterPluginManager;
-use Laminas\Log\FilterPluginManager as LogFilterPluginManager;
-use Laminas\Log\FormatterPluginManager as LogFormatterPluginManager;
-use Laminas\Log\ProcessorPluginManager as LogProcessorPluginManager;
-use Laminas\Log\WriterPluginManager as LogWriterPluginManager;
 use Laminas\Mail\Protocol\SmtpPluginManager;
 use Laminas\Mvc\Controller\ControllerManager;
 use Laminas\Mvc\Controller\PluginManager as ControllerPluginManager;
@@ -71,10 +67,6 @@ final class ServiceManagerLoaderTest extends TestCase
             HydratorPluginManager::class,
             I18nLoaderPluginManager::class,
             InputFilterPluginManager::class,
-            LogFilterPluginManager::class,
-            LogFormatterPluginManager::class,
-            LogProcessorPluginManager::class,
-            LogWriterPluginManager::class,
             // NavigationPluginManager::class,
             PaginatorAdapterPluginManager::class,
             RoutePluginManager::class,
