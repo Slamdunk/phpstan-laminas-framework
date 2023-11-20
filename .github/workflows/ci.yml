@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.2"
 
     steps:
       - name: "Checkout"
@@ -43,8 +43,8 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
           - "8.2"
+          - "8.3"
         dependencies:
           - "highest"
 
@@ -70,7 +70,7 @@ jobs:
           key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ matrix.dependencies }}-composer-
 
-      - name: "Remove PHP-CS-Fixer not ready for PHP 8.2 yet"
+      - name: "Remove PHP-CS-Fixer not ready for PHP 8.3 yet"
         run: "composer remove --dev --no-update slam/php-cs-fixer-extensions"
 
       - name: "Install lowest dependencies"
@@ -93,7 +93,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.2"
 
     steps:
       - name: "Checkout"
@@ -139,7 +139,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.2"
 
     steps:
       - name: "Checkout"
@@ -176,7 +176,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
+          - "8.2"
 
     steps:
       - name: "Checkout"

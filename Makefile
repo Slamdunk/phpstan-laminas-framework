@@ -2,12 +2,13 @@ all: csfix static-analysis test
 	@echo "Done."
 
 vendor: composer.json
-	composer update --ignore-platform-req=php
+	composer update
+	composer bump
 	touch vendor
 
 .PHONY: csfix
 csfix: vendor
-	php8.1 vendor/bin/php-cs-fixer fix --verbose
+	vendor/bin/php-cs-fixer fix --verbose
 
 .PHONY: static-analysis
 static-analysis: vendor
