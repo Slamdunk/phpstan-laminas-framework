@@ -27,7 +27,7 @@
         "laminas/laminas-filter": "^2.33.0",
         "laminas/laminas-form": "^3.17.0",
         "laminas/laminas-hydrator": "^4.15.0",
-        "laminas/laminas-i18n": "^2.24.1",
+        "laminas/laminas-i18n": "^2.25.0",
         "laminas/laminas-inputfilter": "^2.28.0",
         "laminas/laminas-mail": "^2.25.1",
         "laminas/laminas-mvc": "^3.7.0",
