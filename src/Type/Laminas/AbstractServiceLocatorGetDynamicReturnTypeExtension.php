@@ -11,6 +11,7 @@ use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ReflectionProvider;
+use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\NeverType;
@@ -49,7 +50,7 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
 
         $firstArg = $args[0];
         if (! $firstArg instanceof Arg) {
-            throw new \PHPStan\ShouldNotHappenException(\sprintf(
+            throw new ShouldNotHappenException(\sprintf(
                 'Argument passed to %s::%s should be a string, %s given',
                 $methodReflection->getDeclaringClass()->getName(),
                 $methodReflection->getName(),

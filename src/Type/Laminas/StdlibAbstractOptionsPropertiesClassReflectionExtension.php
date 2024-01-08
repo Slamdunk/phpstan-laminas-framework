@@ -8,6 +8,7 @@ use Laminas\Stdlib\AbstractOptions;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
+use PHPStan\TrinaryLogic;
 use PHPStan\Type\Type;
 
 final class StdlibAbstractOptionsPropertiesClassReflectionExtension implements PropertiesClassReflectionExtension
@@ -81,7 +82,7 @@ final class StdlibAbstractOptionsPropertiesClassReflectionExtension implements P
                 return $this->classReflection->getNativeProperty($this->propertyName)->canChangeTypeAfterAssignment();
             }
 
-            public function isDeprecated(): \PHPStan\TrinaryLogic
+            public function isDeprecated(): TrinaryLogic
             {
                 return $this->classReflection->getNativeProperty($this->propertyName)->isDeprecated();
             }
@@ -91,7 +92,7 @@ final class StdlibAbstractOptionsPropertiesClassReflectionExtension implements P
                 return $this->classReflection->getNativeProperty($this->propertyName)->getDeprecatedDescription();
             }
 
-            public function isInternal(): \PHPStan\TrinaryLogic
+            public function isInternal(): TrinaryLogic
             {
                 return $this->classReflection->getNativeProperty($this->propertyName)->isInternal();
             }

@@ -11,6 +11,7 @@ use PHPStan\Reflection\MethodReflection;
 use PHPStan\TrinaryLogic;
 use PHPStan\Type\Generic\TemplateTypeMap;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\Type;
 
 final class PluginMethodReflection implements MethodReflection
 {
@@ -85,7 +86,7 @@ final class PluginMethodReflection implements MethodReflection
         return TrinaryLogic::createNo();
     }
 
-    public function getThrowType(): ?\PHPStan\Type\Type
+    public function getThrowType(): ?Type
     {
         return null;
     }
