@@ -10,6 +10,7 @@ use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParametersAcceptorSelector;
+use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
@@ -36,7 +37,7 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
     ): Type {
         $firstArg = $methodCall->getArgs()[0];
         if (! $firstArg instanceof Arg) {
-            throw new \PHPStan\ShouldNotHappenException(\sprintf(
+            throw new ShouldNotHappenException(\sprintf(
                 'Argument passed to %s::%s should be a string, %s given',
                 $methodReflection->getDeclaringClass()->getName(),
                 $methodReflection->getName(),
@@ -60,7 +61,7 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
             return ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->getArgs(), $methodReflection->getVariants())->getReturnType();
         }
 
-        throw new \PHPStan\ShouldNotHappenException(\sprintf(
+        throw new ShouldNotHappenException(\sprintf(
             'Argument passed to %s::%s should be a string, %s given',
             $methodReflection->getDeclaringClass()->getName(),
             $methodReflection->getName(),

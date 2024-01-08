@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace LaminasPhpStan;
 
 use Interop\Container\ContainerInterface as InteropContainerInterface;
+use Laminas\Cache\ConfigProvider;
 use Laminas\Mvc\Service\ServiceListenerFactory;
 use Laminas\Mvc\Service\ServiceManagerConfig;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\ServiceManager\ServiceManager;
+use PHPStan\ShouldNotHappenException;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
 use ReflectionProperty;
 
@@ -18,7 +20,7 @@ final class ServiceManagerLoader
 
     /** @var string[] */
     private array $knownModules = [
-        \Laminas\Cache\ConfigProvider::class,
+        ConfigProvider::class,
         \Laminas\Filter\ConfigProvider::class,
         \Laminas\Form\ConfigProvider::class,
         \Laminas\Hydrator\ConfigProvider::class,
@@ -45,12 +47,12 @@ final class ServiceManagerLoader
         }
 
         if (! \file_exists($serviceManagerLoader) || ! \is_readable($serviceManagerLoader)) {
-            throw new \PHPStan\ShouldNotHappenException('Service manager could not be loaded');
+            throw new ShouldNotHappenException('Service manager could not be loaded');
         }
 
         $serviceManager = require $serviceManagerLoader;
         if (! $serviceManager instanceof ServiceManager) {
-            throw new \PHPStan\ShouldNotHappenException(\sprintf('Loader "%s" doesn\'t return a ServiceManager instance', $serviceManagerLoader));
+            throw new ShouldNotHappenException(\sprintf('Loader "%s" doesn\'t return a ServiceManager instance', $serviceManagerLoader));
         }
 
         $this->serviceLocator = new UnmappedAliasServiceLocatorProxy($serviceManager);

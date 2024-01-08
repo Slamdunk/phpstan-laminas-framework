@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\Mvc\Application;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use LaminasPhpStan\TestAsset\BarService;
 use LaminasPhpStan\TestAsset\CssService;
@@ -12,7 +13,7 @@ use LaminasPhpStan\TestAsset\HeavyService;
 use LaminasPhpStan\TestAsset\Route66;
 use LaminasPhpStan\TestAsset\XyzController;
 
-$app = \Laminas\Mvc\Application::init([
+$app = Application::init([
     'modules' => [
         'Laminas\Router',
         'LaminasPhpStan' => new class() implements ConfigProviderInterface {

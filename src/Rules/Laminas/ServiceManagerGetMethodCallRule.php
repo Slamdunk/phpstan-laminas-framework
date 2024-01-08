@@ -11,6 +11,7 @@ use LaminasPhpStan\ServiceManagerLoader;
 use LaminasPhpStan\Type\Laminas\ObjectServiceManagerType;
 use PhpParser\Node;
 use PhpParser\Node\Arg;
+use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
@@ -35,7 +36,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Expr\MethodCall $node
+     * @param MethodCall $node
      *
      * @return string[]
      */
