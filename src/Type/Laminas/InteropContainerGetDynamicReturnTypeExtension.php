@@ -10,6 +10,6 @@ final class InteropContainerGetDynamicReturnTypeExtension extends AbstractServic
 {
     public function getClass(): string
     {
-        return ContainerInterface::class;
+        return Containerinterface::class;
     }
 }
