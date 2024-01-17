@@ -32,7 +32,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
 
     public function getNodeType(): string
     {
-        return Node\Expr\MethodCall::class;
+        return MethodCall::class;
     }
 
     /**
