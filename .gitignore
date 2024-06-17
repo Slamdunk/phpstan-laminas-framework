@@ -1,6 +1,7 @@
-.idea/
-tmp/
-vendor/
-.php-cs-fixer.cache
-.phpunit.result.cache
-composer.lock
+/.idea/
+/tmp/
+/vendor/
+/.env
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/composer.lock
