@@ -35,7 +35,7 @@
         "laminas/laminas-validator": "^2.60.0",
         "phpstan/phpstan-deprecation-rules": "^1.2.0",
         "phpstan/phpstan-phpunit": "^1.4.0",
-        "phpunit/phpunit": "^9.6.19",
+        "phpunit/phpunit": "^9.6.20",
         "slam/php-cs-fixer-extensions": "^3.11.1"
     },
     "conflict": {
