@@ -32,7 +32,7 @@
         "laminas/laminas-mail": "^2.25.1",
         "laminas/laminas-mvc": "^3.7.0",
         "laminas/laminas-paginator": "^2.18.1",
-        "laminas/laminas-validator": "^2.61.0",
+        "laminas/laminas-validator": "^2.62.0",
         "phpstan/phpstan-deprecation-rules": "^1.2.0",
         "phpstan/phpstan-phpunit": "^1.4.0",
         "phpunit/phpunit": "^9.6.20",
