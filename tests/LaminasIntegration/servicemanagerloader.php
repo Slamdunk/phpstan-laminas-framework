@@ -16,7 +16,7 @@ use LaminasPhpStan\TestAsset\XyzController;
 $app = Application::init([
     'modules' => [
         'Laminas\Router',
-        'LaminasPhpStan' => new class() implements ConfigProviderInterface {
+        'LaminasPhpStan' => new class implements ConfigProviderInterface {
             /** @return array<string, array<string, array<string, array<string, string>|Closure|string>>> */
             public function getConfig(): array
             {
@@ -33,10 +33,10 @@ $app = Application::init([
                         'factories' => [
                             HeavyService::class => InvokableFactory::class,
                             'foo_proxy'         => static function (): FooService {
-                                return new class() extends FooService {};
+                                return new class extends FooService {};
                             },
                             'foo_impl'         => static function (): FooInterface {
-                                return new class() implements FooInterface {
+                                return new class implements FooInterface {
                                     public function isFoo(): bool
                                     {
                                         return true;
