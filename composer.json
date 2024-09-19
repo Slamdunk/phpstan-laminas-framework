@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "~8.2.0 || ~8.3.0",
-        "phpstan/phpstan": "^1.12.3"
+        "phpstan/phpstan": "^1.12.4"
     },
     "require-dev": {
         "laminas/laminas-cache": "^3.12.2",
@@ -35,7 +35,7 @@
         "laminas/laminas-validator": "^2.64.1",
         "phpstan/phpstan-deprecation-rules": "^1.2.1",
         "phpstan/phpstan-phpunit": "^1.4.0",
-        "phpunit/phpunit": "^9.6.20",
+        "phpunit/phpunit": "^9.6.21",
         "slam/php-cs-fixer-extensions": "^3.11.1"
     },
     "conflict": {
