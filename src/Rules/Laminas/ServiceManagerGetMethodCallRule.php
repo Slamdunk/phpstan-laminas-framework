@@ -15,6 +15,7 @@ use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
@@ -92,14 +93,14 @@ final class ServiceManagerGetMethodCallRule implements Rule
             }
         }
 
-        return [\sprintf(
+        return [RuleErrorBuilder::message(\sprintf(
             'The service "%s" was not configured in %s%s.',
             $serviceName,
             $calledOnType instanceof ObjectServiceManagerType
                 ? $calledOnType->getServiceName()
                 : $calledOnType->getClassName(),
             $classDoesNotExistNote
-        )];
+        ))->identifier('servicemanager.servicenotconfigured')->build()];
     }
 
     /** @phpstan-assert-if-true ObjectType $type */

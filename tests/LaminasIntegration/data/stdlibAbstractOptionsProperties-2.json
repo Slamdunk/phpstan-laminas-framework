@@ -5,7 +5,7 @@
         "ignorable": true
     },
     {
-        "message": "Property class@anonymous/stdlibAbstractOptionsProperties.php:27::$myxyz is not writable.",
+        "message": "Property Laminas\\Stdlib\\AbstractOptions@anonymous/stdlibAbstractOptionsProperties.php:27::$myxyz is not writable.",
         "line": 37,
         "ignorable": true
     },
