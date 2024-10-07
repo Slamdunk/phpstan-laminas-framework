@@ -10,11 +10,11 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use LaminasPhpStan\ServiceManagerLoader;
 use LaminasPhpStan\Type\Laminas\ObjectServiceManagerType;
 use PhpParser\Node;
-use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
@@ -35,11 +35,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
         return MethodCall::class;
     }
 
-    /**
-     * @param MethodCall $node
-     *
-     * @return string[]
-     */
+    /** @param MethodCall $node */
     public function processNode(Node $node, Scope $scope): array
     {
         $args = $node->getArgs();
@@ -47,10 +43,7 @@ final class ServiceManagerGetMethodCallRule implements Rule
             return [];
         }
 
-        $firstArg = $args[0];
-        if (! $firstArg instanceof Arg) {
-            return [];
-        }
+        $firstArg        = $args[0];
         $argType         = $scope->getType($firstArg->value);
         $constantStrings = $argType->getConstantStrings();
         if (1 !== \count($constantStrings)) {
@@ -92,14 +85,14 @@ final class ServiceManagerGetMethodCallRule implements Rule
             }
         }
 
-        return [\sprintf(
+        return [RuleErrorBuilder::message(\sprintf(
             'The service "%s" was not configured in %s%s.',
             $serviceName,
             $calledOnType instanceof ObjectServiceManagerType
                 ? $calledOnType->getServiceName()
                 : $calledOnType->getClassName(),
             $classDoesNotExistNote
-        )];
+        ))->identifier('servicemanager.servicenotconfigured')->build()];
     }
 
     /** @phpstan-assert-if-true ObjectType $type */

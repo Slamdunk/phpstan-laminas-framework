@@ -11,7 +11,7 @@ use PHPStan\Testing\LevelsTestCase;
  */
 final class IntegrationTest extends LevelsTestCase
 {
-    public function dataTopics(): array
+    public static function dataTopics(): array
     {
         return [
             ['serviceManagerDynamicReturn'],
@@ -36,7 +36,7 @@ final class IntegrationTest extends LevelsTestCase
         return __DIR__ . '/../../vendor/bin/phpstan';
     }
 
-    public function getPhpStanConfigPath(): ?string
+    public function getPhpStanConfigPath(): string
     {
         return __DIR__ . '/phpstan.neon';
     }
