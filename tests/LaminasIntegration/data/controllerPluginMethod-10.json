@@ -1,0 +1,7 @@
+[
+    {
+        "message": "Cannot call method isFoo() on mixed.",
+        "line": 16,
+        "ignorable": true
+    }
+]

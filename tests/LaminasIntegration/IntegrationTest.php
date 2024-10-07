@@ -11,7 +11,7 @@ use PHPStan\Testing\LevelsTestCase;
  */
 final class IntegrationTest extends LevelsTestCase
 {
-    public function dataTopics(): array
+    public static function dataTopics(): array
     {
         return [
             ['serviceManagerDynamicReturn'],

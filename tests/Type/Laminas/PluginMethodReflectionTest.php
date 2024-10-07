@@ -9,17 +9,17 @@ use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\FunctionVariant;
 use PHPStan\TrinaryLogic;
 use PHPStan\Type\ObjectType;
-use PHPUnit\Framework\TestCase;
+use PHPStan\Testing\PHPStanTestCase;
 use stdClass;
 
 /**
  * @covers \LaminasPhpStan\Type\Laminas\PluginMethodReflection
  */
-final class PluginMethodReflectionTest extends TestCase
+final class PluginMethodReflectionTest extends PHPStanTestCase
 {
     public function testTrivialUsage(): void
     {
-        $declaringClass = $this->createMock(ClassReflection::class);
+        $declaringClass = $this->createReflectionProvider()->getClass(stdClass::class);
         $methodName     = 'redirect';
         $returnType     = new ObjectType(stdClass::class);
 
