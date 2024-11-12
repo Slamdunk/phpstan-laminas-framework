@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Type\Laminas\PluginMethodDynamicReturnTypeExtension;
 
 use LaminasPhpStan\ServiceManagerLoader;
-use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
@@ -36,17 +35,9 @@ abstract class AbstractPluginMethodDynamicReturnTypeExtension implements Dynamic
         Scope $scope
     ): Type {
         $firstArg = $methodCall->getArgs()[0];
-        if (! $firstArg instanceof Arg) {
-            throw new ShouldNotHappenException(\sprintf(
-                'Argument passed to %s::%s should be a string, %s given',
-                $methodReflection->getDeclaringClass()->getName(),
-                $methodReflection->getName(),
-                $firstArg->getType()
-            ));
-        }
-        $argType = $scope->getType($firstArg->value);
-        $strings = $argType->getConstantStrings();
-        $plugin  = 1 === \count($strings) ? $strings[0]->getValue() : null;
+        $argType  = $scope->getType($firstArg->value);
+        $strings  = $argType->getConstantStrings();
+        $plugin   = 1 === \count($strings) ? $strings[0]->getValue() : null;
 
         if (null !== $plugin) {
             $pluginManager = $this->serviceManagerLoader->getServiceLocator($this->getPluginManagerName());

@@ -6,12 +6,10 @@ namespace LaminasPhpStan\Type\Laminas;
 
 use Laminas\ServiceManager\AbstractPluginManager;
 use LaminasPhpStan\ServiceManagerLoader;
-use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ReflectionProvider;
-use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\NeverType;
@@ -48,15 +46,7 @@ abstract class AbstractServiceLocatorGetDynamicReturnTypeExtension implements Dy
 
         $serviceManager = $this->serviceManagerLoader->getServiceLocator($calledOnType->getObjectClassNames()[0]);
 
-        $firstArg = $args[0];
-        if (! $firstArg instanceof Arg) {
-            throw new ShouldNotHappenException(\sprintf(
-                'Argument passed to %s::%s should be a string, %s given',
-                $methodReflection->getDeclaringClass()->getName(),
-                $methodReflection->getName(),
-                $firstArg->getType()
-            ));
-        }
+        $firstArg            = $args[0];
         $argType             = $scope->getType($firstArg->value);
         $constantStringTypes = $argType->getConstantStrings();
         if (1 !== \count($constantStringTypes)) {

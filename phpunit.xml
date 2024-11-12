@@ -1,15 +1,10 @@
 <?xml version="1.0"?>
 <phpunit
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        bootstrap="./vendor/autoload.php"
         colors="true"
-        verbose="true"
         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
 >
   <coverage>
-    <include>
-      <directory suffix=".php">./src</directory>
-    </include>
     <report>
       <text outputFile="php://stdout" showOnlySummary="true"/>
     </report>
@@ -17,4 +12,9 @@
   <testsuite name="LaminasPhpStan">
     <directory>./tests</directory>
   </testsuite>
+  <source>
+    <include>
+      <directory>./src</directory>
+    </include>
+  </source>
 </phpunit>

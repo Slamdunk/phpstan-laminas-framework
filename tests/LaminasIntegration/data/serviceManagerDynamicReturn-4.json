@@ -1,0 +1,12 @@
+[
+    {
+        "message": "Expression \"(static function (\\LaminasPhpStan\\TestAsset\\FooService $fooService): void {…\" on a separate line does not do anything.",
+        "line": 52,
+        "ignorable": true
+    },
+    {
+        "message": "Expression \"(static function (\\LaminasPhpStan\\TestAsset\\FooInterface $fooService): void {…\" on a separate line does not do anything.",
+        "line": 55,
+        "ignorable": true
+    }
+]

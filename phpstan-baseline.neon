@@ -1,6 +1,31 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'LaminasPhpStan\\\\\\\\TestAsset\\\\\\\\BarService' and Laminas\\\\Stdlib\\\\DispatchableInterface will always evaluate to false\\.$#"
+			message: '#^Creating new ReflectionClass is a runtime reflection concept that might not work in PHPStan because it uses fully static reflection engine\. Use objects retrieved from ReflectionProvider instead\.$#'
+			identifier: phpstanApi.runtimeReflection
+			count: 1
+			path: src/Rules/Laminas/ServiceManagerGetMethodCallRule.php
+
+		-
+			message: '#^Parameter \#1 \$config of method Laminas\\ServiceManager\\ServiceManager\:\:configure\(\) expects array\{abstract_factories\?\: array\<class\-string\<Laminas\\ServiceManager\\Factory\\AbstractFactoryInterface\>\|Laminas\\ServiceManager\\Factory\\AbstractFactoryInterface\>, aliases\?\: array\<string, string\>, delegators\?\: mixed, factories\?\: mixed, initializers\?\: mixed, invokables\?\: array\<string, string\>, lazy_services\?\: array\{class_map\?\: array\<string, class\-string\>, proxies_namespace\?\: non\-empty\-string, proxies_target_dir\?\: non\-empty\-string, write_proxy_files\?\: bool\}, services\?\: array\<string, array\<mixed\>\|object\>, \.\.\.\}, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ServiceManagerLoader.php
+
+		-
+			message: '#^Parameter \#1 \$config of method Laminas\\ServiceManager\\ServiceManager\:\:configure\(\) expects array\{abstract_factories\?\: array\<class\-string\<Laminas\\ServiceManager\\Factory\\AbstractFactoryInterface\>\|Laminas\\ServiceManager\\Factory\\AbstractFactoryInterface\>, aliases\?\: array\<string, string\>, delegators\?\: mixed, factories\?\: mixed, initializers\?\: mixed, invokables\?\: array\<string, string\>, lazy_services\?\: array\{class_map\?\: array\<string, class\-string\>, proxies_namespace\?\: non\-empty\-string, proxies_target_dir\?\: non\-empty\-string, write_proxy_files\?\: bool\}, services\?\: array\<string, array\<mixed\>\|object\>, \.\.\.\}, non\-empty\-array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ServiceManagerLoader.php
+
+		-
+			message: '#^Creating new ReflectionClass is a runtime reflection concept that might not work in PHPStan because it uses fully static reflection engine\. Use objects retrieved from ReflectionProvider instead\.$#'
+			identifier: phpstanApi.runtimeReflection
+			count: 2
+			path: src/Type/Laminas/AbstractServiceLocatorGetDynamicReturnTypeExtension.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''LaminasPhpStan\\\\TestAsset\\\\BarService'' and Laminas\\Stdlib\\DispatchableInterface will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
 			count: 1
 			path: tests/Type/Laminas/ServiceManagerLoaderTest.php
