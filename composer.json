@@ -19,22 +19,22 @@
     ],
     "require": {
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
-        "phpstan/phpstan": "^2.0.1"
+        "phpstan/phpstan": "^2.0.2"
     },
     "require-dev": {
         "laminas/laminas-cache": "^3.12.2",
         "laminas/laminas-cache-storage-adapter-memory": "^2.3.0",
         "laminas/laminas-filter": "^2.39.0",
         "laminas/laminas-form": "^3.21.0",
-        "laminas/laminas-hydrator": "^4.15.0",
+        "laminas/laminas-hydrator": "^4.16.0",
         "laminas/laminas-i18n": "^2.29.0",
-        "laminas/laminas-inputfilter": "^2.30.1",
+        "laminas/laminas-inputfilter": "^2.31.0",
         "laminas/laminas-mail": "^2.25.1",
-        "laminas/laminas-mvc": "^3.7.0",
+        "laminas/laminas-mvc": "^3.8.0",
         "laminas/laminas-paginator": "^2.19.0",
         "laminas/laminas-validator": "^2.64.1",
         "phpstan/phpstan-deprecation-rules": "^2",
-        "phpstan/phpstan-phpunit": "^2",
+        "phpstan/phpstan-phpunit": "^2.0.1",
         "phpunit/phpunit": "^11.4.3",
         "slam/php-cs-fixer-extensions": "^3.11.1"
     },

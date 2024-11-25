@@ -8,6 +8,7 @@ use Interop\Container\ContainerInterface as InteropContainerInterface;
 use Laminas\ServiceManager\ServiceManager;
 use LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule;
 use LaminasPhpStan\ServiceManagerLoader;
+use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
@@ -37,7 +38,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         ];
     }
 
-    /** @return Rule<\PhpParser\Node\Expr\MethodCall> */
+    /** @return Rule<MethodCall> */
     protected function getRule(): Rule
     {
         return new ServiceManagerGetMethodCallRule($this->createReflectionProvider(), $this->serviceManagerLoader);

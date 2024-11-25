@@ -8,6 +8,7 @@ use PHPStan\Reflection\ClassMemberReflection;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\FunctionVariant;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\ParametersAcceptor;
 use PHPStan\TrinaryLogic;
 use PHPStan\Type\Generic\TemplateTypeMap;
 use PHPStan\Type\ObjectType;
@@ -96,7 +97,7 @@ final class PluginMethodReflection implements MethodReflection
         return TrinaryLogic::createNo();
     }
 
-    /** @return \PHPStan\Reflection\ParametersAcceptor[] */
+    /** @return ParametersAcceptor[] */
     public function getVariants(): array
     {
         return [
