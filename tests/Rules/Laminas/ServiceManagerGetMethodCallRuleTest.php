@@ -25,7 +25,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
 
     protected function setUp(): void
     {
-        $this->serviceManagerLoader = new ServiceManagerLoader(null);
+        $this->serviceManagerLoader = new ServiceManagerLoader(\dirname(__DIR__, 2) . '/LaminasIntegration/servicemanagerloader.php');
     }
 
     /** @return string[][] */
@@ -50,7 +50,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         $this->analyse([__DIR__ . '/ServiceManagerGetMethodCallRule/' . $filename], [
             [
                 'The service "non_existent_service" was not configured in ' . $containerClassname . '.',
-                23,
+                22,
             ],
         ]);
     }

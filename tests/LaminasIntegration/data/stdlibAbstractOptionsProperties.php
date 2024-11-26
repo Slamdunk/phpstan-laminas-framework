@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaminasPhpStan\Tests\LaminasIntegration\data;
 
-use Laminas\Mail\Transport\Envelope;
+use Laminas\ModuleManager\Listener\ListenerOptions;
 use Laminas\Stdlib\AbstractOptions;
 use stdClass;
 
@@ -12,14 +12,14 @@ final class stdlibAbstractOptionsProperties
 {
     public function mainLibrary(): void
     {
-        $envelope = new Envelope();
+        $envelope = new ListenerOptions();
 
         // Bad
-        $envelope->foobar = 1;
-        $envelope->from   = new stdClass();
+        $envelope->foobar         = 1;
+        $envelope->configCacheKey = new stdClass();
 
         // Good
-        $envelope->from = 'test@example.com';
+        $envelope->configCacheKey = 'my_key';
     }
 
     public function custom(): void

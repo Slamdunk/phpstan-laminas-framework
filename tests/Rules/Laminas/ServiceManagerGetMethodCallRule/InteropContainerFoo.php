@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Tests\Rules\Laminas\ServiceManagerGetMethodCallRule;
 
 use Interop\Container\ContainerInterface;
-use Laminas\Form\FormElementManager;
 use Laminas\Mvc\Controller\ControllerManager;
 use stdClass;
 
@@ -34,7 +33,6 @@ final class InteropContainerFoo
         $stdClass->get('non_existent_service');
 
         $this->container->get(ControllerManager::class);
-        $this->container->get(FormElementManager::class);
     }
 
     public function get(string $foo): void {}

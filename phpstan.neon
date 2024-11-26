@@ -11,6 +11,5 @@ parameters:
     excludePaths:
         analyseAndScan:
             - tests/Rules/Laminas/ServiceManagerGetMethodCallRule/
-            - tests/Rules/Laminas/PluginManagerGetMethodCallRule/
             - tests/TestAsset/
             - tests/LaminasIntegration/data/

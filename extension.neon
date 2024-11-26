@@ -1,12 +1,10 @@
 parameters:
-    laminasframework:
-        serviceManagerLoader: null
     universalObjectCratesClasses:
         - Laminas\Stdlib\ArrayObject
 
 parametersSchema:
     laminasframework: structure([
-        serviceManagerLoader: schema(string(), nullable())
+        serviceManagerLoader: schema(string())
     ])
 
 rules:

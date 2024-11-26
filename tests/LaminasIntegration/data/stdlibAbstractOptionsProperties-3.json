@@ -1,6 +1,6 @@
 [
     {
-        "message": "Property Laminas\\Mail\\Transport\\Envelope::$from (string|null) does not accept stdClass.",
+        "message": "Property Laminas\\ModuleManager\\Listener\\ListenerOptions::$configCacheKey (string) does not accept stdClass.",
         "line": 19,
         "ignorable": true
     }
