@@ -8,6 +8,7 @@ use Interop\Container\ContainerInterface as InteropContainerInterface;
 use Laminas\ServiceManager\ServiceManager;
 use LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule;
 use LaminasPhpStan\ServiceManagerLoader;
+use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
@@ -24,7 +25,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
 
     protected function setUp(): void
     {
-        $this->serviceManagerLoader = new ServiceManagerLoader(null);
+        $this->serviceManagerLoader = new ServiceManagerLoader(\dirname(__DIR__, 2) . '/LaminasIntegration/servicemanagerloader.php');
     }
 
     /** @return string[][] */
@@ -37,7 +38,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         ];
     }
 
-    /** @return Rule<\PhpParser\Node\Expr\MethodCall> */
+    /** @return Rule<MethodCall> */
     protected function getRule(): Rule
     {
         return new ServiceManagerGetMethodCallRule($this->createReflectionProvider(), $this->serviceManagerLoader);
@@ -49,7 +50,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         $this->analyse([__DIR__ . '/ServiceManagerGetMethodCallRule/' . $filename], [
             [
                 'The service "non_existent_service" was not configured in ' . $containerClassname . '.',
-                23,
+                22,
             ],
         ]);
     }

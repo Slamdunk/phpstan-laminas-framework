@@ -1,6 +1,6 @@
 [
     {
-        "message": "Access to an undefined property Laminas\\Mail\\Transport\\Envelope::$foobar.",
+        "message": "Access to an undefined property Laminas\\ModuleManager\\Listener\\ListenerOptions::$foobar.",
         "line": 18,
         "ignorable": true
     },
