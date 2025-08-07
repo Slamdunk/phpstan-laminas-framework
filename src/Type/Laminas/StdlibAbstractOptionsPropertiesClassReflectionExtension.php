@@ -8,14 +8,19 @@ use Laminas\Stdlib\AbstractOptions;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
+use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\TrinaryLogic;
 use PHPStan\Type\Type;
 
 final class StdlibAbstractOptionsPropertiesClassReflectionExtension implements PropertiesClassReflectionExtension
 {
+    public function __construct(
+        private ReflectionProvider $reflectionProvider,
+    ) {}
+
     public function hasProperty(ClassReflection $classReflection, string $propertyName): bool
     {
-        return $classReflection->isSubclassOf(AbstractOptions::class) && $classReflection->hasNativeMethod($this->getGetterName($propertyName));
+        return $classReflection->isSubclassOfClass($this->reflectionProvider->getClass(AbstractOptions::class)) && $classReflection->hasNativeMethod($this->getGetterName($propertyName));
     }
 
     public function getProperty(ClassReflection $classReflection, string $propertyName): PropertyReflection

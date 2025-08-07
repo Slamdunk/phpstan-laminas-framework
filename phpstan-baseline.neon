@@ -13,6 +13,38 @@ parameters:
 			path: src/Type/Laminas/AbstractServiceLocatorGetDynamicReturnTypeExtension.php
 
 		-
+			message: '''
+				#^Access to constant on deprecated class Laminas\\View\\ViewEvent\:
+				Since 2\.40\.0\. This class will be removed in 3\.0 without replacement when laminas\-view removes support
+				            for rendering strategies\.$#
+			'''
+			identifier: classConstant.deprecatedClass
+			count: 1
+			path: src/Type/Laminas/ServiceGetterDynamicReturnTypeExtension/ViewEventGetterDynamicReturnTypeExtension.php
+
+		-
+			message: '''
+				#^Access to constant on deprecated class Laminas\\View\\View\:
+				Since 2\.40\.0\. This class will be removed in 3\.0 when laminas\-view removes support for rendering
+				            strategies\. It is possible that Laminas\\View\\View will be re\-introduced as a class with the sole
+				            purpose of implementing the 2\-step view via a `render` method, however all other functionality will be
+				            removed entirely\.$#
+			'''
+			identifier: classConstant.deprecatedClass
+			count: 1
+			path: src/Type/Laminas/ServiceGetterDynamicReturnTypeExtension/ViewGetterDynamicReturnTypeExtension.php
+
+		-
+			message: '''
+				#^Access to constant on deprecated class Laminas\\View\\Helper\\AbstractHelper\:
+				Since 2\.40\.0\. This class will be remove in 3\.0 without replacement\. View helpers should be constructed
+				            with their dependencies, therefore the setters and getters here become irrelevant\.$#
+			'''
+			identifier: classConstant.deprecatedClass
+			count: 1
+			path: src/Type/Laminas/ServiceGetterDynamicReturnTypeExtension/ViewHelperGetterDynamicReturnTypeExtension.php
+
+		-
 			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''LaminasPhpStan\\\\TestAsset\\\\BarService'' and Laminas\\Stdlib\\DispatchableInterface will always evaluate to false\.$#'
 			identifier: staticMethod.impossibleType
 			count: 1

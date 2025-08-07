@@ -22,7 +22,7 @@ final class ControllerPluginClassReflectionExtension implements MethodsClassRefl
 
     public function hasMethod(ClassReflection $classReflection, string $methodName): bool
     {
-        return $classReflection->isSubclassOf(AbstractController::class) && $this->getControllerPluginManager()->has($methodName);
+        return $classReflection->isSubclassOfClass($this->reflectionProvider->getClass(AbstractController::class)) && $this->getControllerPluginManager()->has($methodName);
     }
 
     public function getMethod(ClassReflection $classReflection, string $methodName): MethodReflection

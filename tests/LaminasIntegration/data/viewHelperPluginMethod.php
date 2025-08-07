@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Tests\LaminasIntegration\data;
 
 use Laminas\ServiceManager\ServiceManager;
-use Laminas\View\Helper\HelperInterface;
 use Laminas\View\HelperPluginManager;
 use LaminasPhpStan\TestAsset\CustomViewHelperPlugin;
 
 final class viewHelperPluginMethod
 {
-    /** @var HelperPluginManager<HelperInterface> */
     private HelperPluginManager $viewHelperManager;
 
     public function __construct(ServiceManager $serviceManager)
