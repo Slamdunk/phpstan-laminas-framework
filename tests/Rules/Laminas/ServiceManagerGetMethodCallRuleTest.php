@@ -28,16 +28,6 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         $this->serviceManagerLoader = new ServiceManagerLoader(\dirname(__DIR__, 2) . '/LaminasIntegration/servicemanagerloader.php');
     }
 
-    /** @return string[][] */
-    public static function provideRuleCases(): iterable
-    {
-        return [
-            'ServiceManager'    => ['ServiceManagerFoo.php', ServiceManager::class],
-            'Interop container' => ['InteropContainerFoo.php', InteropContainerInterface::class],
-            'PSR container'     => ['PsrContainerFoo.php', PsrContainerInterface::class],
-        ];
-    }
-
     /** @return Rule<MethodCall> */
     protected function getRule(): Rule
     {
@@ -53,5 +43,15 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
                 22,
             ],
         ]);
+    }
+
+    /** @return string[][] */
+    public static function provideRuleCases(): iterable
+    {
+        return [
+            'ServiceManager'    => ['ServiceManagerFoo.php', ServiceManager::class],
+            'Interop container' => ['InteropContainerFoo.php', InteropContainerInterface::class],
+            'PSR container'     => ['PsrContainerFoo.php', PsrContainerInterface::class],
+        ];
     }
 }
