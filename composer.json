@@ -22,7 +22,7 @@
         "phpstan/phpstan": "^2.1.30"
     },
     "require-dev": {
-        "laminas/laminas-filter": "^2.41.0",
+        "laminas/laminas-filter": "^3.2.1",
         "laminas/laminas-form": "^3.21.0",
         "laminas/laminas-hydrator": "^4.16.0",
         "laminas/laminas-i18n": "^2.30.0",
