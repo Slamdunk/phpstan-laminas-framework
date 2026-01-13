@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.3"
+          - "8.4"
 
     steps:
       - uses: "actions/checkout@v6"
@@ -37,8 +37,8 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.3"
           - "8.4"
+          - "8.5"
 
     steps:
       - uses: "actions/checkout@v6"
@@ -48,6 +48,8 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Run tests"
         timeout-minutes: 5
@@ -59,7 +61,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.3"
+          - "8.4"
 
     steps:
       - uses: "actions/checkout@v6"
@@ -69,6 +71,8 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Run tests"
         timeout-minutes: 10
@@ -87,7 +91,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.3"
+          - "8.4"
 
     steps:
       - uses: "actions/checkout@v6"
@@ -97,6 +101,8 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Check coding standards"
         run: "vendor/bin/php-cs-fixer fix --verbose --dry-run --diff"
@@ -107,7 +113,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.3"
+          - "8.4"
 
     steps:
       - uses: "actions/checkout@v6"
@@ -117,6 +123,8 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Run static analysis"
         run: "vendor/bin/phpstan analyse --no-progress"
