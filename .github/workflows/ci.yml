@@ -20,7 +20,7 @@ jobs:
           - "8.4"
 
     steps:
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           coverage: "none"
@@ -41,13 +41,15 @@ jobs:
           - "8.5"
 
     steps:
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           coverage: "pcov"
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Run tests"
         timeout-minutes: 5
@@ -62,13 +64,15 @@ jobs:
           - "8.4"
 
     steps:
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           coverage: "pcov"
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Run tests"
         timeout-minutes: 10
@@ -90,13 +94,15 @@ jobs:
           - "8.4"
 
     steps:
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           coverage: "none"
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Check coding standards"
         run: "vendor/bin/php-cs-fixer fix --verbose --dry-run --diff"
@@ -110,13 +116,15 @@ jobs:
           - "8.4"
 
     steps:
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
       - uses: "shivammathur/setup-php@v2"
         with:
           coverage: "none"
           php-version: "${{ matrix.php-version }}"
           ini-values: "${{ env.INI_VALUES }}"
       - uses: "ramsey/composer-install@v3"
+        with:
+          composer-options: "--ignore-platform-req=php"
 
       - name: "Run static analysis"
         run: "vendor/bin/phpstan analyse --no-progress"

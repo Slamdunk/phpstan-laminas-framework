@@ -9,7 +9,7 @@ all: csfix static-analysis test
 
 vendor: .env docker-compose.yml Dockerfile composer.json
 	docker compose build --pull
-	$(DOCKER_PHP_EXEC) composer update
+	$(DOCKER_PHP_EXEC) composer update --ignore-platform-req=php
 	$(DOCKER_PHP_EXEC) composer bump
 	touch --no-create $@
 
