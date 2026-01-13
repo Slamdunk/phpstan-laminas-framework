@@ -24,7 +24,7 @@
     "require-dev": {
         "laminas/laminas-filter": "^2.42.0",
         "laminas/laminas-form": "^3.24.2",
-        "laminas/laminas-hydrator": "^4.17.0",
+        "laminas/laminas-hydrator": "^4.18.0",
         "laminas/laminas-i18n": "^2.32.1",
         "laminas/laminas-inputfilter": "^2.35.0",
         "laminas/laminas-mvc": "^3.8.0",
