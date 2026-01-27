@@ -20,7 +20,10 @@ final class StdlibAbstractOptionsPropertiesClassReflectionExtension implements P
 
     public function hasProperty(ClassReflection $classReflection, string $propertyName): bool
     {
-        return $classReflection->isSubclassOfClass($this->reflectionProvider->getClass(AbstractOptions::class)) && $classReflection->hasNativeMethod($this->getGetterName($propertyName));
+        return
+            $this->reflectionProvider->hasClass(AbstractOptions::class)
+            && $classReflection->isSubclassOfClass($this->reflectionProvider->getClass(AbstractOptions::class))
+            && $classReflection->hasNativeMethod($this->getGetterName($propertyName));
     }
 
     public function getProperty(ClassReflection $classReflection, string $propertyName): PropertyReflection
