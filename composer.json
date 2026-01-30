@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "~8.4.0 || ~8.5.0",
-        "phpstan/phpstan": "^2.1.37"
+        "phpstan/phpstan": "^2.1.38"
     },
     "require-dev": {
         "laminas/laminas-filter": "^2.42.0",
