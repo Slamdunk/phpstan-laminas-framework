@@ -31,8 +31,8 @@
         "laminas/laminas-paginator": "^2.22.0",
         "laminas/laminas-validator": "^2.65.0",
         "phpstan/phpstan-deprecation-rules": "^2.0.3",
-        "phpstan/phpstan-phpunit": "^2.0.13",
-        "phpunit/phpunit": "^11.5.52",
+        "phpstan/phpstan-phpunit": "^2.0.14",
+        "phpunit/phpunit": "^11.5.53",
         "slam/php-cs-fixer-extensions": "^3.14.0"
     },
     "conflict": {
