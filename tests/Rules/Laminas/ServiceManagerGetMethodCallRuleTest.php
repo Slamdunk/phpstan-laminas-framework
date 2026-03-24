@@ -8,17 +8,19 @@ use Interop\Container\ContainerInterface as InteropContainerInterface;
 use Laminas\ServiceManager\ServiceManager;
 use LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule;
 use LaminasPhpStan\ServiceManagerLoader;
+use LaminasPhpStan\UnmappedAliasServiceLocatorProxy;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Container\ContainerInterface as PsrContainerInterface;
 
 /**
- * @covers \LaminasPhpStan\Rules\Laminas\ServiceManagerGetMethodCallRule
- * @covers \LaminasPhpStan\UnmappedAliasServiceLocatorProxy
- *
  * @extends RuleTestCase<ServiceManagerGetMethodCallRule>
  */
+#[CoversClass(ServiceManagerGetMethodCallRule::class)]
+#[CoversClass(UnmappedAliasServiceLocatorProxy::class)]
 final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
 {
     private ServiceManagerLoader $serviceManagerLoader;
@@ -34,7 +36,7 @@ final class ServiceManagerGetMethodCallRuleTest extends RuleTestCase
         return new ServiceManagerGetMethodCallRule($this->createReflectionProvider(), $this->serviceManagerLoader);
     }
 
-    /** @dataProvider provideRuleCases */
+    #[DataProvider('provideRuleCases')]
     public function testRule(string $filename, string $containerClassname): void
     {
         $this->analyse([__DIR__ . '/ServiceManagerGetMethodCallRule/' . $filename], [

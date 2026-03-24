@@ -9,11 +9,10 @@ use PHPStan\Reflection\FunctionVariant;
 use PHPStan\Testing\PHPStanTestCase;
 use PHPStan\TrinaryLogic;
 use PHPStan\Type\ObjectType;
+use PHPUnit\Framework\Attributes\CoversClass;
 use stdClass;
 
-/**
- * @covers \LaminasPhpStan\Type\Laminas\PluginMethodReflection
- */
+#[CoversClass(PluginMethodReflection::class)]
 final class PluginMethodReflectionTest extends PHPStanTestCase
 {
     public function testTrivialUsage(): void

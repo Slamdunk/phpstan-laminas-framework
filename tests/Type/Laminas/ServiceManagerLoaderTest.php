@@ -10,11 +10,10 @@ use LaminasPhpStan\ServiceManagerLoader;
 use LaminasPhpStan\TestAsset\BarService;
 use LaminasPhpStan\TestAsset\FooService;
 use PHPStan\ShouldNotHappenException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \LaminasPhpStan\ServiceManagerLoader
- */
+#[CoversClass(ServiceManagerLoader::class)]
 final class ServiceManagerLoaderTest extends TestCase
 {
     public function testLoaderMustBeAValidFile(): void

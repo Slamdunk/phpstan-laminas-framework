@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace LaminasPhpStan\Tests\Type\Laminas;
 
 use LaminasPhpStan\Type\Laminas\ObjectServiceManagerType;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
-/**
- * @covers \LaminasPhpStan\Type\Laminas\ObjectServiceManagerType
- */
+#[CoversClass(ObjectServiceManagerType::class)]
 final class ObjectServiceManagerTypeTest extends TestCase
 {
     public function testTrivialUsage(): void
