@@ -13,7 +13,7 @@
   <testsuite name="LaminasPhpStan">
     <directory>./tests</directory>
   </testsuite>
-  <source>
+  <source ignoreIndirectDeprecations="true">
     <include>
       <directory>./src</directory>
     </include>
