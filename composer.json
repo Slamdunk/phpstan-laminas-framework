@@ -19,11 +19,11 @@
     ],
     "require": {
         "php": "~8.5.0 || ~8.6.0",
-        "phpstan/phpstan": "^2.3.5"
+        "phpstan/phpstan": "^2.3.7"
     },
     "require-dev": {
-        "laminas/laminas-filter": "^2.42.0",
-        "laminas/laminas-form": "^3.24.2",
+        "laminas/laminas-filter": "^2.43.0",
+        "laminas/laminas-form": "^3.25.0",
         "laminas/laminas-hydrator": "^4.19.0",
         "laminas/laminas-i18n": "^2.33.0",
         "laminas/laminas-inputfilter": "^2.36.0",
